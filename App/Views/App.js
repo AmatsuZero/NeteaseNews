@@ -1,7 +1,7 @@
 /**
  * Created by jiangzhenhua on 2016/12/15.
  */
-import React from 'react';
+import React from "react";
 import {
     StyleSheet,
     Text,
@@ -10,8 +10,15 @@ import {
     ListView,
     Image,
     RecyclerViewBackedScrollView,
-    InteractionManager
-} from 'react-native';
+    InteractionManager,
+    Platform,
+    RefreshControl
+} from "react-native";
+//iOS和安卓通用的PagerView
+import ScrollableTabView, {DefaultTabBar} from "react-native-scrollable-tab-view";
+
+let typeList = {};
+
 
 class App extends React.Component {
 
@@ -20,35 +27,130 @@ class App extends React.Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             ds,
+            labels: [
+                {
+                    title: '头条',
+                    urlString: 'headline/T1348647853363',
+                    replyUrl: '3g_bbs',
+                    page: 0
+                },
+                {
+                    title: 'NBA',
+                    urlString: 'list/T1348649145984',
+                    replyUrl: 'sports_nba_bbs',
+                    page: 0
+                },
+                {
+                    title: '手机',
+                    urlString: 'list/T1348649654285',
+                    replyUrl: 'mobile_bbs',
+                    page: 0
+                },
+                {
+                    title: '移动互联',
+                    urlString: 'list/T1351233117091',
+                    replyUrl: 'mobile_bbs',
+                    page: 0
+                },
+                {
+                    title: '娱乐',
+                    urlString: 'list/T1348648517839',
+                    replyUrl: 'auto_bbs',
+                    page: 0
+                },
+                {
+                    title: '时尚',
+                    urlString: 'list/T1348650593803',
+                    replyUrl: 'lady_bbs',
+                    page: 0
+                },
+                {
+                    title: '电影',
+                    urlString: 'list/T1348648650048',
+                    replyUrl: 'ent2_bbs',
+                    page: 0
+                },
+                {
+                    title: '科技',
+                    urlString: 'list/T1348649580692',
+                    replyUrl: 'tech_bbs',
+                    page: 0
+                }
+            ],
         };
-        this._data = [];
+
+        this.typeList = typeList;
+
         //要这样绑定一下
         this.onPress = this.onPress.bind(this);
         this.renderItem = this.renderItem.bind(this);
     }
 
     componentDidMount() {
+
         InteractionManager.runAfterInteractions(()=>{
-            this.getNewsList();
+            //预请求所有标签数据
+            //注意：这里要通过并发来发请求,否则会由于管道复用的原因，导致部分请求没有响应（猜测）
+            let count = 0;
+            Promise.all(this.state.labels.map(label => fetch('http://c.m.163.com//nc/article/' + label.urlString + '/0-20.html')
+                .then(resp => this.parseJSON(resp))
+                .then(respData => {
+                    console.log("respData: " + respData);
+                    for (let key in respData) {
+                        console.log("Counter: " + ++count + " key: " + key);
+                        this.typeList[label.title] = respData[key];
+                    }
+                }))
+            ).catch(error => {
+                console.error(error);
+            })
         });
     }
 
-    getNewsList() {
-        fetch('http://c.m.163.com//nc/article/headline/T1348647853363/0-20.html')
+    parseJSON(response) {
+        return response.text()
+            .then(function (text) {
+                return text ? JSON.parse(text) : {}
+            })
+    }
+
+    getNewsList(label) {//获取新闻网络请求
+        let URL = 'http://c.m.163.com//nc/article/' + label.urlString + '/0-20.html';
+        return new fetch(URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
             .then((response)=>{
-                return response.json()
+                return this.parseJSON(response);
             })
             .then((responseData)=>{
                 for(let key in responseData) {
-                    this._data = responseData[key];
-                    this.setState({
-                        ds: this.state.ds.cloneWithRows(this._data)
-                    });
+                    this.typeList[label.title] = responseData[key];
                 }
             })
             .catch((error) => {
                 console.error(error);
             });
+    }
+
+    renderLabelView() {
+        let views = [];
+        for (let label of this.state.labels) {
+            const typeview = (
+                <View
+                    key={label.title}
+                    tabLabel={label.title}
+                    style={styles.base}
+                >
+                    {
+                        this.renderContent((this.typeList[label.title] ? this.state.ds.cloneWithRows(this.typeList[label.title]) : []), label)
+                    }
+                </View>);
+            views.push(typeview);
+        }
+        return views;
     }
 
     onPress(article) {
@@ -57,29 +159,88 @@ class App extends React.Component {
 
     render() {
         return (
-          this.renderContent(this.state.ds)
+            <View style={styles.container}>
+                <ScrollableTabView
+                    onChangeTab={(lb)=>{
+                        let key = lb.ref.props.tabLabel;
+                        this.setState({
+                           ds: this.state.ds.cloneWithRows(this.typeList[key]?this.typeList[key]:[])
+                        });
+                      }
+                    }
+                    scrollWithoutAnimation={true}
+                    tabBarBackgroundColor="#fcfcfc"
+                    tabBarUnderlineStyle={styles.tabBarUnderline}
+                    tabBarActiveTextColor="#3e9ce9"
+                    tabBarInactiveTextColor="#aaaaaa"
+                    renderTabBar={() =>
+                        <DefaultTabBar/>
+                    }>
+                    {
+                        this.renderLabelView()
+                    }
+                </ScrollableTabView>
+            </View>
         );
     }
 
-    renderContent(dataSource) {
-        return (
-            <ListView
-                dataSource={dataSource}
-                style={styles.listView}
-                renderRow={this.renderItem}
-                renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
-            />
-        );
+    renderContent(dataSource, label) {//列表页渲染
+        if (typeof dataSource === 'undefined' || dataSource.length === 0) {
+            return (
+                <View>
+                    <Text>无数据！！！！</Text>
+                </View>
+            );
+        } else {
+            return (
+                <ListView
+                    dataSource={dataSource}
+                    style={styles.listView}
+                    renderRow={this.renderItem}
+                    renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
+                    refreshControl={
+                      <RefreshControl
+                        style={styles.refreshControlBase}
+                        refreshing={false}
+                        onRefresh={() => this.onRefresh(label)}
+                        title="Loading..."
+                        colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
+                      />
+                    }
+                />
+            );
+        }
+
+    }
+
+    onRefresh(label) {
+        console.log(label.title)
     }
 
     //评论
     renderReplyNumber(replyCount) {
+
+        //拼接显示字符串
+        let count = parseInt(replyCount);
+        let displayCount = '';
+        if (count > 10000) {
+            displayCount = (count / 10000).toFixed(1) + "万跟帖";
+        } else {
+            displayCount = count + "跟帖";
+        }
+
         return(
             <View>
-                <Image source={require('../Img/night_contentcell_comment_border@2x.png')}/>
-                <Text style={styles.replyNumber}>
-                    {replyCount}
-                </Text>
+                <Image
+                    style={styles.replyImg}
+                    source={require('../Img/night_contentcell_comment_border@2x.png')}>
+                    <Text
+                        adjustsFontSizeToFit={true}
+                        numberOfLines={1}
+                        style={styles.replyNumber}>
+                        {displayCount}
+                    </Text>
+                </Image>
             </View>
         );
     }
@@ -114,7 +275,8 @@ class App extends React.Component {
                             style={styles.cellImgHead}
                             source={{uri:article.imgsrc}}
                         />
-                        <Text style={styles.cellHeadLine}>
+                        <Text
+                            style={styles.cellHeadLine}>
                             {article.title}
                         </Text>
                     </View>
@@ -151,7 +313,7 @@ class App extends React.Component {
                                 <Text style={styles.source} >
                                     {article.source}
                                 </Text>
-                                {this.renderReplyNumber(article.replyNumber)}
+                                {this.renderReplyNumber(article.replyCount)}
                             </View>
                         </View>
                     </View>
@@ -164,9 +326,16 @@ class App extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        flexDirection: 'column',
+        paddingTop: Platform.OS === 'ios' ? 10 : 0
+    },
+
+    refreshControlBase: {
+        backgroundColor: 'transparent'
+    },
+
+    base: {
+        flex: 1,
     },
 
     listView: {
@@ -247,21 +416,28 @@ const styles = StyleSheet.create({
     },
 
     cellImgHead:{
-        height:180
+        height: 200
     },
 
     cellHeadLine:{
+        fontWeight: 'bold',
         position:'absolute',
         bottom:0,
         color:'white',
-        backgroundColor:'rgba(33,33,33,0.3)',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+    },
+
+    reply: {},
+
+    replyImg: {
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     replyNumber: {
-        fontSize:0,
-        position:'absolute',
+        fontSize: 8,
+        textAlign: 'auto',
         color:'black',
-        backgroundColor:'rgba(33,33,33,0.3)',
     }
 });
 
