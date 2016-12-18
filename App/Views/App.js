@@ -12,13 +12,17 @@ import {
     RecyclerViewBackedScrollView,
     InteractionManager,
     Platform,
-    RefreshControl
+    RefreshControl,
+    Navigator,
 } from "react-native";
-//iOS和安卓通用的PagerView
+//iOS和安卓通用的ViewPager
 import ScrollableTabView, {DefaultTabBar} from "react-native-scrollable-tab-view";
+//详情页
+import NewsDetail from "./NewsDetail"
+//通用Tabbar
+import Tabs from 'react-native-tabs';
 
 let typeList = {};
-
 
 class App extends React.Component {
 
@@ -77,27 +81,24 @@ class App extends React.Component {
                     page: 0
                 }
             ],
+            page:'second'
         };
 
         this.typeList = typeList;
-
         //要这样绑定一下
-        this.onPress = this.onPress.bind(this);
         this.renderItem = this.renderItem.bind(this);
     }
 
     componentDidMount() {
 
         InteractionManager.runAfterInteractions(()=>{
+            console.log('Request Data!!!!');
             //预请求所有标签数据
             //注意：这里要通过并发来发请求,否则会由于管道复用的原因，导致部分请求没有响应（猜测）
-            let count = 0;
             Promise.all(this.state.labels.map(label => fetch('http://c.m.163.com//nc/article/' + label.urlString + '/0-20.html')
                 .then(resp => this.parseJSON(resp))
                 .then(respData => {
-                    console.log("respData: " + respData);
                     for (let key in respData) {
-                        console.log("Counter: " + ++count + " key: " + key);
                         this.typeList[label.title] = respData[key];
                     }
                 }))
@@ -108,11 +109,16 @@ class App extends React.Component {
     }
 
     parseJSON(response) {
-        return response.text()
-            .then(function (text) {
-                return text ? JSON.parse(text) : {}
-            })
+        if(response.ok){
+            return response.text()
+                .then(function (text) {
+                    return text ? JSON.parse(text) : {}
+                })
+        } else {
+            return {}
+        }
     }
+
 
     getNewsList(label) {//获取新闻网络请求
         let URL = 'http://c.m.163.com//nc/article/' + label.urlString + '/0-20.html';
@@ -153,13 +159,40 @@ class App extends React.Component {
         return views;
     }
 
-    onPress(article) {
+    _onPress(article) {
+        if (article){
+            const { navigator } = this.props;
+            console.log("Url: " + article.url);
+            //这里传递了navigator作为props
+            if(navigator) {
+                navigator.push({
+                    name: article.title,
+                    component: NewsDetail,
+                    params: {
+                        url: article.url
+                    }
+                })
+            }
+        }
+    }
 
+    shouldComponentUpdate() {
+        return true;
     }
 
     render() {
         return (
             <View style={styles.container}>
+                <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
+                      selectedStyle={{color:'red'}} onSelect={()=>{
+                              console.log("Selected!!!")
+                          }}>
+                    <Text name="first">First</Text>
+                    <Text name="second" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Second</Text>
+                    <Text name="third">Third</Text>
+                    <Text name="fourth" selectedStyle={{color:'green'}}>Fourth</Text>
+                    <Text name="fifth">Fifth</Text>
+                </Tabs>
                 <ScrollableTabView
                     onChangeTab={(lb)=>{
                         let key = lb.ref.props.tabLabel;
@@ -269,7 +302,9 @@ class App extends React.Component {
     renderItem(article) {
         if (article.hasHead) {//头条样式
             return (
-                <TouchableOpacity onPress={this.onPress(article.url)}>
+                <TouchableOpacity onPress={()=>{
+                    this._onPress(article);
+                }}>
                     <View style={styles.cellHead}>
                         <Image
                             style={styles.cellImgHead}
@@ -284,7 +319,9 @@ class App extends React.Component {
             );
         } else if (article.imgextra) {//图片样式
             return (
-                <TouchableOpacity onPress={this.onPress(article.url)}>
+                <TouchableOpacity onPress={()=>{
+                    this._onPress(article);
+                }}>
                     <View style={styles.cellPhotoSet}>
                         <View style={styles.cellUpContent}>
                             <Text style={styles.title}>
@@ -299,7 +336,9 @@ class App extends React.Component {
             );
         } else {//普通样式
             return (
-                <TouchableOpacity onPress={this.onPress(article.url)}>
+                <TouchableOpacity onPress={()=>{
+                    this._onPress(article);
+                }}>
                     <View style={styles.cellNormal}>
                         <Image
                             style={styles.cellImg}
