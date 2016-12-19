@@ -13,12 +13,23 @@ import {
     InteractionManager,
     Platform,
     RefreshControl,
-    Navigator
+    Navigator,
+    ScrollView,
+    ActivityIndicator
 } from "react-native";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
 //详情页
 import NewsDetail from "./NewsDetail";
+//页面数据模型
+import LabelModel from "./LabelModel";
+//弹窗提示
+import {toastShort} from "../Util/ToastUtil";
+
+//是否能加载更多
+let canLoadMore;
+let loadMoreTime = 0;
+let currentLabel;
 
 class App extends React.Component {
 
@@ -28,79 +39,28 @@ class App extends React.Component {
         this.state = {
             ds,
             labels: [
-                {
-                    title: '头条',
-                    urlString: 'headline/T1348647853363',
-                    replyUrl: '3g_bbs',
-                    page: 0
-                },
-                {
-                    title: 'NBA',
-                    urlString: 'list/T1348649145984',
-                    replyUrl: 'sports_nba_bbs',
-                    page: 0
-                },
-                {
-                    title: '手机',
-                    urlString: 'list/T1348649654285',
-                    replyUrl: 'mobile_bbs',
-                    page: 0
-                },
-                {
-                    title: '移动互联',
-                    urlString: 'list/T1351233117091',
-                    replyUrl: 'mobile_bbs',
-                    page: 0
-                },
-                {
-                    title: '娱乐',
-                    urlString: 'list/T1348648517839',
-                    replyUrl: 'auto_bbs',
-                    page: 0
-                },
-                {
-                    title: '时尚',
-                    urlString: 'list/T1348650593803',
-                    replyUrl: 'lady_bbs',
-                    page: 0
-                },
-                {
-                    title: '电影',
-                    urlString: 'list/T1348648650048',
-                    replyUrl: 'ent2_bbs',
-                    page: 0
-                },
-                {
-                    title: '科技',
-                    urlString: 'list/T1348649580692',
-                    replyUrl: 'tech_bbs',
-                    page: 0
-                }
-            ],
-            page:'second'
+                new LabelModel('头条', 'headline/T1348647853363', '3g_bbs'),
+                new LabelModel('NBA', 'list/T1348649145984', 'sports_nba_bbs'),
+                new LabelModel('手机', 'list/T1348649654285', 'mobile_bbs'),
+                new LabelModel('移动互联', 'list/T1351233117091', 'mobile_bbs'),
+                new LabelModel('娱乐', 'list/T1348648517839', 'auto_bbs'),
+                new LabelModel('时尚', 'list/T1348650593803', 'lady_bbs'),
+                new LabelModel('电影', 'list/T1348648650048', 'ent2_bbs'),
+                new LabelModel('科技', 'list/T1348649580692', 'tech_bbs')]
         };
 
         this.typeList = {};
         //要这样绑定一下
         this.renderItem = this.renderItem.bind(this);
+        this.renderFooter = this.renderFooter.bind(this);
+        canLoadMore = false;
+        //当前页
+        currentLabel = this.state.labels[0];
     }
 
     componentDidMount() {
-
         InteractionManager.runAfterInteractions(()=>{
-            console.log('Request Data!!!!');
-            //预请求所有标签数据
-            //注意：这里要通过并发来发请求,否则会由于管道复用的原因，导致部分请求没有响应（猜测）
-            Promise.all(this.state.labels.map(label => fetch('http://c.m.163.com//nc/article/' + label.urlString + '/0-20.html')
-                .then(resp => this.parseJSON(resp))
-                .then(respData => {
-                    for (let key in respData) {
-                        this.typeList[label.title] = respData[key];
-                    }
-                }))
-            ).catch(error => {
-                console.error(error);
-            })
+            this.getNewsList(this.state.labels[0]);
         });
     }
 
@@ -115,25 +75,81 @@ class App extends React.Component {
         }
     }
 
+    //自定义Fetch，可以设置超时时间
+    _fetch(fetch_promise, timeout) {
+        let abort_fn = null;
+
+        //这是一个可以被reject的promise
+        let abort_promise = new Promise(function (resolve, reject) {
+            abort_fn = function () {
+                reject('abort promise');
+            };
+        });
+
+        //这里使用Promise.race，以最快 resolve 或 reject 的结果来传入后续绑定的回调
+        let abortable_promise = Promise.race([
+            fetch_promise,
+            abort_promise
+        ]);
+
+        setTimeout(function () {
+            abort_fn();
+        }, timeout);
+
+        return abortable_promise;
+    }
 
     getNewsList(label) {//获取新闻网络请求
-        let URL = 'http://c.m.163.com//nc/article/' + label.urlString + '/0-20.html';
-        return new fetch(URL, {
+        let count = 0;
+        if (this.typeList[label.title]) {
+            count = this.typeList[label.title].length - this.typeList[label.title].length % 10;
+        }
+
+        let URL = 'http://c.m.163.com//nc/article/' + label.urlString + '/' + count + '-20.html';
+        label.loading = true;
+        let isEmpty = !this.typeList[label.title] || this.typeList[label.title].length === 0;
+
+        return this._fetch(fetch(URL, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             }
-        })
+        }), 30000)
             .then((response)=>{
-                return this.parseJSON(response);
-            })
-            .then((responseData)=>{
-                for(let key in responseData) {
-                    this.typeList[label.title] = responseData[key];
+                if (response.ok) {
+                    return this.parseJSON(response);
+                } else {
+                    label.loading = false;
+                    return {};
                 }
             })
+            .then((responseData)=>{
+                label.loading = false;
+                currentLabel.loadingMore = false;
+                if (Object.keys(responseData).length === 0) {//返回数据为空
+                    throw "返回数据为空！";
+                } else {
+                    for (let key in responseData) {
+                        if (isEmpty) {
+                            this.typeList[label.title] = responseData[key];
+                        } else {
+                            this.typeList[label.title] = this.typeList[label.title].concat(responseData[key]);
+                        }
+                    }
+                }
+                this.setState({
+                    ds: this.state.ds.cloneWithRows(this.typeList[label.title])
+                });
+            })
             .catch((error) => {
-                console.error(error);
+                label.loading = false;
+                currentLabel.loadingMore = false;
+                toastShort(error);
+                if (isEmpty) {
+                    this.setState({
+                        ds: this.state.ds.cloneWithRows([])
+                    });
+                }
             });
     }
 
@@ -182,9 +198,19 @@ class App extends React.Component {
                 <ScrollableTabView
                     onChangeTab={(lb)=>{
                         let key = lb.ref.props.tabLabel;
-                        this.setState({
-                           ds: this.state.ds.cloneWithRows(this.typeList[key]?this.typeList[key]:[])
-                        });
+                        for(let label of this.state.labels){
+                                if(label.title === key){
+                                     currentLabel = label;
+                                     break;
+                                }
+                            }
+                        if(this.typeList[key]) {
+                            this.setState({
+                                ds: this.state.ds.cloneWithRows(this.typeList[key]?this.typeList[key]:[])
+                            });
+                        } else {
+                            this.getNewsList(currentLabel);
+                        }
                       }
                     }
                     scrollWithoutAnimation={false}
@@ -204,26 +230,70 @@ class App extends React.Component {
         );
     }
 
+    textReminder(label) {
+
+        let text = "";
+
+        if (!label.loading) {
+            text = "目前没有数据，请下拉刷新";
+        }
+
+        return (
+            <Text style={{ fontSize: 16, color:'white' }}>
+                {text}
+            </Text>);
+    }
+
     renderContent(dataSource, label) {//列表页渲染
         if (typeof dataSource === 'undefined' || dataSource.length === 0) {
             return (
-                <View>
-                    <Text>无数据！！！！</Text>
-                </View>
+                <ScrollView
+                    automaticallyAdjustContentInsets={false}
+                    horizontal={false}
+                    contentContainerStyle={styles.no_data}
+                    style={styles.base}
+                    refreshControl={
+                    <RefreshControl
+                      style={styles.refreshControlBase}
+                      refreshing={label.loading}
+                      onRefresh={() => {
+                        this.onRefresh(label)
+                      }}
+                      title="刷新中，请稍后……"
+                      colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
+                    />
+                  }
+                >
+                    <View style={{ alignItems: 'center',backgroundColor:'#D3D3D3' }}>
+                        {this.textReminder(label)}
+                        <Image
+                            source={require('../Img/background@2x.png')}
+                        >
+                        </Image>
+                    </View>
+                </ScrollView>
             );
         } else {
             return (
                 <ListView
+                    initialListSize={1}
                     dataSource={dataSource}
                     style={styles.listView}
+                    onScroll={this.onScroll}
                     renderRow={this.renderItem}
+                    enableEmptySections={true}
+                    renderFooter={()=>this.renderFooter()}//tableview footer
+                    onEndReached={() => this.onEndReached(label)}//在到达列表尾部的时候调用回调函数
+                    onEndReachedThreshold={20}//调用onEndReached之前的临界值，单位是像素。
                     renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                     refreshControl={
                       <RefreshControl
                         style={styles.refreshControlBase}
-                        refreshing={false}
-                        onRefresh={() => this.onRefresh(label)}
-                        title="Loading..."
+                        refreshing={label.loading}
+                        onRefresh={() => {
+                            this.onRefresh(label)
+                        }}
+                        title="刷新中，请稍后..."
                         colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
                       />
                     }
@@ -233,8 +303,28 @@ class App extends React.Component {
 
     }
 
+    onScroll() {
+        if (!canLoadMore) {
+            canLoadMore = true;
+        }
+    }
+
+    //下拉刷新
     onRefresh(label) {
-        console.log(label.title)
+        canLoadMore = false;
+        this.getNewsList(label);
+    }
+
+    //上拉加载
+    onEndReached(label) {
+        const time = Date.parse(new Date()) / 1000;
+        if (canLoadMore && time - loadMoreTime > 1) {
+            label.page += 1;
+            currentLabel.loadingMore = true;
+            this.getNewsList(label);;;;;;;;;;;;;
+            canLoadMore = false;
+            loadMoreTime = Date.parse(new Date()) / 1000;
+        }
     }
 
     //评论
@@ -347,6 +437,20 @@ class App extends React.Component {
             );
         }
     }
+
+    renderFooter() {
+        if (currentLabel.loadingMore) {
+            return (
+                <View style={styles.footerContainer}>
+                    <ActivityIndicator size="small" color="#3e9ce9"/>
+                    <Text style={styles.footerText}>
+                        数据加载中……
+                    </Text>
+                </View>
+            );
+        }
+        return <View />;
+    }
 }
 
 const styles = StyleSheet.create({
@@ -362,6 +466,7 @@ const styles = StyleSheet.create({
 
     base: {
         flex: 1,
+        backgroundColor: '#D3D3D3'
     },
 
     listView: {
@@ -469,7 +574,23 @@ const styles = StyleSheet.create({
     tabBarUnderline: {
         backgroundColor: 'transparent',
         height: 2
-    }
+    },
+
+    no_data: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingBottom: 100
+    },
+
+    footerContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5
+    },
+
 });
 
 export default App;

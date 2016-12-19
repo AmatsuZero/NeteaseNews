@@ -11,7 +11,6 @@ const propTypes = {
     tabNames: React.PropTypes.array, // 保存Tab名称
     tabIconNames: React.PropTypes.array, // 保存Tab图标
 };
-;;;;;;;;;;;
 
 export class CustomTabbar extends React.Component {
 
@@ -66,4 +65,3 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
-;;;;;;;;;;;

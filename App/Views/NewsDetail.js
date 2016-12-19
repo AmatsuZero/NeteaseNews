@@ -29,7 +29,6 @@ export default class NewsDetail extends React.Component {
         const { navigator } = this.props;
         if(navigator) {
             //很熟悉吧，入栈出栈~ 把当前的页面pop掉，这里就返回到列表了
-            console.log("back");
             navigator.pop();
         }
     }
@@ -65,4 +64,3 @@ const styles = StyleSheet.create({
         height: 350,
     },
 });
-;;;;;;;;;;;;;

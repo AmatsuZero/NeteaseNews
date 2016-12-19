@@ -94,6 +94,5 @@ const styles = StyleSheet.create({
         flex: 1
     }
 });
-;;;;
 
 AppRegistry.registerComponent('news', () => news);
