@@ -1,22 +1,15 @@
 /**
  * Created by 振华 on 2016/12/17.
  */
-import React from 'react';
-import {
-    View,
-    Navigator,
-    TouchableOpacity,
-    Text,
-    WebView,
-    StyleSheet,
-} from 'react-native';
+import React from "react";
+import {View, Navigator, TouchableOpacity, Text, WebView, StyleSheet} from "react-native";
 
 export default class NewsDetail extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            url:null
+            url: "https://www.baidu.com"
         };
     }
 
@@ -52,7 +45,7 @@ export default class NewsDetail extends React.Component {
                     domStorageEnabled={true}
                     decelerationRate="normal"
                     onNavigationStateChange={()=>{
-                        console.log("ssss");
+
                     }}
                     startInLoadingState={true}
 
@@ -71,5 +64,5 @@ const styles = StyleSheet.create({
     webView: {
         height: 350,
     },
-
-})
+});
+;;;;;;;;;;;;;

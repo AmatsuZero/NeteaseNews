@@ -13,16 +13,12 @@ import {
     InteractionManager,
     Platform,
     RefreshControl,
-    Navigator,
+    Navigator
 } from "react-native";
-//iOS和安卓通用的ViewPager
-import ScrollableTabView, {DefaultTabBar} from "react-native-scrollable-tab-view";
+//iOS和安卓通用的ViewPager/Tabbar
+import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
 //详情页
-import NewsDetail from "./NewsDetail"
-//通用Tabbar
-import Tabs from 'react-native-tabs';
-
-let typeList = {};
+import NewsDetail from "./NewsDetail";
 
 class App extends React.Component {
 
@@ -84,7 +80,7 @@ class App extends React.Component {
             page:'second'
         };
 
-        this.typeList = typeList;
+        this.typeList = {};
         //要这样绑定一下
         this.renderItem = this.renderItem.bind(this);
     }
@@ -183,16 +179,6 @@ class App extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
-                      selectedStyle={{color:'red'}} onSelect={()=>{
-                              console.log("Selected!!!")
-                          }}>
-                    <Text name="first">First</Text>
-                    <Text name="second" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Second</Text>
-                    <Text name="third">Third</Text>
-                    <Text name="fourth" selectedStyle={{color:'green'}}>Fourth</Text>
-                    <Text name="fifth">Fifth</Text>
-                </Tabs>
                 <ScrollableTabView
                     onChangeTab={(lb)=>{
                         let key = lb.ref.props.tabLabel;
@@ -201,13 +187,14 @@ class App extends React.Component {
                         });
                       }
                     }
-                    scrollWithoutAnimation={true}
+                    scrollWithoutAnimation={false}
                     tabBarBackgroundColor="#fcfcfc"
                     tabBarUnderlineStyle={styles.tabBarUnderline}
-                    tabBarActiveTextColor="#3e9ce9"
+                    tabBarActiveTextColor="red"
                     tabBarInactiveTextColor="#aaaaaa"
+                    tabBarPosition={'top'}
                     renderTabBar={() =>
-                        <DefaultTabBar/>
+                        <ScrollableTabBar/>
                     }>
                     {
                         this.renderLabelView()
@@ -477,6 +464,11 @@ const styles = StyleSheet.create({
         fontSize: 8,
         textAlign: 'auto',
         color:'black',
+    },
+
+    tabBarUnderline: {
+        backgroundColor: 'transparent',
+        height: 2
     }
 });
 
