@@ -22,7 +22,7 @@ import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-v
 //详情页
 import NewsDetail from "./NewsDetail";
 //页面数据模型
-import LabelModel from "./LabelModel";
+import LabelModel from "../Model/LabelModel";
 //弹窗提示
 import {toastShort} from "../Util/ToastUtil";
 
@@ -49,7 +49,7 @@ class App extends React.Component {
                 new LabelModel('科技', 'list/T1348649580692', 'tech_bbs')]
         };
 
-        this.typeList = {};
+        this.typeList = LabelModel.getTypeList();
         //要这样绑定一下
         this.renderItem = this.renderItem.bind(this);
         this.renderFooter = this.renderFooter.bind(this);
@@ -181,7 +181,8 @@ class App extends React.Component {
                     name: article.title,
                     component: NewsDetail,
                     params: {
-                        url: article.url
+                        url: article.url,
+                        replyCount: article.replyCount
                     }
                 })
             }
@@ -321,7 +322,7 @@ class App extends React.Component {
         if (canLoadMore && time - loadMoreTime > 1) {
             label.page += 1;
             currentLabel.loadingMore = true;
-            this.getNewsList(label);;;;;;;;;;;;;
+            this.getNewsList(label);
             canLoadMore = false;
             loadMoreTime = Date.parse(new Date()) / 1000;
         }

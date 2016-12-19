@@ -2,6 +2,7 @@
  * Created by jiangzhenhua on 2016/12/19.
  */
 export default class LabelModel {
+
     constructor(title, url, replyUrl) {
         this.title = title;
         this.urlString = url;
@@ -10,4 +11,9 @@ export default class LabelModel {
         this.loading = true;
         this.loadingMore = false;
     }
+
+    static getTypeList() {
+        return {};
+    }
+
 }
