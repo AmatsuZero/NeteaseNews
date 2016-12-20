@@ -1,7 +1,7 @@
 /**
  * Created by jiangzhenhua on 2016/12/19.
  */
-import React from "react";
+import React, {PropTypes} from "react";
 import {Image, View, Text, TouchableOpacity, StyleSheet} from "react-native";
 
 const propTypes = {
@@ -49,6 +49,8 @@ export class CustomTabbar extends React.Component {
         );
     }
 }
+
+CustomTabbar.propTypes = propTypes;
 
 const styles = StyleSheet.create({
     tabs: {

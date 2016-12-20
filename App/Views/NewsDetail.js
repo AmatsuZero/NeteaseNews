@@ -11,32 +11,85 @@ import {
     TouchableWithoutFeedback,
     Dimensions,
     Image,
-    Platform
+    Platform,
+    InteractionManager
 } from "react-native";
 //加载中
 import LoadingView from "../Component/LoadingView";
-
-let Navibarheight = 22 + 30;
+import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
+import {Navibarheight, DefaultTimeout} from "../Model/Constants";
+import ReplyModel from "../Model/ReplyModel";
+import Reply from "./Reply";
 let WebViewHeight = Dimensions.get('window').height - Navibarheight;
 
 let replyImg = require('../Img/contentview_commentbacky@2x.png');
 let backArrow = require('../Img/night_icon_back@2x.png');
+
+//热门评论
+let hotPosts = [];
 
 export default class NewsDetail extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            url: "https://www.baidu.com",
-            replyCount: 0
+            url: "about:blank",
+            replyCount: 0,
+            boardid: '',
+            docid: '',
+            postid: null
         };
     }
 
     componentDidMount() {
-        this.setState({
-            url: this.props.url,
-            replyCount: this.props.replyCount
+
+        InteractionManager.runAfterInteractions(() => {
+            this.setState({
+                url: this.props.url,
+                replyCount: this.props.replyCount,
+                boardid: this.props.boardid,
+                docid: this.props.docid,
+                postid: this.props.postid
+            });
+
+            this.getCommentsList();
         });
+    }
+
+    getCommentsList() {
+
+        //拼接URL，图片详情和普通详情是不一样的
+        let URL = 'http://comment.api.163.com/api/json/post/list/new/hot/' + this.state.boardid + '/' + (this.state.postid ? this.state.postid : this.state.docid ) + '/0/10/10/2/2';
+
+        return cancellableFetch(fetch(URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }), DefaultTimeout)
+            .then((response) => {
+                if (response.ok) {
+                    return parseJSON(response);
+                } else {
+                    return {};
+                }
+            })
+            .then((responseData) => {
+                if (Object.keys(responseData).length === 0) {//返回数据为空
+                    throw "返回数据为空！";
+                } else {
+                    let hp = responseData["hotPosts"];//取出热门评论
+                    if (hp && hp.length > 0) {
+                        for (let comment of hp) {
+                            let model = comment["1"];
+                            hotPosts.push(ReplyModel.createHotReplyModel(model));
+                        }
+                    }
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     shouldComponentUpdate() {
@@ -118,7 +171,20 @@ export default class NewsDetail extends React.Component {
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback
                     onPress={()=>{
-                        console.log('Comment');
+                       const { navigator } = this.props;
+                        //这里传递了navigator作为props
+                        if(navigator) {
+                            navigator.push({
+                                name: '评论',
+                                component: Reply,
+                                params: {
+                                    boardid:this.state.boardid,
+                                    docid:this.state.docid,
+                                    postid:this.state.postid,
+                                    hotRelies:hotPosts
+                                }
+                            })
+                        }
                     }}
                 >
                     {this.renderReplyNumber()}
@@ -143,6 +209,13 @@ export default class NewsDetail extends React.Component {
                     decelerationRate="normal"
                     onNavigationStateChange={()=>{
 
+                    }}
+                    onShouldStartLoadWithRequest={(req)=>{
+                        if(req.url === 'about:blank') {
+                            return false;
+                        } else {
+                            return true;
+                        }
                     }}
                     startInLoadingState={true}
                     renderLoading={this.renderLoading}

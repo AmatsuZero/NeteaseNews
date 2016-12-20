@@ -27,15 +27,15 @@ import NewsDetail from "./NewsDetail";
 import LabelModel from "../Model/LabelModel";
 //弹窗提示
 import {toastShort} from "../Util/ToastUtil";
+import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
+//导航栏高度
+import {Navibarheight, DefaultTimeout} from "../Model/Constants";
 
 //是否能加载更多
 let canLoadMore;
 let loadMoreTime = 0;
 let currentLabel;
 
-//导航栏高度
-let Navibarheight = 22 + 30;
-let NavibarWidth = Dimensions.get('window').width;
 
 class App extends React.Component {
 
@@ -70,41 +70,6 @@ class App extends React.Component {
         });
     }
 
-    parseJSON(response) {
-        if(response.ok){
-            return response.text()
-                .then(function (text) {
-                    return text ? JSON.parse(text) : {}
-                })
-        } else {
-            return {}
-        }
-    }
-
-    //自定义Fetch，可以设置超时时间
-    _fetch(fetch_promise, timeout) {
-        let abort_fn = null;
-
-        //这是一个可以被reject的promise
-        let abort_promise = new Promise(function (resolve, reject) {
-            abort_fn = function () {
-                reject('abort promise');
-            };
-        });
-
-        //这里使用Promise.race，以最快 resolve 或 reject 的结果来传入后续绑定的回调
-        let abortable_promise = Promise.race([
-            fetch_promise,
-            abort_promise
-        ]);
-
-        setTimeout(function () {
-            abort_fn();
-        }, timeout);
-
-        return abortable_promise;
-    }
-
     getNewsList(label) {//获取新闻网络请求
         let count = 0;
         if (this.typeList[label.title]) {
@@ -115,15 +80,15 @@ class App extends React.Component {
         label.loading = true;
         let isEmpty = !this.typeList[label.title] || this.typeList[label.title].length === 0;
 
-        return this._fetch(fetch(URL, {
+        return cancellableFetch(fetch(URL, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             }
-        }), 30000)
+        }), DefaultTimeout)
             .then((response)=>{
                 if (response.ok) {
-                    return this.parseJSON(response);
+                    return parseJSON(response);
                 } else {
                     label.loading = false;
                     return {};
@@ -182,7 +147,6 @@ class App extends React.Component {
     _onPress(article) {
         if (article){
             const { navigator } = this.props;
-            console.log("Url: " + article.url);
             //这里传递了navigator作为props
             if(navigator) {
                 navigator.push({
@@ -190,7 +154,10 @@ class App extends React.Component {
                     component: NewsDetail,
                     params: {
                         url: article.url,
-                        replyCount: article.replyCount
+                        replyCount: article.replyCount,
+                        boardid: article.boardid,
+                        docid: article.docid,
+                        postid: article.imgextra ? article.postid : null
                     }
                 })
             }
@@ -659,7 +626,6 @@ const styles = StyleSheet.create({
     },
 
     Navibar: {
-        width: NavibarWidth,
         height: Navibarheight,
         backgroundColor: 'red',
         flexDirection: 'row',

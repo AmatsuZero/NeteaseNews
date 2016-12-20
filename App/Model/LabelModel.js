@@ -1,6 +1,18 @@
 /**
  * Created by jiangzhenhua on 2016/12/19.
  */
+import React, {PropTypes} from "react";
+
+const propTypes = {
+    title: React.PropTypes.string,
+    urlString: React.PropTypes.string,
+    replyUrl: React.PropTypes.string,
+    page: React.PropTypes.number,
+    loading: React.PropTypes.bool,
+    loadingMore: React.PropTypes.bool
+};
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 export default class LabelModel {
 
     constructor(title, url, replyUrl) {
@@ -15,5 +27,6 @@ export default class LabelModel {
     static getTypeList() {
         return {};
     }
-
 }
+
+LabelModel.propTypes = propTypes;
