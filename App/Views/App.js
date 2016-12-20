@@ -15,7 +15,9 @@ import {
     RefreshControl,
     Navigator,
     ScrollView,
-    ActivityIndicator
+    ActivityIndicator,
+    Dimensions,
+    TouchableWithoutFeedback
 } from "react-native";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
@@ -30,6 +32,10 @@ import {toastShort} from "../Util/ToastUtil";
 let canLoadMore;
 let loadMoreTime = 0;
 let currentLabel;
+
+//导航栏高度
+let Navibarheight = 22 + 30;
+let NavibarWidth = Dimensions.get('window').width;
 
 class App extends React.Component {
 
@@ -125,7 +131,9 @@ class App extends React.Component {
             })
             .then((responseData)=>{
                 label.loading = false;
-                currentLabel.loadingMore = false;
+                if (currentLabel) {
+                    currentLabel.loadingMore = false;
+                }
                 if (Object.keys(responseData).length === 0) {//返回数据为空
                     throw "返回数据为空！";
                 } else {
@@ -196,6 +204,7 @@ class App extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                {this.renderNaivBar()}
                 <ScrollableTabView
                     onChangeTab={(lb)=>{
                         let key = lb.ref.props.tabLabel;
@@ -221,7 +230,8 @@ class App extends React.Component {
                     tabBarInactiveTextColor="#aaaaaa"
                     tabBarPosition={'top'}
                     renderTabBar={() =>
-                        <ScrollableTabBar/>
+                        <ScrollableTabBar
+                        />
                     }>
                     {
                         this.renderLabelView()
@@ -312,6 +322,9 @@ class App extends React.Component {
 
     //下拉刷新
     onRefresh(label) {
+        if (!currentLabel) {
+            currentLabel = label;
+        }
         canLoadMore = false;
         this.getNewsList(label);
     }
@@ -321,7 +334,10 @@ class App extends React.Component {
         const time = Date.parse(new Date()) / 1000;
         if (canLoadMore && time - loadMoreTime > 1) {
             label.page += 1;
-            currentLabel.loadingMore = true;
+            if (!currentLabel) {
+                currentLabel = label;
+                currentLabel.loadingMore = true;
+            }
             this.getNewsList(label);
             canLoadMore = false;
             loadMoreTime = Date.parse(new Date()) / 1000;
@@ -340,13 +356,20 @@ class App extends React.Component {
             displayCount = count + "跟帖";
         }
 
+        let width = displayCount.length <= 5 ? 40 : 50;
+
         return(
             <View>
                 <Image
-                    style={styles.replyImg}
+                    style={{
+                        bottom:0,
+                        width:width,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        resizeMode: 'stretch',
+                    }}
                     source={require('../Img/night_contentcell_comment_border@2x.png')}>
                     <Text
-                        adjustsFontSizeToFit={true}
                         numberOfLines={1}
                         style={styles.replyNumber}>
                         {displayCount}
@@ -440,7 +463,7 @@ class App extends React.Component {
     }
 
     renderFooter() {
-        if (currentLabel.loadingMore) {
+        if (currentLabel && currentLabel.loadingMore) {
             return (
                 <View style={styles.footerContainer}>
                     <ActivityIndicator size="small" color="#3e9ce9"/>
@@ -452,13 +475,62 @@ class App extends React.Component {
         }
         return <View />;
     }
+
+    renderNaivBar() {
+
+        let centerHeight = 20;
+
+        return (
+            <View style={styles.Navibar}>
+                <TouchableWithoutFeedback
+                    onPress={()=>{
+
+                    }}
+                >
+                    <Image
+                        style={{
+                            bottom:0,
+                            resizeMode:'contain',
+                            marginLeft:8,
+                            marginBottom:10
+                        }}
+                        source={require('../Img/search_icon@2x.png')}
+                    />
+                </TouchableWithoutFeedback>
+                <Image
+                    style={{
+                        bottom:0,
+                        resizeMode:'contain',
+                        backgroundColor:'red',
+                        marginBottom:10,
+                        height:centerHeight
+                    }}
+                    source={require('../Img/background@2x.png')}
+                />
+                <TouchableWithoutFeedback
+                    onPress={()=>{
+
+                    }}
+                >
+                    <Image
+                        style={{
+                            bottom:0,
+                            resizeMode:'contain',
+                            marginRight:8,
+                            marginBottom:10
+                        }}
+                        source={require('../Img/top_navigation_square@2x.png')}
+                    >
+                    </Image>
+                </TouchableWithoutFeedback>
+            </View>);
+    }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        paddingTop: Platform.OS === 'ios' ? 10 : 0
     },
 
     refreshControlBase: {
@@ -559,17 +631,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.3)',
     },
 
-    reply: {},
-
-    replyImg: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
     replyNumber: {
         fontSize: 8,
         textAlign: 'auto',
         color:'black',
+        backgroundColor: 'transparent'
     },
 
     tabBarUnderline: {
@@ -591,6 +657,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5
     },
+
+    Navibar: {
+        width: NavibarWidth,
+        height: Navibarheight,
+        backgroundColor: 'red',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        paddingTop: Platform.OS === 'ios' ? 10 : 0
+    }
 
 });
 
