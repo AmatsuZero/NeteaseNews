@@ -14,8 +14,9 @@ import {
     Navigator,
     ScrollView,
     TouchableWithoutFeedback,
-    Dimensions
+    Dimensions,
 } from "react-native";
+
 import {Navibarheight, DefaultTimeout} from "../Model/Constants";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 import ReplyModel from "../Model/ReplyModel";
@@ -30,8 +31,6 @@ let source = {
     "normalPosts": []//普通评论
 };
 
-let screenWidth = Dimensions.get('window').width;
-
 export default class Reply extends React.Component {
 
     constructor(props) {
@@ -45,7 +44,7 @@ export default class Reply extends React.Component {
             boardid: '',
             docid: '',
             postid: null,
-            hotRelies: []
+            hotRelies: [],
         };
 
         this.renderItem = this.renderItem.bind(this);
@@ -151,12 +150,14 @@ export default class Reply extends React.Component {
                         source={ reply.icon ? { uri:reply.icon} : profile}
                     />
                     <View style={{
-                    flexDirection:'column'
+                        flex:1,
+                        flexDirection:'column',
+                        justifyContent: 'flex-end'
                 }}>
                         <View style={{
                             flexDirection:'row',
                             justifyContent: 'space-between',
-                            width:screenWidth - 50
+                            alignItems:'flex-start'
                         }}>
                             <View style={{
                                 flex:1,
@@ -165,12 +166,14 @@ export default class Reply extends React.Component {
                                 paddingTop:10
                                 }}>
                                 <Text
+                                    adjustsFontSizeToFit={true}
                                     style={{fontSize:14, color:'#1e90ff'}}
                                     numberOfLines={1}
                                 >
                                     {reply.name}
                                 </Text>
                                 <Text
+                                    adjustsFontSizeToFit={true}
                                     numberOfLines={1}
                                     style={{fontSize:10, color:'#a9a9a9'}}>
                                     {reply.address}
@@ -180,6 +183,7 @@ export default class Reply extends React.Component {
                                 flex:0,
                                 flexDirection:'row',
                                 marginRight:4,
+                                paddingTop:10
                             }}>
                                 <Text
                                     numberOfLines={1}
@@ -195,11 +199,15 @@ export default class Reply extends React.Component {
                             </View>
                         </View>
                         <Text
-                            numberOfLines={3}
                             style={{
+                                flex:1,
+                                flexGrow:1,//解决横竖屏切换是文本内容
                                 fontSize:18,
+                                textAlign:'left',
                                 color:'black',
-                                marginBottom:15}}>
+                                marginBottom:15,
+                                flexWrap:'wrap'
+                            }}>
                             {reply.say}
                         </Text>
                     </View>
@@ -247,12 +255,17 @@ export default class Reply extends React.Component {
             </Image>);
     }
 
+    shouldComponentUpdate() {
+        return true;
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 {this.renderNaivBar()}
                 <ListView
                     initialListSize={2}
+                    enableEmptySections={true}
                     dataSource={this.state.dataSource}
                     style={styles.listView}
                     renderSectionHeader={(sectionData, sectionID) => this.renderSectionHeader(sectionID)}
@@ -274,7 +287,6 @@ const styles = StyleSheet.create({
     cellContainer: {
         flex: 1,
         flexDirection: 'row',
-        width: screenWidth,
         backgroundColor: '#fcfcfc',
         borderBottomColor: '#ddd',
         borderBottomWidth: 1

@@ -16,14 +16,18 @@ import {
 } from "react-native";
 //加载中
 import LoadingView from "../Component/LoadingView";
-import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
-import {Navibarheight, DefaultTimeout} from "../Model/Constants";
-import ReplyModel from "../Model/ReplyModel";
-import Reply from "./Reply";
+
+import {parseJSON, cancellableFetch} from "../Util/NetworkUtil"
+
+import { Navibarheight, DefaultTimeout } from '../Model/Constants'
 let WebViewHeight = Dimensions.get('window').height - Navibarheight;
 
 let replyImg = require('../Img/contentview_commentbacky@2x.png');
 let backArrow = require('../Img/night_icon_back@2x.png');
+
+import ReplyModel from "../Model/ReplyModel"
+
+import Reply from './Reply'
 
 //热门评论
 let hotPosts = [];
@@ -35,21 +39,21 @@ export default class NewsDetail extends React.Component {
         this.state = {
             url: "about:blank",
             replyCount: 0,
-            boardid: '',
-            docid: '',
-            postid: null
+            boardid:'',
+            docid:'',
+            postid:null
         };
     }
 
     componentDidMount() {
 
-        InteractionManager.runAfterInteractions(() => {
+        InteractionManager.runAfterInteractions(()=>{
             this.setState({
                 url: this.props.url,
                 replyCount: this.props.replyCount,
-                boardid: this.props.boardid,
-                docid: this.props.docid,
-                postid: this.props.postid
+                boardid:this.props.boardid,
+                docid:this.props.docid,
+                postid:this.props.postid
             });
 
             this.getCommentsList();
@@ -67,20 +71,20 @@ export default class NewsDetail extends React.Component {
                 'Content-Type': 'application/json',
             }
         }), DefaultTimeout)
-            .then((response) => {
+            .then((response)=>{
                 if (response.ok) {
                     return parseJSON(response);
                 } else {
                     return {};
                 }
             })
-            .then((responseData) => {
+            .then((responseData)=>{
                 if (Object.keys(responseData).length === 0) {//返回数据为空
                     throw "返回数据为空！";
                 } else {
                     let hp = responseData["hotPosts"];//取出热门评论
                     if (hp && hp.length > 0) {
-                        for (let comment of hp) {
+                        for(let comment of hp) {
                             let model = comment["1"];
                             hotPosts.push(ReplyModel.createHotReplyModel(model));
                         }
