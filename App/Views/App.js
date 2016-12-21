@@ -17,7 +17,8 @@ import {
     ScrollView,
     ActivityIndicator,
     Dimensions,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    Modal
 } from "react-native";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
@@ -29,13 +30,16 @@ import LabelModel from "../Model/LabelModel";
 import {toastShort} from "../Util/ToastUtil";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 //导航栏高度
-import {Navibarheight, DefaultTimeout} from "../Model/Constants";
+import {Navibarheight, DefaultTimeout, WeatherAPI} from "../Model/Constants";
+import Weather from "./Weather";
 
 //是否能加载更多
 let canLoadMore;
 let loadMoreTime = 0;
 let currentLabel;
 
+//天气数据
+let weatherData;
 
 class App extends React.Component {
 
@@ -52,7 +56,8 @@ class App extends React.Component {
                 new LabelModel('娱乐', 'list/T1348648517839', 'auto_bbs'),
                 new LabelModel('时尚', 'list/T1348650593803', 'lady_bbs'),
                 new LabelModel('电影', 'list/T1348648650048', 'ent2_bbs'),
-                new LabelModel('科技', 'list/T1348649580692', 'tech_bbs')]
+                new LabelModel('科技', 'list/T1348649580692', 'tech_bbs')],
+            modalVisible: false
         };
 
         this.typeList = LabelModel.getTypeList();
@@ -67,7 +72,34 @@ class App extends React.Component {
     componentDidMount() {
         InteractionManager.runAfterInteractions(()=>{
             this.getNewsList(this.state.labels[0]);
+            this.getWeatherData();
         });
+    }
+
+    getWeatherData() {
+        return cancellableFetch(fetch(WeatherAPI, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }), DefaultTimeout)
+            .then((response) => {
+                if (response.ok) {
+                    return parseJSON(response);
+                } else {
+                    return {};
+                }
+            })
+            .then((responseData) => {
+                if (Object.keys(responseData).length === 0) {//返回数据为空
+                    throw "数据为空";
+                } else {
+                    weatherData = responseData;
+                }
+            })
+            .catch((error) => {
+                weatherData = {"error": error.toString()}
+            });
     }
 
     getNewsList(label) {//获取新闻网络请求
@@ -443,6 +475,64 @@ class App extends React.Component {
         return <View />;
     }
 
+    renderModalView() {
+
+        let Button;
+
+        if (this.state.modalVisible) {
+            Button = (
+                <Image
+                    style={{
+                            bottom:0,
+                            resizeMode:'center',
+                        }}
+                    source={require('../Img/panel/223.png')}
+                />
+            );
+        } else {
+            Button = (
+                <Image
+                    style={{
+                            bottom:0,
+                            resizeMode:'center',
+                            marginRight:8,
+                            marginBottom:10
+                        }}
+                    source={require('../Img/top_navigation_square@2x.png')}
+                />
+            );
+        }
+
+        return (
+            <View>
+                <Modal
+                    animationType={"fade"}
+                    transparent={true}
+                    visible={this.state.modalVisible}
+                >
+                    <Weather
+                        marginTop={ Navibarheight }
+                        onClose={()=>{
+                            this.setState({
+                                modalVisible:false
+                            })
+                        }}
+                        weatherData={ weatherData }
+                    />
+                </Modal>
+                <TouchableWithoutFeedback
+                    onPress={()=>{
+                        this.setState({
+                            modalVisible:!this.state.modalVisible
+                        })
+                    }}
+                >
+                    {Button}
+                </TouchableWithoutFeedback>
+            </View>
+        );
+    }
+
     renderNaivBar() {
 
         let centerHeight = 20;
@@ -474,22 +564,7 @@ class App extends React.Component {
                     }}
                     source={require('../Img/background@2x.png')}
                 />
-                <TouchableWithoutFeedback
-                    onPress={()=>{
-
-                    }}
-                >
-                    <Image
-                        style={{
-                            bottom:0,
-                            resizeMode:'contain',
-                            marginRight:8,
-                            marginBottom:10
-                        }}
-                        source={require('../Img/top_navigation_square@2x.png')}
-                    >
-                    </Image>
-                </TouchableWithoutFeedback>
+                {this.renderModalView()}
             </View>);
     }
 }
