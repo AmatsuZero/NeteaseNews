@@ -16,18 +16,14 @@ import {
 } from "react-native";
 //加载中
 import LoadingView from "../Component/LoadingView";
-
-import {parseJSON, cancellableFetch} from "../Util/NetworkUtil"
-
-import { Navibarheight, DefaultTimeout } from '../Model/Constants'
+import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
+import {Navibarheight, DefaultTimeout} from "../Model/Constants";
+import ReplyModel from "../Model/ReplyModel";
+import Reply from "./Reply";
 let WebViewHeight = Dimensions.get('window').height - Navibarheight;
 
-let replyImg = require('../Img/contentview_commentbacky@2x.png');
-let backArrow = require('../Img/night_icon_back@2x.png');
-
-import ReplyModel from "../Model/ReplyModel"
-
-import Reply from './Reply'
+const replyImg = require('../Img/contentview_commentbacky@2x.png');
+const backArrow = require('../Img/night_icon_back@2x.png');
 
 //热门评论
 let hotPosts = [];

@@ -18,7 +18,8 @@ import {
     ActivityIndicator,
     Dimensions,
     TouchableWithoutFeedback,
-    Modal
+    Modal,
+    Animated
 } from "react-native";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
@@ -57,7 +58,9 @@ class App extends React.Component {
                 new LabelModel('时尚', 'list/T1348650593803', 'lady_bbs'),
                 new LabelModel('电影', 'list/T1348648650048', 'ent2_bbs'),
                 new LabelModel('科技', 'list/T1348649580692', 'tech_bbs')],
-            modalVisible: false
+            modalVisible: false,
+            rotateValue: new Animated.Value(0)
+
         };
 
         this.typeList = LabelModel.getTypeList();
@@ -74,6 +77,12 @@ class App extends React.Component {
             this.getNewsList(this.state.labels[0]);
             this.getWeatherData();
         });
+
+        this.state.rotateValue.setValue(0);  //重置Rotate动画值为0
+        Animated.timing(this.state.rotateValue, {
+            toValue: 1,
+            duration: 500
+        }).start()
     }
 
     getWeatherData() {
@@ -476,33 +485,42 @@ class App extends React.Component {
     }
 
     renderModalView() {
-
         let Button;
-
+        let animatedStyle = {
+            transform: [
+                {
+                    rotate: this.state.rotateValue.interpolate({
+                        inputRange: [0, 1],  //动画value输入范围
+                        outputRange: ['0deg', '360deg']  //对应的输出范围
+                    })
+                },
+            ]
+        };
         if (this.state.modalVisible) {
             Button = (
-                <Image
-                    style={{
+                <Animated.Image
+                    style={[{
                             bottom:0,
                             resizeMode:'center',
-                        }}
+                           }, animatedStyle]}
                     source={require('../Img/panel/223.png')}
                 />
             );
         } else {
             Button = (
-                <Image
-                    style={{
+                <Animated.Image
+                    style={[{
                             bottom:0,
                             resizeMode:'center',
                             marginRight:8,
-                            marginBottom:10
-                        }}
+                            marginBottom:10}, animatedStyle]}
                     source={require('../Img/top_navigation_square@2x.png')}
                 />
             );
         }
 
+        const name = 'weather';
+        let component = Weather;
         return (
             <View>
                 <Modal
@@ -510,21 +528,22 @@ class App extends React.Component {
                     transparent={true}
                     visible={this.state.modalVisible}
                 >
-                    <Weather
-                        marginTop={ Navibarheight }
-                        onClose={()=>{
-                            this.setState({
-                                modalVisible:false
-                            })
+                    <Navigator
+                        initialRoute={{name:name,component:component}}
+                        configureScene={(route) => {
+                            return Navigator.SceneConfigs.PushFromRight;
                         }}
-                        weatherData={ weatherData }
+                        renderScene={(route, navigator) => {
+                            let Component = route.component;
+                            return <Component marginTop={ Navibarheight } onClose={()=>{ this.setState({ modalVisible:false});}} weatherData={ weatherData } {...route.params} navigator={navigator} />
+                        }}
                     />
                 </Modal>
                 <TouchableWithoutFeedback
                     onPress={()=>{
                         this.setState({
                             modalVisible:!this.state.modalVisible
-                        })
+                        });
                     }}
                 >
                     {Button}
