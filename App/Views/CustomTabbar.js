@@ -16,6 +16,15 @@ export class CustomTabbar extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            visible: true
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            visible: nextProps.visible
+        });
     }
 
     //设置是否有动画
@@ -42,8 +51,11 @@ export class CustomTabbar extends React.Component {
     }
 
     render() {
+
+        let tabs = this.state.visible ? {flexDirection: 'row', height: 50,} : {};
+
         return (
-            <View style={styles.tabs}>
+            <View style={[tabs]}>
                 {this.props.tabs.map((tab, i) => this.renderTabOption(tab, i))}
             </View>
         );
@@ -53,10 +65,7 @@ export class CustomTabbar extends React.Component {
 CustomTabbar.propTypes = propTypes;
 
 const styles = StyleSheet.create({
-    tabs: {
-        flexDirection: 'row',
-        height: 50,
-    },
+
     tab: {
         flex: 1,
         justifyContent: 'center',

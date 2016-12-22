@@ -1,9 +1,27 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 import React from "react";
-import {AppRegistry, Navigator, StyleSheet, View, Text} from "react-native";
+import {AppRegistry, Navigator, StyleSheet, View, Text, DeviceEventEmitter} from "react-native";
 import App from "./App/Views/App";
 import {CustomTabbar} from "./App/Views/CustomTabbar";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {DefaultTabBar} from "react-native-scrollable-tab-view";
+
+const icons = [
+    [require('./App/Img/tabbar_icon_news_normal@2x.png'),
+        require('./App/Img/tabbar_icon_news_highlight@2x.png')],
+    [require('./App/Img/tabbar_icon_reader_normal@2x.png'),
+        require('./App/Img/tabbar_icon_reader_highlight@2x.png')],
+    [require('./App/Img/tabbar_icon_media_normal@2x.png'),
+        require('./App/Img/tabbar_icon_media_highlight@2x.png')],
+    [require('./App/Img/tabbar_icon_found_normal@2x.png'),
+        require('./App/Img/tabbar_icon_found_highlight@2x.png')],
+    [require('./App/Img/tabbar_icon_me_normal@2x.png'),
+        require('./App/Img/tabbar_icon_me_highlight@2x.png')]
+];
 
 class news extends React.Component {
 
@@ -13,19 +31,22 @@ class news extends React.Component {
             //设置Tabbar的标题与图标
             tabNames: ['新闻', '阅读', '视听', '发现', '我'],
             //这个地方只能以模块的形式传递图片，主要是因为babel在做语法转换的时候需要知道路径，详情参见：https://segmentfault.com/q/1010000006104180
-            tabIconNames: [
-                [require('./App/Img/tabbar_icon_news_normal@2x.png'),
-                    require('./App/Img/tabbar_icon_news_highlight@2x.png')],
-                [require('./App/Img/tabbar_icon_reader_normal@2x.png'),
-                    require('./App/Img/tabbar_icon_reader_highlight@2x.png')],
-                [require('./App/Img/tabbar_icon_media_normal@2x.png'),
-                    require('./App/Img/tabbar_icon_media_highlight@2x.png')],
-                [require('./App/Img/tabbar_icon_found_normal@2x.png'),
-                    require('./App/Img/tabbar_icon_found_highlight@2x.png')],
-                [require('./App/Img/tabbar_icon_me_normal@2x.png'),
-                    require('./App/Img/tabbar_icon_me_highlight@2x.png')]
-            ],
+            tabIconNames: icons,
+            isTabbarVisible: true
         }
+    }
+
+    componentDidMount() {
+
+        DeviceEventEmitter.addListener('showTabbar', (flag) => {
+            this.setState({
+                isTabbarVisible: flag
+            })
+        });
+    }
+
+    componentWillUnmount() {
+        DeviceEventEmitter.removeAllListeners('showTabbar');
     }
 
     //主页
@@ -48,6 +69,7 @@ class news extends React.Component {
     }
 
     render() {
+
         return (
             <View style={styles.container}>
                 <ScrollableTabView
@@ -57,7 +79,7 @@ class news extends React.Component {
                     scrollWithoutAnimation={true}
                     tabBarPosition={'bottom'}
                     renderTabBar={() =>
-                        <CustomTabbar tabNames={this.state.tabNames} tabIconNames={this.state.tabIconNames}/>
+                        <CustomTabbar visible={this.state.isTabbarVisible} tabNames={this.state.tabNames} tabIconNames={this.state.tabIconNames}/>
                     }>
                     {this.renderMainPage()}
                     <View style={styles.content} tabLabel='key2'>

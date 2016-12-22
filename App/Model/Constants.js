@@ -7,3 +7,5 @@ export const Navibarheight = 22 + 30;
 export const DefaultTimeout = 30000;
 //天气接口
 export const WeatherAPI = "http://c.3g.163.com/nc/weather/5YyX5LqsfOWMl%2BS6rA%3D%3D.html";
+//推荐热词
+export const HotwordsList = "http://c.3g.163.com/nc/search/hotWord.html";

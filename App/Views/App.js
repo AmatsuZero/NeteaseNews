@@ -19,7 +19,8 @@ import {
     Dimensions,
     TouchableWithoutFeedback,
     Modal,
-    Animated
+    Animated,
+    DeviceEventEmitter
 } from "react-native";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
@@ -31,8 +32,9 @@ import LabelModel from "../Model/LabelModel";
 import {toastShort} from "../Util/ToastUtil";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 //导航栏高度
-import {Navibarheight, DefaultTimeout, WeatherAPI} from "../Model/Constants";
+import {Navibarheight, DefaultTimeout, WeatherAPI, HotwordsList} from "../Model/Constants";
 import Weather from "./Weather";
+import Search from "./Search";
 
 //是否能加载更多
 let canLoadMore;
@@ -41,6 +43,8 @@ let currentLabel;
 
 //天气数据
 let weatherData;
+//热词
+let hotwords;
 
 class App extends React.Component {
 
@@ -76,6 +80,7 @@ class App extends React.Component {
         InteractionManager.runAfterInteractions(()=>{
             this.getNewsList(this.state.labels[0]);
             this.getWeatherData();
+            this.getHotWordsList();
         });
 
         this.state.rotateValue.setValue(0);  //重置Rotate动画值为0
@@ -164,6 +169,29 @@ class App extends React.Component {
                         ds: this.state.ds.cloneWithRows([])
                     });
                 }
+            });
+    }
+
+    getHotWordsList() {
+        return cancellableFetch(fetch(HotwordsList, {
+            method: 'GET',
+        }), DefaultTimeout)
+            .then((response) => {
+                if (response.ok) {
+                    return parseJSON(response);
+                } else {
+                    return {};
+                }
+            })
+            .then((responseData) => {
+                if (Object.keys(responseData).length === 0) {//返回数据为空
+                    throw "数据为空";
+                } else {
+                    hotwords = responseData;
+                }
+            })
+            .catch((error) => {
+                hotwords = {"error": error.toString()}
             });
     }
 
@@ -484,6 +512,21 @@ class App extends React.Component {
         return <View />;
     }
 
+    _onSearchBtnPressed() {
+        const {navigator} = this.props;
+        DeviceEventEmitter.emit('showTabbar', false);
+        //这里传递了navigator作为props
+        if (navigator) {
+            navigator.push({
+                name: "搜索",
+                component: Search,
+                params: {
+                    hotwords: hotwords
+                }
+            })
+        }
+    }
+
     renderModalView() {
         let Button;
         let animatedStyle = {
@@ -559,9 +602,7 @@ class App extends React.Component {
         return (
             <View style={styles.Navibar}>
                 <TouchableWithoutFeedback
-                    onPress={()=>{
-
-                    }}
+                    onPress={()=>this._onSearchBtnPressed()}
                 >
                     <Image
                         style={{
