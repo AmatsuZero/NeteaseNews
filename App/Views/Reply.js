@@ -14,9 +14,8 @@ import {
     Navigator,
     ScrollView,
     TouchableWithoutFeedback,
-    Dimensions,
+    Dimensions
 } from "react-native";
-
 import {Navibarheight, DefaultTimeout} from "../Model/Constants";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 import ReplyModel from "../Model/ReplyModel";
@@ -267,7 +266,6 @@ export default class Reply extends React.Component {
                     initialListSize={2}
                     enableEmptySections={true}
                     dataSource={this.state.dataSource}
-                    style={styles.listView}
                     renderSectionHeader={(sectionData, sectionID) => this.renderSectionHeader(sectionID)}
                     renderRow={this.renderItem}
                     renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}

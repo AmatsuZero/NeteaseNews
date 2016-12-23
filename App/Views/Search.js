@@ -14,20 +14,35 @@ import {
     Navigator,
     TextInput,
     Platform,
-    DeviceEventEmitter
+    DeviceEventEmitter,
+    ListView,
+    RecyclerViewBackedScrollView,
+    WebView
 } from "react-native";
-import {Navibarheight} from "../Model/Constants";
+import {Navibarheight, DefaultTimeout} from "../Model/Constants";
 import LoadingView from "../Component/LoadingView";
+import {toastShort} from "../Util/ToastUtil";
+import {base64encode} from "../Util/Base64Tool";
+import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 
 export default class Search extends React.Component {
 
     constructor(props) {
+
         super(props);
+
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+        });
+
         this.state = {
             hotwords: null,
             searchTxt: '',
-            isResultList: false
-        }
+            isResultList: false,
+            dataSource: ds
+        };;;;;;;;;;;;;;;
+
+        this.renderItem = this.renderItem.bind(this)
     }
 
     componentDidMount() {
@@ -39,7 +54,22 @@ export default class Search extends React.Component {
     }
 
     searchForNews(key) {
-        console.log(key);
+        InteractionManager.runAfterInteractions(() => {
+            this.searcchForKeyWord(key).then((data) => {
+                this.setState({
+                    searchTxt: key,
+                    isResultList: true,
+                    dataSource: this.state.dataSource.cloneWithRows(data)
+                })
+            }).catch((e) => {
+                toastShort(e.toString());
+                this.setState({
+                    searchTxt: key,
+                    isResultList: true,
+                    dataSource: this.state.dataSource.cloneWithRows([])
+                })
+            });
+        })
     }
 
     //返回
@@ -62,8 +92,9 @@ export default class Search extends React.Component {
                     returnKeyType='search'
                     placeholder='搜索'
                     placeholderTextColor='gray'
-                    clearButtonMode="while-editing"
+                    clearButtonMode="unless-editing"
                     enablesReturnKeyAutomatically={true}
+                    value={this.state.searchTxt}
                 />
                 <TouchableWithoutFeedback onPress={()=>this.goBack()}>
                     <View style={{marginHorizontal:10, marginTop:5}}>
@@ -96,11 +127,32 @@ export default class Search extends React.Component {
         );
     }
 
+    searcchForKeyWord(keyword) {
+
+        //关于Base64转换的问题: RN不支持浏览器都支持的atob、btoa函数，NodeJS的Buffer在这里也无法使用, 只好自己实现base64代码
+        let URL = "http://c.3g.163.com/search/comp/MA==/20/" + base64encode(keyword) + ".html";
+
+        return cancellableFetch(fetch(encodeURI(URL), {
+            method: 'GET',
+        }), DefaultTimeout)
+            .then((response) => {
+                if (response.ok) {
+                    return parseJSON(response);
+                } else {
+                    throw "请求失败！"
+                }
+            })
+            .then((responseData) => {
+                if (Object.keys(responseData).length === 0) {//返回数据为空
+                    throw "返回数据为空！";
+                } else {
+                    return responseData["doc"]["result"];
+                }
+            })
+    }
+
     _onHotkeyPressed(key) {
-        this.setState({
-            searchTxt: key,
-            isResultList: true
-        })
+        this.searchForNews(key);
     }
 
     renderHotWords() {
@@ -121,8 +173,44 @@ export default class Search extends React.Component {
         return hotwords;
     }
 
-    render() {
+    renderText(title) {
+        let input = title;
+        let myRe = /<em>[\s\S]*?<\/em>/gi;
+        let myArray = input.match(myRe);
+        try {
+            for (let wrappedTxt of myArray) {
+                let unwrapped = wrappedTxt.replace('<em>', '');
+                unwrapped = unwrapped.replace('</em>', '');
+                unwrapped.fontcolor('green');
+                input = input.replace(wrappedTxt, unwrapped)
+            }
+        } catch (e) {
+            console.log(e.toString())
+        } finally {
+            return input;
+        }
+    }
 
+    onPressWord(url) {
+
+    }
+
+    renderItem(key) {
+        return (
+            <TouchableOpacity style={styles.cellStyle} onPress={()=>this.onPressWord(key)}>
+                <View style={{marginLeft:15}}>
+                    <Text style={{marginBottom:2}}>
+                        {this.renderText(key.title)}
+                    </Text>
+                    <Text style={{fontSize:13, color:'gray'}}>
+                        {key.ptime}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
+    render() {
         let enterView = (
             <View>
                 {this.renderCenter()}
@@ -140,8 +228,15 @@ export default class Search extends React.Component {
         );
 
         let resultView = (
-            <View style={{marginTop:60}}>
-                <LoadingView/>
+            <View>
+                <ListView
+                    style={{flex:0, flexGrow:1}}
+                    initialListSize={1}
+                    enableEmptySections={true}
+                    dataSource={this.state.dataSource}
+                    renderRow={this.renderItem}
+                    renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
+                />
             </View>
         );
 
@@ -172,7 +267,7 @@ const styles = StyleSheet.create({
 
     inputStyle: {
         height: 28,
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: 'gray',
         borderRadius: 15,
         flex: 1,
@@ -186,7 +281,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         borderBottomWidth: 0.5,
-        borderColor: 'gray',
+        borderColor: 'gainsboro',
         alignItems: 'flex-end',
         paddingBottom: 5,
         marginHorizontal: 15,
@@ -206,8 +301,18 @@ const styles = StyleSheet.create({
         borderRadius: 2,
         borderColor: "#DCDCDC",
         borderWidth: 0.5,
-        marginHorizontal: 10,
+        marginHorizontal: 5,
         marginVertical: 5,
         padding: 8
+    },
+
+    cellStyle: {
+        flexDirection: 'column',
+        borderBottomColor: '#ddd',
+        borderBottomWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        backgroundColor: '#fcfcfc',
+        padding: 8,
     }
 });
