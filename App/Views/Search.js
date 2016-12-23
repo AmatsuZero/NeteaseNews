@@ -40,7 +40,7 @@ export default class Search extends React.Component {
             searchTxt: '',
             isResultList: false,
             dataSource: ds
-        };;;;;;;;;;;;;;;
+        };
 
         this.renderItem = this.renderItem.bind(this)
     }
@@ -174,21 +174,62 @@ export default class Search extends React.Component {
     }
 
     renderText(title) {
-        let input = title;
+        let result = [];
         let myRe = /<em>[\s\S]*?<\/em>/gi;
-        let myArray = input.match(myRe);
+        let myArray = title.match(myRe);
+        if (!(myArray instanceof Array)) return result;
         try {
-            for (let wrappedTxt of myArray) {
-                let unwrapped = wrappedTxt.replace('<em>', '');
+            for (let i = 0; i < myArray.length; i++) {
+                let text = myArray[i];
+                let index = title.indexOf(text);
+                let strLen = text.length;
+                let unwrapped = text.replace('<em>', '');
                 unwrapped = unwrapped.replace('</em>', '');
-                unwrapped.fontcolor('green');
-                input = input.replace(wrappedTxt, unwrapped)
+                if (i == 0) {//针对第一个元素，要检查前面有没有普通文本
+                    if (index !== 0) {//说明前面有普通文本
+                        let normal = title.substring(0, index);
+                        if (normal.replace(/(^\s*)|(\s*$)/g, "").length !== 0) {//检查是不是空文本
+                            result.push(<Text key={normal + i}>
+                                {normal}
+                            </Text>)
+                        }
+                    }
+                    result.push(<Text key={text + i} style={{color:'red'}}>
+                        {unwrapped}
+                    </Text>)
+                } else if (i == myArray.length - 1) {//最后一个元素，要跟整体长度相比较，看看后面有没有普通文本
+                    result.push(<Text key={text + i} style={{color:'red'}}>
+                        {unwrapped}
+                    </Text>);
+                    if (index + strLen < title.length) {//说明还有字符，而且是普通文本
+                        let normal = title.substring(index + strLen);
+                        if (normal.replace(/(^\s*)|(\s*$)/g, "").length !== 0) {//检查是不是空文本
+                            result.push(<Text key={normal+i}>
+                                {normal}
+                            </Text>)
+                        }
+                    }
+                } else {//中间的元素，都是前后两个元素的index相减，看看是否为0：如果为0，说明中间没有普通字符；如果不为零，说明有普通字符，需要先插入
+                    let nextText = myArray[i + 1];
+                    let nextIndex = title.indexOf(nextText);
+                    if (nextText - index !== 0) {
+                        let normal = title.substring(index + strLen, nextIndex);
+                        if (normal.replace(/(^\s*)|(\s*$)/g, "").length !== 0) {//检查是不是空文本
+                            result.push(<Text key={normal+i}>
+                                {normal}
+                            </Text>)
+                        }
+                    }
+                    result.push(<Text key={text + i} style={{color:'red'}}>
+                        {unwrapped}
+                    </Text>)
+                }
             }
         } catch (e) {
-            console.log(e.toString())
-        } finally {
-            return input;
+            console.log(e.toString());
         }
+
+        return result;
     }
 
     onPressWord(url) {
