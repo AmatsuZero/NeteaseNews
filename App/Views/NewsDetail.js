@@ -20,6 +20,8 @@ import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 import {Navibarheight, DefaultTimeout} from "../Model/Constants";
 import ReplyModel from "../Model/ReplyModel";
 import Reply from "./Reply";
+import {getDetail} from "../Model/DetailModel";
+import {toastShort} from "../Util/ToastUtil";
 let WebViewHeight = Dimensions.get('window').height - Navibarheight;
 
 const replyImg = require('../Img/contentview_commentbacky@2x.png');
@@ -37,7 +39,9 @@ export default class NewsDetail extends React.Component {
             replyCount: 0,
             boardid:'',
             docid:'',
-            postid:null
+            postid: null,
+            detail: null,
+            html: "<html><body>暂无内容</body></html>"
         };
     }
 
@@ -53,6 +57,15 @@ export default class NewsDetail extends React.Component {
             });
 
             this.getCommentsList();
+            getDetail(this.state.docid).then((detail) => {
+                this.setState({
+                    detail: detail.newsdetail,
+                    replyCount: detail.newsdetail.replyCount,
+                    html: detail.getHTMLString()
+                })
+            }).catch((e) => {
+                toastShort(e.toString());
+            })
         });
     }
 
@@ -110,9 +123,8 @@ export default class NewsDetail extends React.Component {
 
         let replyCount = this.state.replyCount;
         let displayCount = '';
-
-        if (replyCount.isNaN) {
-            displayCount = '未知';
+        if (!replyCount || replyCount.isNaN) {
+            displayCount = '0 回帖';
         } else {
             //拼接显示字符串
             let count = parseInt(replyCount);
@@ -203,22 +215,7 @@ export default class NewsDetail extends React.Component {
                 <WebView
                     automaticallyAdjustContentInsets={false}
                     style={styles.webView}
-                    source={{uri: this.state.url}}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    decelerationRate="normal"
-                    onNavigationStateChange={()=>{
-
-                    }}
-                    onShouldStartLoadWithRequest={(req)=>{
-                        if(req.url === 'about:blank') {
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    }}
-                    startInLoadingState={true}
-                    renderLoading={this.renderLoading}
+                    source={{html:this.state.html}}
                 />
             </View>
         );

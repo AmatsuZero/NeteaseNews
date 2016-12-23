@@ -223,7 +223,6 @@ class App extends React.Component {
                     component: NewsDetail,
                     params: {
                         url: article.url,
-                        replyCount: article.replyCount,
                         boardid: article.boardid,
                         docid: article.docid,
                         postid: article.imgextra ? article.postid : null

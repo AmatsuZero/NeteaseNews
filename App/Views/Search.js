@@ -24,6 +24,7 @@ import LoadingView from "../Component/LoadingView";
 import {toastShort} from "../Util/ToastUtil";
 import {base64encode} from "../Util/Base64Tool";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
+import NewsDetail from "./NewsDetail";
 
 export default class Search extends React.Component {
 
@@ -232,8 +233,18 @@ export default class Search extends React.Component {
         return result;
     }
 
-    onPressWord(url) {
-
+    onPressWord(key) {
+        const {navigator} = this.props;
+        //这里传递了navigator作为props
+        if (key) {
+            navigator.push({
+                name: key.title,
+                component: NewsDetail,
+                params: {
+                    docid: key.docid,
+                }
+            })
+        }
     }
 
     renderItem(key) {
