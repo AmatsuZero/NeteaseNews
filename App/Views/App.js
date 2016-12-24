@@ -463,6 +463,7 @@ class App extends React.Component {
                             <Text style={styles.title}>
                                 {article.title}
                             </Text>
+                            {this.renderReplyNumber(article.replyCount)}
                         </View>
                         <View style={styles.cellDownContent}>
                             {this.renderPhotoSet(article.imgsrc, article.imgextra)}
@@ -688,7 +689,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         textAlign: 'left',
-        color: 'black'
+        color: 'black',
+        flexShrink: 5
     },
 
     source: {

@@ -8,41 +8,47 @@ import {
     Text,
     WebView,
     StyleSheet,
+    TouchableOpacity,
     TouchableWithoutFeedback,
     Dimensions,
     Image,
     Platform,
-    InteractionManager
+    InteractionManager,
+    ListView,
+    RecyclerViewBackedScrollView
 } from "react-native";
 //加载中
 import LoadingView from "../Component/LoadingView";
-import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
-import {Navibarheight, DefaultTimeout} from "../Model/Constants";
-import ReplyModel from "../Model/ReplyModel";
+import {Navibarheight} from "../Model/Constants";
 import Reply from "./Reply";
 import {getDetail} from "../Model/DetailModel";
 import {toastShort} from "../Util/ToastUtil";
-let WebViewHeight = Dimensions.get('window').height - Navibarheight;
 
 const replyImg = require('../Img/contentview_commentbacky@2x.png');
 const backArrow = require('../Img/night_icon_back@2x.png');
-
-//热门评论
-let hotPosts = [];
 
 export default class NewsDetail extends React.Component {
 
     constructor(props) {
         super(props);
+
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+            sectionHeaderHasChanged: (s1, s2) => s1 !== s2
+        });
+
         this.state = {
             url: "about:blank",
+            dataSource: ds,
             replyCount: 0,
-            boardid:'',
-            docid:'',
+            boardid: null,
+            docid: null,
             postid: null,
             detail: null,
-            html: "<html><body>暂无内容</body></html>"
         };
+
+        this.renderSectionHeader = this.renderSectionHeader.bind(this);
+        this.renderItem = this.renderItem.bind(this);
     }
 
     componentDidMount() {
@@ -53,56 +59,23 @@ export default class NewsDetail extends React.Component {
                 replyCount: this.props.replyCount,
                 boardid:this.props.boardid,
                 docid:this.props.docid,
-                postid:this.props.postid
+                postid: this.props.postid,
             });
-
-            this.getCommentsList();
-            getDetail(this.state.docid).then((detail) => {
+            getDetail(this.state.docid, this.state.boardid, this.state.postid).then((detail) => {
                 this.setState({
-                    detail: detail.newsdetail,
+                    detail: detail,
                     replyCount: detail.newsdetail.replyCount,
-                    html: detail.getHTMLString()
+                    dataSource: this.state.dataSource.cloneWithRowsAndSections({
+                        "正文": [detail.html],
+                        "分享": ["1"],
+                        "热门跟帖": detail.replyModels,
+                        "相关新闻": detail.similarNews,
+                    }),
                 })
             }).catch((e) => {
                 toastShort(e.toString());
             })
         });
-    }
-
-    getCommentsList() {
-
-        //拼接URL，图片详情和普通详情是不一样的
-        let URL = 'http://comment.api.163.com/api/json/post/list/new/hot/' + this.state.boardid + '/' + (this.state.postid ? this.state.postid : this.state.docid ) + '/0/10/10/2/2';
-
-        return cancellableFetch(fetch(URL, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }), DefaultTimeout)
-            .then((response)=>{
-                if (response.ok) {
-                    return parseJSON(response);
-                } else {
-                    return {};
-                }
-            })
-            .then((responseData)=>{
-                if (Object.keys(responseData).length === 0) {//返回数据为空
-                    throw "返回数据为空！";
-                } else {
-                    let hp = responseData["hotPosts"];//取出热门评论
-                    if (hp && hp.length > 0) {
-                        for(let comment of hp) {
-                            let model = comment["1"];
-                            hotPosts.push(ReplyModel.createHotReplyModel(model));
-                        }
-                    }
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
     }
 
     shouldComponentUpdate() {
@@ -193,7 +166,7 @@ export default class NewsDetail extends React.Component {
                                     boardid:this.state.boardid,
                                     docid:this.state.docid,
                                     postid:this.state.postid,
-                                    hotRelies:hotPosts
+                                    hotRelies:this.state.detail.replyModels
                                 }
                             })
                         }
@@ -204,19 +177,161 @@ export default class NewsDetail extends React.Component {
             </View>);
     }
 
-    renderLoading() {
-        return <LoadingView />;
+    _onPressShowMoreComments() {
+
+    }
+
+    renderItem(rowData, sectionID, rowID, highlightRow) {
+        switch (sectionID) {
+            case "正文":
+                return (<WebView
+                    automaticallyAdjustContentInsets={false}
+                    style={styles.webView}
+                    source={{html:rowData}}
+                    renderLoading={()=>{return <LoadingView />}}
+                />);
+            case "热门跟帖": {
+                if (rowID == this.state.detail.replyModels.length - 1) {
+                    return (
+                        <TouchableOpacity onPress={()=>this._onPressShowMoreComments()}>
+                            <View style={[styles.sectionHeader,{height:50}]}>
+                                <Text style={{fontSize:15, color:'#3C84C3', marginHorizontal:10, textAlign:'center'}}>
+                                    显示更多评论
+                                </Text>
+                            </View>
+                        </TouchableOpacity>);
+                } else {
+                    return (
+                        <TouchableOpacity>
+                            <View style={styles.hotReply}>
+                                <View
+                                    style={{flexDirection:'row', justifyContent:'space-between', alignItems:'flex-start', marginTop:20}}>
+                                    <View style={{flexDirection:'row', marginHorizontal:10, flexShrink:10}}>
+                                        <Image
+                                            style={{width:30,height:30, marginHorizontal:10, borderRadius:15}}
+                                            source={ rowData.icon ? {uri:rowData.icon} : require('../Img/comment_profile_mars@2x.png')}
+                                        />
+                                        <View style={{flexDirection:'column', alignItems:'flex-start', flexShrink:5}}>
+                                            <Text numberOfLines={1} style={{fontSize:13,color:'#3C84C3'}}>
+                                                {rowData.name}
+                                            </Text>
+                                            <Text numberOfLines={1} style={{fontSize:11,color:'gray'}}>
+                                                {this.processAddress(rowData.address) + ' ' + rowData.rtime}
+                                            </Text>
+                                        </View>
+                                    </View>
+                                    <Text style={{fontSize:11,color:'gray', marginRight:10}}>
+                                        {rowData.suppose + '顶'}
+                                    </Text>
+                                </View>
+                                <Text
+                                    style={{fontSize:15,color:'black', marginTop:7.5, marginBottom:10, marginLeft:60}}>
+                                    {rowData.say}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>);
+                }
+            }
+            case "相关新闻": {
+                if (rowID == 0) {
+                    return (
+                        <View>
+                            {this.renderKeySearchWord(rowData)}
+                        </View>)
+                } else {
+                    return (
+                        <View style={styles.simiNews}>
+                            <Image
+                                style={{width:80,height:60, margin:10, borderRadius:2}}
+                                source={rowData.imgsrc ? {uri:rowData.imgsrc} : require('../Img/Detail/303.jpg')}
+                            />
+                            <View
+                                style={{flexDirection:'column', justifyContent:'flex-start', alignItems:'flex-start', marginVertical:10, flexShrink:10}}>
+                                <Text style={{fontSize:15}}>
+                                    {rowData.title}
+                                </Text>
+                                <View style={{flexDirection:'row', justifyContent:'flex-start', marginTop:10}}>
+                                    <Text style={{fontSize:11, color:'gray'}}>
+                                        {rowData.source}
+                                    </Text>
+                                    <Text style={{fontSize:11,marginLeft:10, color:'gray'}}>
+                                        {rowData.ptime}
+                                    </Text>
+                                </View>
+                            </View>
+                        </View>)
+                }
+            }
+            case "分享": {
+                return <Image
+                    style={{height:130, width:Dimensions.get('window').width}}
+                    resizeMode={'contain'}
+                    source={require('../Img/Detail/news_share.png')}
+                />
+            }
+        }
+    }
+
+    renderKeySearchWord(keyword) {
+        console.log(keyword);
+    }
+
+    processAddress(address) {
+        let index = address.indexOf('&');
+        if (index !== -1) {
+            return address.substring(0, index);
+        } else {
+            return address;
+        }
+    }
+
+    renderSectionHeader(sectionData, sectionID) {
+        switch (sectionID) {
+            case "相关新闻":
+                return (
+                    <View style={[{height:sectionData.length > 0 ? 40 : 0}, styles.sectionHeader]}>
+                        <Text style={styles.sectionText}>{sectionID}</Text>
+                    </View>);
+            case "热门跟帖":
+                return (
+                    <View style={[{height:sectionData.length > 0 ? 40 : 0}, styles.sectionHeader]}>
+                        <Text style={styles.sectionText}>{sectionID}</Text>
+                    </View>);
+            default:
+                return <View/>;
+        }
+    }
+
+    renderFooter() {
+        return (
+            <View
+                style={{flexDirection:'row', justifyContent:'center', alignItems:'center', height:64, borderColor: '#eeeeec'}}>
+                <Image
+                    style={{width:26, height:26}}
+                    source={require('../Img/Detail/newscontent_drag_arrow@2x.png')}
+                />
+                <Text style={{fontSize:15,color:'gray', marginLeft:10}}>
+                    上拉关闭当前页
+                </Text>
+            </View>)
     }
 
     render() {
         return (
             <View style={styles.container}>
                 {this.renderNaivBar()}
-                <WebView
-                    automaticallyAdjustContentInsets={false}
-                    style={styles.webView}
-                    source={{html:this.state.html}}
-                />
+                {!this.state.dataSource.sectionIdentities.length > 0 ?
+                    <LoadingView/> :
+                    <ListView
+                        style={styles.listView}
+                        initialListSize={3}
+                        dataSource={this.state.dataSource}
+                        enableEmptySections={true}
+                        renderRow={this.renderItem}
+                        renderSectionHeader={this.renderSectionHeader}
+                        renderFooter={()=>this.renderFooter()}
+                        renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
+                    />}
             </View>
         );
     }
@@ -230,7 +345,8 @@ const styles = StyleSheet.create({
     },
 
     webView: {
-        height: WebViewHeight,
+        width: Dimensions.get('window').width,
+        height: 700
     },
 
     navibar: {
@@ -240,5 +356,48 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'flex-end',
         paddingTop: Platform.OS === 'ios' ? 10 : 0
+    },
+
+    listView: {
+        backgroundColor: '#eeeeec'
+    },
+
+    sectionHeader: {
+        borderColor: '#eeeeec',
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        borderLeftWidth: 10,
+        borderRightWidth: 10,
+        borderTopWidth: 0.5,
+        borderBottomWidth: 0.5
+    },
+
+    sectionText: {
+        color: 'red',
+        fontSize: 14,
+        marginHorizontal: 10
+    },
+
+    hotReply: {
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        backgroundColor: 'white',
+        borderColor: '#eeeeec',
+        borderLeftWidth: 10,
+        borderRightWidth: 10,
+        borderTopWidth: 0.5,
+        borderBottomWidth: 0.5
+    },
+
+    simiNews: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        borderColor: '#eeeeec',
+        borderLeftWidth: 10,
+        borderRightWidth: 10,
+        borderTopWidth: 0.5,
+        borderBottomWidth: 0.5,
+        backgroundColor: 'white'
     }
 });

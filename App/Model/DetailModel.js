@@ -3,6 +3,7 @@
  */
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 import {Dimensions} from "react-native";
+import {getCommentsList, createHotReplyModel} from "./ReplyModel";
 
 export class Detail {
 
@@ -50,36 +51,40 @@ export class SimilarNews {
 
 export default class DetailModel {
 
-    constructor(data) {
+    constructor(data, docid) {
         this.newsdetail = new Detail(data);
+        this.docid = docid;
+        this.replyModels = [];
         this.similarNews = [];
+        this.keywordSearch = data["keyword_search"];
+        this.similarNews.push(this.keywordSearch);
         if (data['relative_sys'] && data['relative_sys'].length > 0) {
             for (let similar of data['relative_sys']) {
                 let sn = new SimilarNews(similar);
                 this.similarNews.push(sn);
             }
         }
+        this.html = this.getHTMLString();
     }
 
     getHTMLString() {
         let HTML;
-        HTML = '<html>' +
-            '<head>' +
+        HTML = '<html>\n' +
+            '<head>\n' +
             '<style>\n'
             + DetailCSS +
-            '</style>' +
-            '</head>' +
-            "<body style=\'background:#f6f6f6\'>" +
+            '\n</style>\n' +
+            '</head>\n' +
+            "<body style=\'background:#f6f6f6\'>\n" +
             this.getBodyString() +
-            "</body>" +
-            "</html>";;;;
+            "</body>\n" +
+            "</html>";
 
         return HTML;
     }
 
     getBodyString() {
-        let Body = '';
-        Body = "<div class='title'>" + this.newsdetail.title + '</div>' +
+        let Body = "<div class='title'>" + this.newsdetail.title + '</div>' +
             "<div class='time'>" + this.newsdetail.ptime + '</div>';
 
         if (this.newsdetail.body) {
@@ -100,26 +105,26 @@ export default class DetailModel {
                 width = maxWidth;
             }
 
-            let onload = `this.onclick = function() {
+            let onload = `"this.onclick = function() {
               window.location.href = 'sx://github.com/dsxNiubility?src=' +this.src+'&top=' + this.getBoundingClientRect().top + '&whscale=' + this.clientWidth/this.clientHeight;
-            };`;
+            };"`;
 
-            imgHTML = imgHTML + '<img onload=' + onload + " width=\"" + width + "\"" + " height=\"" + height + "\"" + " src=\"" + imageDetail.src + "\"" + "</img>";
-            imgHTML += "</div>";;;;
+            imgHTML = imgHTML + '<img onload=' + onload + " width=\"" + width + "\"" + " height=\"" + height + "\"" + " src=\"" + imageDetail.src + "\"" + ">" + "</img>";
+            imgHTML += "</div>";
 
-            let reg = new RegExp(imageDetail.ref, 'i');;;;
-            console.log(reg);;;;
-            Body.replace(reg, imgHTML);
+            let reg = new RegExp(imageDetail.ref, 'g');
+            Body = Body.replace(reg, imgHTML);
         }
 
         return Body;
     }
 }
 
-export function getDetail(docid) {
+export function getDetail(docid, boardid, postid) {
 
     let URL = "http://c.m.163.com/nc/article/" + docid + "/full.html";
-    return cancellableFetch(fetch(URL, {
+
+    let getDetail = cancellableFetch(fetch(URL, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -134,12 +139,35 @@ export function getDetail(docid) {
         })
         .then((responseData) => {
             if (Object.keys(responseData).length === 0) {//返回数据为空
-                throw "返回数据为空！";
+                throw "新闻详情返回数据为空！";
             } else {
-                let detail = new DetailModel(responseData[docid]);
-                return detail;
+                return new DetailModel(responseData[docid]);
             }
-        })
+        });
+
+    let getComments = getCommentsList(boardid, postid, docid).then((responseData) => {
+        let hp = responseData["hotPosts"];//取出热门评论
+        let result = [];
+        if (hp && hp.length > 0) {
+            for (let comment of hp) {
+                let model = comment["1"];
+                let hot = createHotReplyModel(model);
+                result.push(hot);
+            }
+        }
+        return result;
+    });
+
+    //利用Promise all 创建联合任务
+    return Promise.all([getDetail, getComments]).then((data) => {
+        let detail = data[0];
+        let replies = data[1];
+        replies.push({});
+        detail.replyModels = replies;
+        return detail;
+    }).catch((e) => {
+        console.log(e.toString());
+    })
 }
 
 const DetailCSS = `.title {
