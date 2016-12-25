@@ -27,7 +27,7 @@ import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-v
 //详情页
 import NewsDetail from "./NewsDetail";
 //页面数据模型
-import LabelModel from "../Model/LabelModel";
+import {TypeListLabels, TypeList, getList,getTypeList} from "../Model/LabelModel";
 //弹窗提示
 import {toastShort} from "../Util/ToastUtil";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
@@ -53,21 +53,11 @@ class App extends React.Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             ds,
-            labels: [
-                new LabelModel('头条', 'headline/T1348647853363', '3g_bbs'),
-                new LabelModel('NBA', 'list/T1348649145984', 'sports_nba_bbs'),
-                new LabelModel('手机', 'list/T1348649654285', 'mobile_bbs'),
-                new LabelModel('移动互联', 'list/T1351233117091', 'mobile_bbs'),
-                new LabelModel('娱乐', 'list/T1348648517839', 'auto_bbs'),
-                new LabelModel('时尚', 'list/T1348650593803', 'lady_bbs'),
-                new LabelModel('电影', 'list/T1348648650048', 'ent2_bbs'),
-                new LabelModel('科技', 'list/T1348649580692', 'tech_bbs')],
+            labels: TypeListLabels(),
             modalVisible: false,
-            rotateValue: new Animated.Value(0)
-
+            rotateValue: new Animated.Value(0),
+            typeList:{}
         };
-
-        this.typeList = LabelModel.getTypeList();
         //要这样绑定一下
         this.renderItem = this.renderItem.bind(this);
         this.renderFooter = this.renderFooter.bind(this);
@@ -78,11 +68,15 @@ class App extends React.Component {
 
     componentDidMount() {
         InteractionManager.runAfterInteractions(()=>{
-            this.getNewsList(this.state.labels[0]);
+            getTypeList(this.state.labels[0])
+                .then((typelist)=>{
+                    this.setState({
+                        typeList:typelist
+                    })
+                })
             this.getWeatherData();
             this.getHotWordsList();
-        });
-
+            });
         this.state.rotateValue.setValue(0);  //重置Rotate动画值为0
         Animated.timing(this.state.rotateValue, {
             toValue: 1,
@@ -118,28 +112,11 @@ class App extends React.Component {
 
     getNewsList(label) {//获取新闻网络请求
         let count = 0;
-        if (this.typeList[label.title]) {
-            count = this.typeList[label.title].length - this.typeList[label.title].length % 10;
+        if (this.state.typeList[label.title]) {
+            count = this.state.typeList[label.title].length - this.state.typeList[label.title].length % 10;
         }
-
-        let URL = 'http://c.m.163.com//nc/article/' + label.urlString + '/' + count + '-20.html';
-        label.loading = true;
-        let isEmpty = !this.typeList[label.title] || this.typeList[label.title].length === 0;
-
-        return cancellableFetch(fetch(URL, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }), DefaultTimeout)
-            .then((response)=>{
-                if (response.ok) {
-                    return parseJSON(response);
-                } else {
-                    label.loading = false;
-                    return {};
-                }
-            })
+        let isEmpty = !this.state.typeList[label.title] || this.state.typeList[label.title].length === 0;
+        getList(label,count)
             .then((responseData)=>{
                 label.loading = false;
                 if (currentLabel) {
@@ -148,16 +125,14 @@ class App extends React.Component {
                 if (Object.keys(responseData).length === 0) {//返回数据为空
                     throw "返回数据为空！";
                 } else {
-                    for (let key in responseData) {
-                        if (isEmpty) {
-                            this.typeList[label.title] = responseData[key];
-                        } else {
-                            this.typeList[label.title] = this.typeList[label.title].concat(responseData[key]);
-                        }
+                    if (isEmpty) {
+                        this.state.typeList[label.title] = responseData;
+                    } else {
+                        this.state.typeList[label.title] = this.state.typeList[label.title].concat(responseData);
                     }
                 }
                 this.setState({
-                    ds: this.state.ds.cloneWithRows(this.typeList[label.title])
+                    ds: this.state.ds.cloneWithRows(this.state.typeList[label.title])
                 });
             })
             .catch((error) => {
@@ -205,7 +180,7 @@ class App extends React.Component {
                     style={styles.base}
                 >
                     {
-                        this.renderContent((this.typeList[label.title] ? this.state.ds.cloneWithRows(this.typeList[label.title]) : []), label)
+                        this.renderContent((this.state.typeList[label.title] ? this.state.ds.cloneWithRows(this.state.typeList[label.title]) : []), label)
                     }
                 </View>);
             views.push(typeview);
@@ -249,9 +224,9 @@ class App extends React.Component {
                                      break;
                                 }
                             }
-                        if(this.typeList[key]) {
+                        if(this.state.typeList[key]) {
                             this.setState({
-                                ds: this.state.ds.cloneWithRows(this.typeList[key]?this.typeList[key]:[])
+                                ds: this.state.ds.cloneWithRows(this.state.typeList[key]?this.state.typeList[key]:[])
                             });
                         } else {
                             this.getNewsList(currentLabel);
@@ -265,8 +240,7 @@ class App extends React.Component {
                     tabBarInactiveTextColor="#aaaaaa"
                     tabBarPosition={'top'}
                     renderTabBar={() =>
-                        <ScrollableTabBar
-                        />
+                        <ScrollableTabBar/>
                     }>
                     {
                         this.renderLabelView()
@@ -567,6 +541,7 @@ class App extends React.Component {
         return (
             <View>
                 <Modal
+                    onRequestClose={()=>{console.log(arguments)}}//Necessary for Android
                     animationType={"fade"}
                     transparent={true}
                     visible={this.state.modalVisible}

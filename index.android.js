@@ -76,6 +76,7 @@ class news extends React.Component {
                     onChangeTab={(lb)=>{
                       }
                     }
+                    locked={true}//禁止tabbar滚动
                     scrollWithoutAnimation={true}
                     tabBarPosition={'bottom'}
                     renderTabBar={() =>
