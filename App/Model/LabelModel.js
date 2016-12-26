@@ -1,7 +1,6 @@
 /**
  * Created by jiangzhenhua on 2016/12/19.
  */
-
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
 
 export function TypeListLabels() {
@@ -77,7 +76,6 @@ export function getList(label:LabelModel, count:number) {
             }
         })
         .catch((error) => {
-            label.loading = false;
-            return error.toString();
+            throw error.toString();
         });
 }

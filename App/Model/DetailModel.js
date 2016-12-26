@@ -166,7 +166,7 @@ export function getDetail(docid, boardid, postid) {
         detail.replyModels = replies;
         return detail;
     }).catch((e) => {
-        console.log(e.toString());
+        throw e;
     })
 }
 

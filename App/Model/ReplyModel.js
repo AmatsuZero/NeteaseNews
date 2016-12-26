@@ -53,6 +53,6 @@ export function getCommentsList(boardid, postid, docid) {
             }
         })
         .catch((error) => {
-            return error;
+            throw error;
         });
 }

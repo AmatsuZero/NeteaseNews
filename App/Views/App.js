@@ -27,7 +27,7 @@ import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-v
 //详情页
 import NewsDetail from "./NewsDetail";
 //页面数据模型
-import {TypeListLabels, TypeList, getList,getTypeList} from "../Model/LabelModel";
+import {TypeListLabels, getList, getTypeList} from "../Model/LabelModel";
 //弹窗提示
 import {toastShort} from "../Util/ToastUtil";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
@@ -68,12 +68,18 @@ class App extends React.Component {
 
     componentDidMount() {
         InteractionManager.runAfterInteractions(()=>{
-            getTypeList(this.state.labels[0])
+            getTypeList(currentLabel)
                 .then((typelist)=>{
+                    currentLabel.loading = false;
                     this.setState({
                         typeList:typelist
                     })
                 })
+                .catch((error) => {
+                    currentLabel.loading = false;
+                    currentLabel.loadingMore = false;
+                    toastShort(error);
+                });
             this.getWeatherData();
             this.getHotWordsList();
             });
