@@ -16,7 +16,6 @@ import {
     Navigator,
     ScrollView,
     ActivityIndicator,
-    Dimensions,
     TouchableWithoutFeedback,
     Modal,
     Animated,
@@ -26,6 +25,8 @@ import {
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
 //详情页
 import NewsDetail from "./NewsDetail";
+//图片详情
+import PhotoSetPage from './PhotoSetPage'
 //页面数据模型
 import {TypeListLabels, getList, getTypeList} from "../Model/LabelModel";
 //弹窗提示
@@ -207,6 +208,22 @@ class App extends React.Component {
                         boardid: article.boardid,
                         docid: article.docid,
                         postid: article.imgextra ? article.postid : null
+                    }
+                })
+            }
+        }
+    }
+
+    __onPressPhotoSet(article){
+        if (article){
+            const { navigator } = this.props;
+            //这里传递了navigator作为props
+            if(navigator) {
+                navigator.push({
+                    name: article.title,
+                    component: PhotoSetPage,
+                    params:{
+                        photoID:article.photosetID
                     }
                 })
             }
@@ -418,9 +435,7 @@ class App extends React.Component {
     renderItem(article) {
         if (article.hasHead) {//头条样式
             return (
-                <TouchableOpacity onPress={()=>{
-                    this._onPress(article);
-                }}>
+                <TouchableOpacity onPress={()=>this.__onPressPhotoSet(article)}>
                     <View style={styles.cellHead}>
                         <Image
                             style={styles.cellImgHead}
@@ -435,9 +450,7 @@ class App extends React.Component {
             );
         } else if (article.imgextra) {//图片样式
             return (
-                <TouchableOpacity onPress={()=>{
-                    this._onPress(article);
-                }}>
+                <TouchableOpacity onPress={()=>this.__onPressPhotoSet(article)}>
                     <View style={styles.cellPhotoSet}>
                         <View style={styles.cellUpContent}>
                             <Text style={styles.title}>
