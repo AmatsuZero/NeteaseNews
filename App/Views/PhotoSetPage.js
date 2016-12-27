@@ -37,17 +37,26 @@ export default class PhotoSetPage extends React.Component {
         super(props);
         this.state = {
             replyCount:0,
-            photoSetData:null
+            photoSetData:null,
+            title:'',
+            content:'',
+            index:1
         }
+        this.changeContent = this.changeContent.bind(this);
     }
 
     componentDidMount() {
 
         InteractionManager.runAfterInteractions(()=>{
+
+            this.setState({
+                replyCount:this.props.replyCount
+            })
+
             getPhotoSetModel(this.props.photoID)
                 .then((photoModel)=>{
                     this.setState({
-                        photoSetData:photoModel
+                        photoSetData:photoModel,
                     })
                 })
                 .catch((e)=>{
@@ -138,10 +147,6 @@ export default class PhotoSetPage extends React.Component {
             </View>);
     }
 
-    renderBottomBar(){
-
-    }
-
     renderContent(){
         let views = [];
         for(let photomodel of this.state.photoSetData.photos) {
@@ -167,10 +172,45 @@ export default class PhotoSetPage extends React.Component {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               pagingEnabled={true}
+              onScroll={this.changeContent}
+              scrollEventThrottle={16}
           >
               {this.renderContent()}
           </ScrollView>
         );
+    }
+
+    changeContent(event) {
+        let contentOffSetX = event.nativeEvent.contentOffset.x;
+        let index = Math.round(contentOffSetX/screenWidth);
+        if (index < 0) {
+            index = 0;
+        }
+        let arr = this.state.photoSetData.photos;
+        this.setState({
+            title:arr[index].imgtitle,
+            content:arr[index].note.length > 0 ? arr[index].note : arr[index].imgtitle,
+            index:index+1
+        })
+    }
+
+
+    renderBottom() {
+       return (
+           <View style={styles.bottomView}>
+               <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+                   <Text tyle={{fontSize:19,color:'white'}}>
+                       {this.state.title}
+                   </Text>
+                   <Text style={{fontSize:17,color:'white'}}>
+                       {this.state.index + '/' + this.state.photoSetData.photos.length}
+                   </Text>
+               </View>
+               <Text style={{fontSize:14,color:'white'}}>
+                   {this.state.content}
+               </Text>
+           </View>
+       );
     }
 
     render(){
@@ -178,6 +218,7 @@ export default class PhotoSetPage extends React.Component {
             <View style={styles.container}>
                 {this.renderNaivBar()}
                 {this.state.photoSetData ?  this.renderPhotoSet() : <LoadingView/>}
+                {this.state.photoSetData ?  this.renderBottom() : <View/>}
             </View>)
     }
 
@@ -188,7 +229,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor:'black'
+        backgroundColor:'black',
+        justifyContent:'center'
     },
 
     base: {
@@ -209,6 +251,14 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'column',
         justifyContent:'center',
+    },
+
+    bottomView: {
+        flexDirection:'column',
+        flex:1,
+        backgroundColor:'transparent',
+        justifyContent:'flex-start',
+        flexGrow:0.2
     }
 
 });

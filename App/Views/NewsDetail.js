@@ -49,6 +49,7 @@ export default class NewsDetail extends React.Component {
 
         this.renderSectionHeader = this.renderSectionHeader.bind(this);
         this.renderItem = this.renderItem.bind(this);
+        this._handleRequest = this._handleRequest.bind(this);
     }
 
     componentDidMount() {
@@ -181,10 +182,19 @@ export default class NewsDetail extends React.Component {
 
     }
 
+    _handleRequest(request) {
+        if(request.url.indexOf('sx://') > -1) {
+            
+            return false;
+        }
+        return true;
+    }
+
     renderItem(rowData, sectionID, rowID, highlightRow) {
         switch (sectionID) {
             case "正文":
                 return (<WebView
+                    onShouldStartLoadWithRequest={this._handleRequest}
                     automaticallyAdjustContentInsets={false}
                     style={styles.webView}
                     source={{html:rowData}}

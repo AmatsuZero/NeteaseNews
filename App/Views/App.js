@@ -223,7 +223,8 @@ class App extends React.Component {
                     name: article.title,
                     component: PhotoSetPage,
                     params:{
-                        photoID:article.photosetID
+                        photoID:article.photosetID ? article.photosetID :article.postid,
+                        replyCount:article.replyCount
                     }
                 })
             }
@@ -450,7 +451,7 @@ class App extends React.Component {
             );
         } else if (article.imgextra) {//图片样式
             return (
-                <TouchableOpacity onPress={()=>this.__onPressPhotoSet(article)}>
+                <TouchableOpacity onPress={()=>this._onPress(article)}>
                     <View style={styles.cellPhotoSet}>
                         <View style={styles.cellUpContent}>
                             <Text style={styles.title}>

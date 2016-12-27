@@ -161,7 +161,7 @@ export function getDetail(docid, boardid, postid) {
     //利用Promise all 创建联合任务
     return Promise.all([getDetail, getComments]).then((data) => {
         let detail = data[0];
-        let replies = data[1];
+        let replies = data[1] ? data[1] : [];
         replies.push({});
         detail.replyModels = replies;
         return detail;
