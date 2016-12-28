@@ -45,11 +45,13 @@ export default class NewsDetail extends React.Component {
             docid: null,
             postid: null,
             detail: null,
+            shouldChange:false
         };
 
         this.renderSectionHeader = this.renderSectionHeader.bind(this);
         this.renderItem = this.renderItem.bind(this);
         this._handleRequest = this._handleRequest.bind(this);
+        this.changeContent = this.changeContent.bind(this);
     }
 
     componentDidMount() {
@@ -184,7 +186,7 @@ export default class NewsDetail extends React.Component {
 
     _handleRequest(request) {
         if(request.url.indexOf('sx://') > -1) {
-            
+
             return false;
         }
         return true;
@@ -318,12 +320,26 @@ export default class NewsDetail extends React.Component {
                 style={{flexDirection:'row', justifyContent:'center', alignItems:'center', height:64, borderColor: '#eeeeec'}}>
                 <Image
                     style={{width:26, height:26}}
-                    source={require('../Img/Detail/newscontent_drag_arrow@2x.png')}
+                    source={!this.state.shouldChange ? require('../Img/Detail/newscontent_drag_arrow@2x.png') : require('../Img/Detail/newscontent_drag_return@2x.png')}
                 />
                 <Text style={{fontSize:15,color:'gray', marginLeft:10}}>
                     上拉关闭当前页
                 </Text>
             </View>)
+    }
+
+    changeContent(event) {
+        let contentOffSetY = event.nativeEvent.contentOffset.y;
+        let totalHeight = event.nativeEvent.contentSize.height;
+        if(contentOffSetY > totalHeight - 400) {
+            this.setState({
+                shouldChange:true
+            })
+        } else {
+            this.setState({
+                shouldChange:true
+            })
+        }
     }
 
     render() {
@@ -340,6 +356,8 @@ export default class NewsDetail extends React.Component {
                         renderRow={this.renderItem}
                         renderSectionHeader={this.renderSectionHeader}
                         renderFooter={()=>this.renderFooter()}
+                        onScroll={this.changeContent}
+                        scrollEventThrottle={10}
                         renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                     />}
             </View>

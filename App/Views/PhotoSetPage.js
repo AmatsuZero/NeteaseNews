@@ -257,8 +257,8 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         flex:1,
         backgroundColor:'transparent',
-        justifyContent:'flex-start',
-        flexGrow:0.2
+        justifyContent:'center',
+        flexGrow:0.5
     }
 
 });
