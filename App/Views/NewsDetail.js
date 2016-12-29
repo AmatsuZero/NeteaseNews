@@ -337,7 +337,7 @@ export default class NewsDetail extends React.Component {
             })
         } else {
             this.setState({
-                shouldChange:true
+                shouldChange:false
             })
         }
     }

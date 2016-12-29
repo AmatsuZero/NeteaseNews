@@ -70,7 +70,7 @@ export default class WeatherDetail extends React.Component {
         let fontStyle = {
             fontFamily: 'PingFang SC',
             color: 'white'
-        };;;;
+        };
 
         return (
             <View style={styles.navibar}>
