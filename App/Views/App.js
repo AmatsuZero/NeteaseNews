@@ -57,7 +57,7 @@ class App extends React.Component {
             labels: TypeListLabels(),
             modalVisible: false,
             rotateValue: new Animated.Value(0),
-            typeList:{}
+            typeList:{},
         };
         //要这样绑定一下
         this.renderItem = this.renderItem.bind(this);
@@ -223,6 +223,7 @@ class App extends React.Component {
                     name: article.title,
                     component: PhotoSetPage,
                     params:{
+                        boardid:article.boardid,
                         photoID:article.photosetID ? article.photosetID :article.postid,
                         replyCount:article.replyCount
                     }
@@ -561,7 +562,7 @@ class App extends React.Component {
         return (
             <View>
                 <Modal
-                    onRequestClose={()=>{console.log(arguments)}}//Necessary for Android
+                    onRequestClose={()=>{ this.setState({modalVisible:false})}}//Necessary for Android
                     animationType={"fade"}
                     transparent={true}
                     visible={this.state.modalVisible}

@@ -18,17 +18,18 @@ import {
 } from "react-native";
 import {Navibarheight, DefaultTimeout} from "../Model/Constants";
 import {parseJSON, cancellableFetch} from "../Util/NetworkUtil";
-import ReplyModel from "../Model/ReplyModel";
+import {createNormalModel,createHotReplyModel} from "../Model/ReplyModel";
 
 let backArrow = require('../Img/night_icon_back@2x.png');
 let replyImg = require('../Img/contentview_commentbacky@2x.png');
 let profile = require('../Img/comment_profile_mars@2x.png');
 let proThumb = require('../Img/night_contentview_pkbutton@2x.png');
 
-let source = {
-    "hotPosts": [],//热门评论
-    "normalPosts": []//普通评论
-};
+let source;
+
+const protoTypes = {
+    hotRelies:React.PropTypes.array
+}
 
 export default class Reply extends React.Component {
 
@@ -38,18 +39,25 @@ export default class Reply extends React.Component {
             rowHasChanged: (r1, r2) => r1 !== r2,
             sectionHeaderHasChanged: (s1, s2) => s1 !== s2
         });
+
         this.state = {
             dataSource: ds,
             boardid: '',
             docid: '',
             postid: null,
-            hotRelies: [],
         };
 
         this.renderItem = this.renderItem.bind(this);
     }
 
     componentDidMount() {
+
+        //先清空一下数据
+        source = {
+            "hotPosts": [],//热门评论
+            "normalPosts": []//普通评论
+        };
+
         InteractionManager.runAfterInteractions(() => {
             this.setState({
                 boardid: this.props.boardid,
@@ -119,7 +127,8 @@ export default class Reply extends React.Component {
                     if (np && np.length > 0) {
                         for (let comment of np) {
                             let model = comment["1"];
-                            source["normalPosts"].push(ReplyModel.createNormalModel(model))
+                            model = createNormalModel(model);
+                            source["normalPosts"].push(model)
                         }
                     }
                     this.setState({
@@ -134,6 +143,9 @@ export default class Reply extends React.Component {
 
     renderItem(reply) {
         if (reply) {
+            if(!reply.say){
+                return <View/>
+            }
             return (
                 <View style={styles.cellContainer}>
                     <Image
@@ -274,6 +286,8 @@ export default class Reply extends React.Component {
         );
     }
 }
+
+Reply.propTypes = protoTypes;
 
 const styles = StyleSheet.create({
 

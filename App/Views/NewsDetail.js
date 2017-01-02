@@ -15,7 +15,8 @@ import {
     Platform,
     InteractionManager,
     ListView,
-    RecyclerViewBackedScrollView
+    RecyclerViewBackedScrollView,
+    Modal
 } from "react-native";
 //加载中
 import LoadingView from "../Component/LoadingView";
@@ -26,6 +27,8 @@ import {toastShort} from "../Util/ToastUtil";
 
 const replyImg = require('../Img/contentview_commentbacky@2x.png');
 const backArrow = require('../Img/night_icon_back@2x.png');
+
+import LightHouse from "./LightHouse"
 
 export default class NewsDetail extends React.Component {
 
@@ -45,7 +48,9 @@ export default class NewsDetail extends React.Component {
             docid: null,
             postid: null,
             detail: null,
-            shouldChange:false
+            shouldChange:false,
+            modalVisible:false,
+            imgURL:null
         };
 
         this.renderSectionHeader = this.renderSectionHeader.bind(this);
@@ -63,6 +68,7 @@ export default class NewsDetail extends React.Component {
                 boardid:this.props.boardid,
                 docid:this.props.docid,
                 postid: this.props.postid,
+                modalVisible:false
             });
             getDetail(this.state.docid, this.state.boardid, this.state.postid).then((detail) => {
                 this.setState({
@@ -181,21 +187,39 @@ export default class NewsDetail extends React.Component {
     }
 
     _onPressShowMoreComments() {
-
+        const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: '评论',
+                component: Reply,
+                params: {
+                    boardid:this.state.boardid,
+                    docid:this.state.docid,
+                    postid:this.state.postid,
+                    hotRelies:this.state.detail.replyModels
+                }
+            })
+        }
     }
 
     _handleRequest(request) {
         if(request.url.indexOf('sx://') > -1) {
-
+            this.setState({
+                modalVisible:true,
+                imgURL:request.url
+            });
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 
     renderItem(rowData, sectionID, rowID, highlightRow) {
         switch (sectionID) {
             case "正文":
-                return (<WebView
+                return (
+                    <WebView
+                    domStorageEnabled={true}
                     onShouldStartLoadWithRequest={this._handleRequest}
                     automaticallyAdjustContentInsets={false}
                     style={styles.webView}
@@ -252,26 +276,41 @@ export default class NewsDetail extends React.Component {
                         </View>)
                 } else {
                     return (
-                        <View style={styles.simiNews}>
-                            <Image
-                                style={{width:80,height:60, margin:10, borderRadius:2}}
-                                source={rowData.imgsrc ? {uri:rowData.imgsrc} : require('../Img/Detail/303.jpg')}
-                            />
-                            <View
-                                style={{flexDirection:'column', justifyContent:'flex-start', alignItems:'flex-start', marginVertical:10, flexShrink:10}}>
-                                <Text style={{fontSize:15}}>
-                                    {rowData.title}
-                                </Text>
-                                <View style={{flexDirection:'row', justifyContent:'flex-start', marginTop:10}}>
-                                    <Text style={{fontSize:11, color:'gray'}}>
-                                        {rowData.source}
+                        <TouchableOpacity onPress={()=>{
+                                const { navigator } = this.props;
+                                //这里传递了navigator作为props
+                                if(navigator) {
+                                    navigator.push({
+                                        name: rowData.title,
+                                        component: NewsDetail,
+                                        params: {
+                                            docid: rowData.id,
+                                        }
+                                    })
+                                }
+                            }}>
+                            <View style={styles.simiNews}>
+                                <Image
+                                    style={{width:80,height:60, margin:10, borderRadius:2}}
+                                    source={rowData.imgsrc ? {uri:rowData.imgsrc} : require('../Img/Detail/303.jpg')}
+                                />
+                                <View
+                                    style={{flexDirection:'column', justifyContent:'flex-start', alignItems:'flex-start', marginVertical:10, flexShrink:10}}>
+                                    <Text style={{fontSize:15}}>
+                                        {rowData.title}
                                     </Text>
-                                    <Text style={{fontSize:11,marginLeft:10, color:'gray'}}>
-                                        {rowData.ptime}
-                                    </Text>
+                                    <View style={{flexDirection:'row', justifyContent:'flex-start', marginTop:10}}>
+                                        <Text style={{fontSize:11, color:'gray'}}>
+                                            {rowData.source}
+                                        </Text>
+                                        <Text style={{fontSize:11,marginLeft:10, color:'gray'}}>
+                                            {rowData.ptime}
+                                        </Text>
+                                    </View>
                                 </View>
                             </View>
-                        </View>)
+                        </TouchableOpacity>
+                    )
                 }
             }
             case "分享": {
@@ -346,6 +385,14 @@ export default class NewsDetail extends React.Component {
         return (
             <View style={styles.container}>
                 {this.renderNaivBar()}
+                <Modal
+                    onRequestClose={()=>{ this.setState({modalVisible:false})}}//Necessary for Android
+                    animationType={"fade"}
+                    transparent={true}
+                    visible={this.state.modalVisible}
+                >
+                    <LightHouse customURL={this.state.imgURL} style={{width:300,height:400}}/>
+                </Modal>
                 {!this.state.dataSource.sectionIdentities.length > 0 ?
                     <LoadingView/> :
                     <ListView

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -28,6 +29,9 @@
 		5229C1392B624DEA81170B5F /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A255D2DE900D452B860AA910 /* Octicons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		650DDF981ED841369D596526 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4BFBD4205BF4282AB9C4B1D /* EvilIcons.ttf */; };
+		80835B751E1A3D0500DEB397 /* LightHouseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80835B741E1A3D0500DEB397 /* LightHouseManager.m */; };
+		80835B7B1E1A48AB00DEB397 /* LightHouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 80835B7A1E1A48AB00DEB397 /* LightHouse.m */; };
+		80835B7F1E1A4E6E00DEB397 /* HttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 80835B7E1E1A4E6E00DEB397 /* HttpProtocol.m */; };
 		830F0F79537A4239BA527EF7 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4F5CFD5314314B13030D9 /* Zocial.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8FA85926A93C480E82F6925B /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266426F910F349C7BF729757 /* SimpleLineIcons.ttf */; };
@@ -212,6 +216,12 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7E1DD94EDDD241538120EF13 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		800FF30E1E0A91ED001B84A6 /* HYQiHei-50J.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HYQiHei-50J.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/HYQiHei-50J.ttf"; sourceTree = "<group>"; };
+		80835B731E1A3D0500DEB397 /* LightHouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouseManager.h; sourceTree = "<group>"; };
+		80835B741E1A3D0500DEB397 /* LightHouseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouseManager.m; sourceTree = "<group>"; };
+		80835B791E1A48AB00DEB397 /* LightHouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouse.h; sourceTree = "<group>"; };
+		80835B7A1E1A48AB00DEB397 /* LightHouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouse.m; sourceTree = "<group>"; };
+		80835B7D1E1A4E6E00DEB397 /* HttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProtocol.h; sourceTree = "<group>"; };
+		80835B7E1E1A4E6E00DEB397 /* HttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpProtocol.m; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		956E4F11A6964C94A1073EEF /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		98062C26CB554FB5826279D3 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -336,6 +346,8 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				80835B7C1E1A4E4E00DEB397 /* Protocol */,
+				80835B5B1E1A085000DEB397 /* Components */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -394,6 +406,26 @@
 				804958471E08D9E800C64E8B /* libRNVectorIcons.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		80835B5B1E1A085000DEB397 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80835B731E1A3D0500DEB397 /* LightHouseManager.h */,
+				80835B741E1A3D0500DEB397 /* LightHouseManager.m */,
+				80835B791E1A48AB00DEB397 /* LightHouse.h */,
+				80835B7A1E1A48AB00DEB397 /* LightHouse.m */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		80835B7C1E1A4E4E00DEB397 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				80835B7D1E1A4E6E00DEB397 /* HttpProtocol.h */,
+				80835B7E1E1A4E6E00DEB397 /* HttpProtocol.m */,
+			);
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -775,7 +807,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				80835B7F1E1A4E6E00DEB397 /* HttpProtocol.m in Sources */,
+				80835B751E1A3D0500DEB397 /* LightHouseManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				80835B7B1E1A48AB00DEB397 /* LightHouse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

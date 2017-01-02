@@ -25,22 +25,27 @@ import {Navibarheight} from "../Model/Constants";
 
 import {getPhotoSetModel,PhotoSetModel} from "../Model/PhotoSetModel"
 import {toastShort} from "../Util/ToastUtil";
+import Reply from "./Reply"
+import {getCommentsList} from "../Model/ReplyModel"
 
 import LoadingView from "../Component/LoadingView";
 
 const screenWidth = Dimensions.get('window').width;
 const imageHeight = screenWidth * 200 / 320;
 
+let hotRelies;
+
 export default class PhotoSetPage extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            boardid:null,
             replyCount:0,
             photoSetData:null,
             title:'',
             content:'',
-            index:1
+            index:1,
         }
         this.changeContent = this.changeContent.bind(this);
     }
@@ -50,6 +55,7 @@ export default class PhotoSetPage extends React.Component {
         InteractionManager.runAfterInteractions(()=>{
 
             this.setState({
+                boardid:this.props.boardid,
                 replyCount:this.props.replyCount
             })
 
@@ -62,6 +68,21 @@ export default class PhotoSetPage extends React.Component {
                 .catch((e)=>{
                     toastShort(e.toString());
                 })
+
+            getCommentsList(this.state.boardid,this.props.photoID).then((responseData)=>{
+                let hp = responseData["hotPosts"];//取出热门评论
+                let result = [];
+                if (hp && hp.length > 0) {
+                    for (let comment of hp) {
+                        let model = comment["1"];
+                        let hot = createHotReplyModel(model);
+                        result.push(hot);
+                    }
+                }
+                return result;
+            }).then((comments)=>{
+                hotRelies = comments;
+            })
         });
     }
 
@@ -120,6 +141,19 @@ export default class PhotoSetPage extends React.Component {
         }
     }
 
+    _onCommentPress(){
+        const { navigator } = this.props;
+        navigator.push({
+            name: '评论',
+            component: Reply,
+            params:{
+                boardid: this.state.boardid,
+                postid: this.props.photoID,
+                hotRelies: hotRelies
+            }
+        })
+    }
+
     renderNaivBar() {
         return (
             <View style={styles.navibar}>
@@ -138,9 +172,7 @@ export default class PhotoSetPage extends React.Component {
                     />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback
-                    onPress={()=>{
-
-                    }}
+                    onPress={()=>this._onCommentPress()}
                 >
                     {this.renderReplyNumber()}
                 </TouchableWithoutFeedback>

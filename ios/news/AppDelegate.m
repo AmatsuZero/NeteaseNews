@@ -12,10 +12,14 @@
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 
+#import "HttpProtocol.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [HttpProtocol start];
+  
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
