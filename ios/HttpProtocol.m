@@ -41,7 +41,9 @@ NSURLSessionDataDelegate
 
 -(NSURLSession *)session {
   if (!_session) {
-    _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue new]];
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.requestCachePolicy = NSURLRequestUseProtocolCachePolicy;
+    _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue new]];
   }
   return _session;
 }
@@ -73,7 +75,9 @@ NSURLSessionDataDelegate
       [self.client URLProtocol:self didLoadData:data];
       [self.client URLProtocolDidFinishLoading:self];
   } else {
-    self.task = [self.session dataTaskWithRequest:self.request];
+    NSMutableURLRequest* newRequest = [self.request mutableCopy];
+    newRequest.cachePolicy = NSURLRequestUseProtocolCachePolicy;
+    self.task = [self.session dataTaskWithRequest:newRequest];
     [self.task resume];
   }
 }
@@ -91,6 +95,12 @@ NSURLSessionDataDelegate
 
 -(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data{
   [self.client URLProtocol:self didLoadData:data];
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+ willCacheResponse:(NSCachedURLResponse *)proposedResponse
+ completionHandler:(void (^)(NSCachedURLResponse * _Nullable cachedResponse))completionHandler{
+  completionHandler(proposedResponse);
 }
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{

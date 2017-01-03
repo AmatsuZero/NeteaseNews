@@ -61,8 +61,12 @@ export default class PhotoSetPage extends React.Component {
 
             getPhotoSetModel(this.props.photoID)
                 .then((photoModel)=>{
+                    let arr = photoModel.photos;
                     this.setState({
                         photoSetData:photoModel,
+                        title:arr[0].imgtitle,
+                        content:arr[0].note.length > 0 ? arr[0].note : arr[0].imgtitle,
+                        index:1
                     })
                 })
                 .catch((e)=>{

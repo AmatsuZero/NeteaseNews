@@ -30,13 +30,25 @@
 
 -(instancetype)init {
   if (self = [super init]) {
-    _imageView = [[UIImageView alloc]init];
-    _imageView.contentMode = UIViewContentModeScaleToFill;
-    _imageView.userInteractionEnabled = YES;
-    [self addSubview:_imageView];
     
-    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissAction:)];
-    [_imageView addGestureRecognizer:tap];
+    //GNU C 声明扩展写法
+    _imageView = ({
+        UIImageView* imv =  [[UIImageView alloc]init];
+        imv.contentMode = UIViewContentModeScaleToFill;
+        imv.userInteractionEnabled = YES;
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissAction:)];
+        [imv addGestureRecognizer:tap];
+      imv;
+    });
+    [self addSubview:_imageView];
+    {
+    UIButton* btn = [[UIButton alloc]initWithFrame:CGRectMake(SXSCREEN_W - 60, SXSCREEN_H - 60, 50, 50)];;
+    UIImage* img = [UIImage imageNamed:@"203"];
+    [btn setBackgroundImage:img forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(savaPhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:btn];
+    }
+    
   }
   return self;
 }
@@ -65,12 +77,15 @@
   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:parameters[@"src"]]];
   NSData *imgData = [cache cachedResponseForRequest:request].data;
   UIImage *image = [UIImage imageWithData:imgData];
-  
   self.imageView.image = image;
 }
 
 -(void)dismissAction:(UITapGestureRecognizer *)tapGez {
   self.onClick(nil);
+}
+
+-(void)savaPhoto:(UIButton*)sender{
+  UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil, nil);
 }
 
 @end
