@@ -15,5 +15,6 @@ export default class LightHouse extends React.Component {
 }
 
 LightHouse.propTypes = {
-    customURL:React.PropTypes.string
+    customURL:React.PropTypes.string,
+    onClick:React.PropTypes.func
 };

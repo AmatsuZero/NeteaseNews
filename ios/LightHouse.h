@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RCTComponent.h>
 
 @interface LightHouse : UIView
 
 @property(nonatomic,copy)NSString* customURL;
+
+@property(copy, nonatomic)RCTBubblingEventBlock onClick;
 
 @end

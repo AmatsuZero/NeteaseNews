@@ -16,7 +16,7 @@ import {
     InteractionManager,
     ListView,
     RecyclerViewBackedScrollView,
-    Modal
+    Modal,
 } from "react-native";
 //加载中
 import LoadingView from "../Component/LoadingView";
@@ -391,11 +391,15 @@ export default class NewsDetail extends React.Component {
                     transparent={true}
                     visible={this.state.modalVisible}
                 >
-                    <LightHouse customURL={this.state.imgURL} style={{width:300,height:400}}/>
+                    <LightHouse
+                        customURL={this.state.imgURL}
+                        onClick={()=>{this.setState({modalVisible:false})}}
+                        style={{flex:1,backgroundColor:'black'}}/>
                 </Modal>
                 {!this.state.dataSource.sectionIdentities.length > 0 ?
                     <LoadingView/> :
                     <ListView
+                        ref="backbone"
                         style={styles.listView}
                         initialListSize={3}
                         dataSource={this.state.dataSource}

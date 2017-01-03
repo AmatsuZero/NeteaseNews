@@ -9,16 +9,22 @@
 #import "LightHouseManager.h"
 #import "LightHouse.h"
 
+@interface LightHouseManager ()
+
+@end
+
 @implementation LightHouseManager
 
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_VIEW_PROPERTY(customURL, NSString);
 
+RCT_EXPORT_VIEW_PROPERTY(onClick, RCTBubblingEventBlock)
+
 -(UIView*)view {
   
-  return [[LightHouse alloc]init];
+  LightHouse* lh = [[LightHouse alloc]init];
+  return lh;
 }
-
 
 @end

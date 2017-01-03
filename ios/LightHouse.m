@@ -8,6 +8,9 @@
 
 #import "LightHouse.h"
 
+#define SXSCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SXSCREEN_H [UIScreen mainScreen].bounds.size.height
+
 @interface LightHouse ()
 
 @property(nonatomic,strong)NSDictionary *temImgPara;
@@ -17,13 +20,26 @@
 
 @implementation LightHouse
 
--(instancetype)initWithFrame:(CGRect)frame {
-  if (self = [super initWithFrame:frame]) {
-    _imageView = [[UIImageView alloc]initWithFrame:frame];
+-(void)layoutSubviews {
+  CGFloat w = SXSCREEN_W;
+  CGFloat h = SXSCREEN_W / [self.temImgPara[@"whscale"] floatValue];
+  CGFloat x = 0;
+  CGFloat y = (SXSCREEN_H - h)/2;
+  self.imageView.frame = CGRectMake(x, y, w, h);
+}
+
+-(instancetype)init {
+  if (self = [super init]) {
+    _imageView = [[UIImageView alloc]init];
+    _imageView.contentMode = UIViewContentModeScaleToFill;
+    _imageView.userInteractionEnabled = YES;
+    [self addSubview:_imageView];
+    
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissAction:)];
+    [_imageView addGestureRecognizer:tap];
   }
   return self;
 }
-
 
 -(void)setCustomURL:(NSString *)url {
   _customURL = url;
@@ -51,6 +67,10 @@
   UIImage *image = [UIImage imageWithData:imgData];
   
   self.imageView.image = image;
+}
+
+-(void)dismissAction:(UITapGestureRecognizer *)tapGez {
+  self.onClick(nil);
 }
 
 @end
