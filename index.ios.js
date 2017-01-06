@@ -23,6 +23,9 @@ const icons = [
         require('./App/Img/tabbar_icon_me_highlight@2x.png')]
 ];
 
+import ControlPanel from './App/Views/DrawerContent'
+import Drawer from 'react-native-drawer'
+
 class news extends React.Component {
 
     constructor(props) {
@@ -62,20 +65,33 @@ class news extends React.Component {
                         }}
                 renderScene={(route, navigator) => {
                             let Component = route.component;
-                            return <Component {...route.params} navigator={navigator} />
-                        }}
+                            return <Component {...route.params} navigator={navigator} drawerControl={()=>{this.drawer.open()}}/>
+                }}
             />
         );
     }
 
     render() {
-
         return (
+            <Drawer
+                ref={c => this.drawer = c}
+                type="overlay"
+                content={<ControlPanel
+                    closeDrawer={() => {
+                      this.drawer.close();
+                   }}
+                />}
+                tapToClose={true}
+                openDrawerOffset={0.2} // 20% gap on the right side of drawer
+                panCloseMask={0.2}
+                closedDrawerOffset={-3}
+                styles={{shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 3}}
+                tweenHandler={(ratio) => ({
+                main: { opacity:(2-ratio)/2 }
+            })}
+            >
             <View style={styles.container}>
                 <ScrollableTabView
-                    onChangeTab={(lb)=>{
-                      }
-                    }
                     locked={true}//禁止tabbar滚动
                     scrollWithoutAnimation={true}
                     tabBarPosition={'bottom'}
@@ -97,6 +113,7 @@ class news extends React.Component {
                     </View>
                 </ScrollableTabView>
             </View>
+            </Drawer>
         );
     }
 }

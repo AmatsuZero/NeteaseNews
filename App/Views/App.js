@@ -19,7 +19,7 @@ import {
     TouchableWithoutFeedback,
     Modal,
     Animated,
-    DeviceEventEmitter
+    DeviceEventEmitter,
 } from "react-native";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
@@ -47,6 +47,10 @@ let weatherData;
 //热词
 let hotwords;
 
+const propTypes = {
+    drawerControl:React.PropTypes.func
+}
+
 class App extends React.Component {
 
     constructor(props){
@@ -62,6 +66,7 @@ class App extends React.Component {
         //要这样绑定一下
         this.renderItem = this.renderItem.bind(this);
         this.renderFooter = this.renderFooter.bind(this);
+        this.handleTabScroll = this.handleTabScroll.bind(this);
         canLoadMore = false;
         //当前页
         currentLabel = this.state.labels[0];
@@ -236,11 +241,18 @@ class App extends React.Component {
         return true;
     }
 
+    handleTabScroll(event){
+        if(event < - 0) {
+            this.props.drawerControl();
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 {this.renderNaivBar()}
                 <ScrollableTabView
+                    onScroll={this.handleTabScroll.bind(this)}
                     onChangeTab={(lb)=>{
                         let key = lb.ref.props.tabLabel;
                         for(let label of this.state.labels){
@@ -767,5 +779,7 @@ const styles = StyleSheet.create({
     }
 
 });
+
+App.propTypes = propTypes;
 
 export default App;
