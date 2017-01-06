@@ -25,6 +25,7 @@ const icons = [
 
 import ControlPanel from './App/Views/DrawerContent'
 import Drawer from 'react-native-drawer'
+import VideoPage from './App/Views/VideoPage'
 
 class news extends React.Component {
 
@@ -102,9 +103,7 @@ class news extends React.Component {
                     <View style={styles.content} tabLabel='key2'>
                         <Text>#2</Text>
                     </View>
-                    <View style={styles.content} tabLabel='key3'>
-                        <Text>#3</Text>
-                    </View>
+                    <VideoPage tabLabel='key3'/>
                     <View style={styles.content} tabLabel='key4'>
                         <Text>#4</Text>
                     </View>

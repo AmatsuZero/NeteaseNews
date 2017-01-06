@@ -30,9 +30,25 @@ export function parseJSON(response) {
     if (response.ok) {
         return response.text()
             .then(function (text) {
-                return text ? JSON.parse(text) : {}
+                if(text){
+                    let obj = {};
+                    try {
+                        obj = JSON.parse(text);
+                    } catch(e) {
+                        obj = processInvalidJSONText(text);
+                    }
+                    return obj;
+                } else {
+                    return {}
+                }
             })
     } else {
         return {}
     }
+}
+
+function processInvalidJSONText(text) {
+    let newText = text.replace('callback_video(','');
+    newText = newText.replace(/\)/g,'');
+    return JSON.parse(newText);
 }
