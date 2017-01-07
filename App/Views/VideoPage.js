@@ -104,15 +104,16 @@ export default class VideoPage extends React.Component {
 
     render(){
         return this.source ?
-        (
-                <ListView
-                    initialListSize={1}
-                    dataSource={this.state.dataSource}
-                    style={styles.listView}
-                    renderRow={this.renderItem}
-                    enableEmptySections={true}
-                    renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
-                    refreshControl={
+            (
+                <View style={styles.container}>
+                    <ListView
+                        initialListSize={1}
+                        dataSource={this.state.dataSource}
+                        style={styles.listView}
+                        renderRow={this.renderItem}
+                        enableEmptySections={true}
+                        renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
+                        refreshControl={
                       <RefreshControl
                         style={styles.refreshControlBase}
                         refreshing={false}
@@ -123,11 +124,12 @@ export default class VideoPage extends React.Component {
                         colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
                       />
                     }
-                />
-        )
-        :
-        (
-                <View style={styles.container}>
+                    />
+                </View>
+            )
+            :
+            (
+                <View style={{flex:1,backgroundColor:'#eeeeec'}}>
                     <ScrollView
                         automaticallyAdjustContentInsets={false}
                         horizontal={false}
@@ -154,7 +156,7 @@ export default class VideoPage extends React.Component {
                         </View>
                     </ScrollView>
                 </View>
-        );
+            );
     };
 }
 
