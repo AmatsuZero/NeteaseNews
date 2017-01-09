@@ -23,8 +23,7 @@ DerivedData
 project.xcworkspace
 
 # Android/IntelliJ
-#
-build/
+#build/
 .idea
 .gradle
 local.properties
@@ -48,6 +47,49 @@ android/app/libs
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
+
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+.gitignore
+.travis.yml
+COPYING.GPLv2
+COPYING.GPLv3
+COPYING.LGPLv2.1
+COPYING.LGPLv2.1.txt
+COPYING.LGPLv3
+MODULE_LICENSE_APACHE2
+NEWS.md
+NOTICE
+README.md
+android/
+compile-android-j4a.sh
+config/
+doc/
+ijkmedia/
+ijkprof/
+init-android-exo.sh
+init-android-j4a.sh
+init-android-libsoxr.sh
+init-android-libyuv.sh
+init-android-openssl.sh
+init-android-prof.sh
+init-android.sh
+init-config.sh
+init-ios-openssl.sh
+init-ios.sh
+Would skip repository ios/ffmpeg-arm64
+Would skip repository ios/ffmpeg-armv7
+Would skip repository ios/ffmpeg-i386
+Would skip repository ios/ffmpeg-x86_64
+ios/.DS_Store
+ios/.gitignore
+ios/build
+ios/compile-ffmpeg.sh
+ios/compile-openssl.sh
+ios/IJKMediaDemo
+ios/IJKMediaPlayer
+ios/IJKMediaPodDemo
+ios/tools
+tools/
+version.sh

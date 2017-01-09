@@ -7,6 +7,7 @@
 //
 
 #import "VideoRoom.h"
+#import <IJKMediaFramework/IJKMediaFramework.h>
 
 @implementation VideoRoom
 
