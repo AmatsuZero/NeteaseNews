@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <IJKMediaFramework/IJKMediaFramework.h>
+#import "PlayerViewControl.h"
 
 @interface VideoRoom : UIView
 
 @property(nonatomic,copy)NSString* playURL;
+@property (atomic, retain) id <IJKMediaPlayback> player;
+@property (strong, nonatomic) PlayerViewControl *playerControl;
+@property (strong, nonatomic) UIView *playerView;
 
 @end

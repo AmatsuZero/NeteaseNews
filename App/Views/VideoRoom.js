@@ -3,14 +3,16 @@
  */
 import React from "react";
 import {
-    requireNativeComponent
+    requireNativeComponent,
+    StyleSheet
 } from "react-native";
 
 let Video = requireNativeComponent('VideoRoom',VideoRoom);
 
 export default class VideoRoom extends React.Component {
+
     render(){
-        return <Video {...this.props}/>;
+        return <Video style={{flex:1}} {...this.props}/>;
     }
 }
 

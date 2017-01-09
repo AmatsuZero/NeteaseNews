@@ -738,6 +738,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         position:'absolute',
         bottom:0,
+        left:2,
         color:'white',
         backgroundColor: 'rgba(0,0,0,0.3)',
     },

@@ -18,12 +18,15 @@ import {
     Modal,
     Animated,
     InteractionManager,
-    Dimensions
+    Dimensions,
+    Platform
 } from "react-native";
 
 const screenWidth = Dimensions.get('window').width;
 
 import {VideoModel, getVideoList} from '../Model/VideoModel'
+import PlayPage from './PlayPage'
+import {Navibarheight} from "../Model/Constants";
 
 export default class VideoPage extends React.Component {
 
@@ -59,11 +62,26 @@ export default class VideoPage extends React.Component {
 
     }
 
+    //跳转到视频播放页
+    toPlayPage(url){
+        const { navigator } = this.props;
+        //这里传递了navigator作为props
+        if(navigator) {
+            navigator.push({
+                name: '播放',
+                component: PlayPage,
+                params: {
+                    playURL:url
+                }
+            })
+        }
+    }
+
     renderItem(video:VideoModel){
         return(
             <TouchableOpacity
                 onPress={()=>{
-                    console.log(video.url);
+                    this.toPlayPage(video.url);
                 }}
                 style={styles.cellStyle}>
                 <Image
@@ -102,10 +120,20 @@ export default class VideoPage extends React.Component {
             </Text>);
     }
 
+    renderNaivBar() {
+        return (
+            <View style={styles.navibar}>
+                <Text style={{flex:1,textAlign:'center',color:'white', fontSize:16, letterSpacing:5}}>
+                    视频
+                </Text>
+            </View>);
+    }
+
     render(){
         return this.source ?
             (
                 <View style={styles.container}>
+                    {this.renderNaivBar()}
                     <ListView
                         initialListSize={1}
                         dataSource={this.state.dataSource}
@@ -130,6 +158,7 @@ export default class VideoPage extends React.Component {
             :
             (
                 <View style={{flex:1,backgroundColor:'#eeeeec'}}>
+                    {this.renderNaivBar()}
                     <ScrollView
                         automaticallyAdjustContentInsets={false}
                         horizontal={false}
@@ -210,6 +239,15 @@ const styles = StyleSheet.create({
         marginLeft:15,
         fontSize:17,
         fontWeight:'bold'
-    }
+    },
+
+    navibar: {
+        height: Navibarheight,
+        backgroundColor: 'red',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: Platform.OS === 'ios' ? 10 : 0
+    },
 });
 

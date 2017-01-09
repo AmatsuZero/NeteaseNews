@@ -72,6 +72,25 @@ class news extends React.Component {
         );
     }
 
+    //视频页面
+    renderVideoPage(){
+        const videoPage = '视频';
+        const videoPageComponent = VideoPage;
+        return (
+            <Navigator
+                tabLabel={'key3'}
+                initialRoute={{name:videoPage,component:videoPageComponent}}
+                configureScene={(route) => {
+                            return Navigator.SceneConfigs.PushFromRight;
+                        }}
+                renderScene={(route, navigator) => {
+                            let Component = route.component;
+                            return <Component {...route.params} navigator={navigator} drawerControl={()=>{this.drawer.open()}}/>
+                }}
+            />
+        );
+    }
+
     render() {
         return (
             <Drawer
@@ -103,7 +122,7 @@ class news extends React.Component {
                     <View style={styles.content} tabLabel='key2'>
                         <Text>#2</Text>
                     </View>
-                    <VideoPage tabLabel='key3'/>
+                    {this.renderVideoPage()}
                     <View style={styles.content} tabLabel='key4'>
                         <Text>#4</Text>
                     </View>

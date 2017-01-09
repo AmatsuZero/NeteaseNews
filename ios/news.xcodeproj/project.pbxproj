@@ -37,6 +37,9 @@
 		8046D91C1E23336600EC531F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D91B1E23336600EC531F /* UIKit.framework */; };
 		8046D91E1E23336D00EC531F /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D91D1E23336D00EC531F /* VideoToolbox.framework */; };
 		8046D9D61E236B7700EC531F /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9B51E236A8900EC531F /* IJKMediaFramework.framework */; };
+		8046D9DB1E236FF900EC531F /* ScreenRotateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8046D9DA1E236FF900EC531F /* ScreenRotateManager.m */; };
+		8046D9DE1E2373C000EC531F /* PlayerViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8046D9DD1E2373C000EC531F /* PlayerViewControl.m */; };
+		8046D9E41E23755700EC531F /* VideoRoom+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 8046D9E31E23755700EC531F /* VideoRoom+Notification.m */; };
 		8077C88C1E20EAB8007787ED /* LightHouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C8891E20EAB8007787ED /* LightHouse.m */; };
 		8077C88D1E20EAB8007787ED /* LightHouseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C88B1E20EAB8007787ED /* LightHouseManager.m */; };
 		8077C8931E20EADC007787ED /* VideoRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C8901E20EADB007787ED /* VideoRoom.m */; };
@@ -288,6 +291,12 @@
 		8046D91B1E23336600EC531F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8046D91D1E23336D00EC531F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		8046D9AF1E236A8900EC531F /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = "../ijkplayer-master/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj"; sourceTree = "<group>"; };
+		8046D9D91E236FF900EC531F /* ScreenRotateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenRotateManager.h; sourceTree = "<group>"; };
+		8046D9DA1E236FF900EC531F /* ScreenRotateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenRotateManager.m; sourceTree = "<group>"; };
+		8046D9DC1E2373C000EC531F /* PlayerViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewControl.h; sourceTree = "<group>"; };
+		8046D9DD1E2373C000EC531F /* PlayerViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewControl.m; sourceTree = "<group>"; };
+		8046D9E21E23755700EC531F /* VideoRoom+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VideoRoom+Notification.h"; sourceTree = "<group>"; };
+		8046D9E31E23755700EC531F /* VideoRoom+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VideoRoom+Notification.m"; sourceTree = "<group>"; };
 		8077C8881E20EAB8007787ED /* LightHouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouse.h; sourceTree = "<group>"; };
 		8077C8891E20EAB8007787ED /* LightHouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouse.m; sourceTree = "<group>"; };
 		8077C88A1E20EAB8007787ED /* LightHouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouseManager.h; sourceTree = "<group>"; };
@@ -529,6 +538,10 @@
 				8077C8901E20EADB007787ED /* VideoRoom.m */,
 				8077C8911E20EADB007787ED /* VideoRoomManager.h */,
 				8077C8921E20EADB007787ED /* VideoRoomManager.m */,
+				8046D9DC1E2373C000EC531F /* PlayerViewControl.h */,
+				8046D9DD1E2373C000EC531F /* PlayerViewControl.m */,
+				8046D9E21E23755700EC531F /* VideoRoom+Notification.h */,
+				8046D9E31E23755700EC531F /* VideoRoom+Notification.m */,
 			);
 			name = VideoRoom;
 			sourceTree = "<group>";
@@ -538,6 +551,8 @@
 			children = (
 				8077C8991E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.h */,
 				8077C89A1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m */,
+				8046D9D91E236FF900EC531F /* ScreenRotateManager.h */,
+				8046D9DA1E236FF900EC531F /* ScreenRotateManager.m */,
 				8077C8961E20EB06007787ED /* HttpProtocol.h */,
 				8077C8971E20EB06007787ED /* HttpProtocol.m */,
 			);
@@ -963,12 +978,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8046D9E41E23755700EC531F /* VideoRoom+Notification.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				8077C8981E20EB06007787ED /* HttpProtocol.m in Sources */,
 				8077C88D1E20EAB8007787ED /* LightHouseManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				8077C8931E20EADC007787ED /* VideoRoom.m in Sources */,
+				8046D9DB1E236FF900EC531F /* ScreenRotateManager.m in Sources */,
 				8077C8941E20EADC007787ED /* VideoRoomManager.m in Sources */,
+				8046D9DE1E2373C000EC531F /* PlayerViewControl.m in Sources */,
 				8077C89D1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m in Sources */,
 				8077C88C1E20EAB8007787ED /* LightHouse.m in Sources */,
 			);
