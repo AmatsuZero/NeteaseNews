@@ -234,14 +234,14 @@ export default class Weather extends React.Component {
                         />
                         <Text style={{
                         fontSize:16,
-                        fontFamily:'PingFang SC',
+                        fontFamily:'HYQiHei-EZJ',
                         color:'black'
                     }}>
                             {today.climate + " " + today.wind}
                         </Text>
                         <Text style={{
                         fontSize:16,
-                        fontFamily:'PingFang SC',
+                        fontFamily:'HYQiHei-EZJ',
                         color:'black'
                     }}>
                             {city}
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
     btnText: {
         marginTop: 10,
         fontSize: 16,
-        fontFamily: 'PingFang SC',
+        fontFamily: 'HYQiHei-EZJ',
     },
 
     displayLeft: {

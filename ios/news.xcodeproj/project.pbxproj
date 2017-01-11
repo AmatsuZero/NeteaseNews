@@ -297,6 +297,7 @@
 		8046D9DD1E2373C000EC531F /* PlayerViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewControl.m; sourceTree = "<group>"; };
 		8046D9E21E23755700EC531F /* VideoRoom+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VideoRoom+Notification.h"; sourceTree = "<group>"; };
 		8046D9E31E23755700EC531F /* VideoRoom+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VideoRoom+Notification.m"; sourceTree = "<group>"; };
+		805BDBFF1E26348400D54FF4 /* HYQiHei-EZJ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HYQiHei-EZJ.ttf"; sourceTree = "<group>"; };
 		8077C8881E20EAB8007787ED /* LightHouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouse.h; sourceTree = "<group>"; };
 		8077C8891E20EAB8007787ED /* LightHouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouse.m; sourceTree = "<group>"; };
 		8077C88A1E20EAB8007787ED /* LightHouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouseManager.h; sourceTree = "<group>"; };
@@ -510,6 +511,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		805BDBE41E26347900D54FF4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				805BDBFF1E26348400D54FF4 /* HYQiHei-EZJ.ttf */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		8077C86D1E20EA72007787ED /* LightRoom */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +533,7 @@
 		8077C8871E20EA98007787ED /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				805BDBE41E26347900D54FF4 /* Assets */,
 				8077C8951E20EAF0007787ED /* Function */,
 				8077C88E1E20EAC3007787ED /* VideoRoom */,
 				8077C86D1E20EA72007787ED /* LightRoom */,
