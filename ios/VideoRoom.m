@@ -35,31 +35,26 @@
   self = [super init];
   if (self) {
     isHidden = false;
-    NSLog(@"View Did Init");
-    if (![_player isPlaying]) {
-      [self.player prepareToPlay];
-    }
   }
   return self;
 }
 
 -(void)layoutSubviews {
-  if (!self.playerView) {
-      [self setupPlayer];
-  } else {
-    self.playerView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-  }
+    [self setupPlayer];
 }
+
 
 - (void)setupPlayer {
   self.backgroundColor = [UIColor grayColor];
   
-  if (!_playerView) {
-    self.playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+  if (!self.playerView) {
+    self.playerView = [[UIView alloc] init];
     [self addSubview:self.playerView];
   }
   
+  self.playerView.frame = self.bounds;
   smallFrame = self.playerView.frame;
+  
   IJKFFOptions *options;
   [options setCodecOptionIntValue:IJK_AVDISCARD_DEFAULT
                            forKey:@"skip_loop_filter"];
@@ -67,34 +62,33 @@
                            forKey:@"skip_frame"];
   [options setPlayerOptionIntValue:1 forKey:@"videotoolbox"];
   [options setPlayerOptionIntValue:8 forKey:@"framedrop"];
-  if (!_player) {
+  
+  if (!self.player) {
     NSURL* url = [NSURL URLWithString:self.playURL];
-    _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:url withOptions:options];
+    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:url withOptions:options];
+    [self.player setScalingMode:IJKMPMovieScalingModeAspectFit];
+    self.player.shouldAutoplay = YES;
   }
   
-  _player.view.frame = CGRectMake(0, 0, self.playerView.frame.size.width, self.playerView.frame.size.height);
+  self.player.view.frame = self.bounds;
   
-  _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  
-  [_player setScalingMode:IJKMPMovieScalingModeAspectFit];
-  
-  [self setupNotification];
+  if (![self.player isPlaying]) {
+    //一定要调用！
+    [self.player prepareToPlay];
+  }
+
   /*!
    playerControl method
    */
-  
-  if (!_playerControl) {
+  if (!self.playerControl) {
     self.playerControl = [[PlayerViewControl alloc] initWithFrame:self.frame];
+    self.playerControl.delegatePlayer = _player;
+    [self.player.view addSubview:self.playerControl];
+    [self.playerView addSubview:self.player.view];
+    [self.playerControl.fullScreenBut addTarget:self action:@selector(fullScreenButDidTouch) forControlEvents:UIControlEventTouchUpInside];
+    [self.playerControl.switchBut addTarget:self action:@selector(switchButDidTouch) forControlEvents:UIControlEventTouchUpInside];
+    [self setupNotification];
   }
-  self.playerControl.delegatePlayer = _player;
-  [_player.view addSubview:self.playerControl];
-  [self.playerView addSubview:_player.view];
-  
-  
-  
-  [self.playerControl.fullScreenBut addTarget:self action:@selector(fullScreenButDidTouch) forControlEvents:UIControlEventTouchUpInside];
-  [self.playerControl.danmakuBut addTarget:self action:@selector(danmakuButDidTouch) forControlEvents:UIControlEventTouchUpInside];
-  [self.playerControl.switchBut addTarget:self action:@selector(switchButDidTouch) forControlEvents:UIControlEventTouchUpInside];
   
   [self.playerControl showAndFade];
   
@@ -113,7 +107,6 @@
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-  NSLog(@"!!!!!!!");
   if (event.allTouches.count == 1) {
     [self.playerControl showAndFade];
     
@@ -190,10 +183,6 @@
   [self.player prepareToPlay];
 }
 
-
-- (void) danmakuButDidTouch {
-  
-}
 
 - (void) fullScreenButDidTouch {
   if ([ScreenRotateManager isOrientationLandscape]) {
