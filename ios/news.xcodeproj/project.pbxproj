@@ -310,6 +310,7 @@
 		8077C8971E20EB06007787ED /* HttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpProtocol.m; sourceTree = "<group>"; };
 		8077C8991E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+UIInterfaceOrientation.h"; sourceTree = "<group>"; };
 		8077C89A1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+UIInterfaceOrientation.m"; sourceTree = "<group>"; };
+		8085B3A11E287722005401CB /* news.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = news.entitlements; path = news/news.entitlements; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -437,6 +438,7 @@
 		13B07FAE1A68108700A75B9A /* news */ = {
 			isa = PBXGroup;
 			children = (
+				8085B3A11E287722005401CB /* news.entitlements */,
 				8077C8871E20EA98007787ED /* Component */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -675,6 +677,14 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = FS4G5542ZM;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1065,6 +1075,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = news/news.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
@@ -1079,6 +1090,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.daubert.neteasenews;
 				PRODUCT_NAME = news;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1088,6 +1100,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = news/news.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1101,6 +1114,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.daubert.neteasenews;
 				PRODUCT_NAME = news;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

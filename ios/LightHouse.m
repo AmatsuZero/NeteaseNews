@@ -21,6 +21,7 @@
 @implementation LightHouse
 
 -(void)layoutSubviews {
+  [super layoutSubviews];
   CGFloat w = SXSCREEN_W;
   CGFloat h = SXSCREEN_W / [self.temImgPara[@"whscale"] floatValue];
   CGFloat x = 0;
@@ -48,7 +49,6 @@
     [btn addTarget:self action:@selector(savaPhoto:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
     }
-    
   }
   return self;
 }
