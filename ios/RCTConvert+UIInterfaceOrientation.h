@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Facebook. All rights reserved.
 //
 
-#import <React/RCTConvert.h>
+#import "RCTConvert.h"
 
 @interface RCTConvert (UIInterfaceOrientation)
 

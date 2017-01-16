@@ -23,30 +23,31 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		8046D9061E23331300EC531F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9051E23331300EC531F /* AudioToolbox.framework */; };
-		8046D9081E23331A00EC531F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9071E23331A00EC531F /* AVFoundation.framework */; };
-		8046D90A1E23332400EC531F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9091E23332400EC531F /* CoreGraphics.framework */; };
-		8046D90C1E23332B00EC531F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D90B1E23332B00EC531F /* CoreMedia.framework */; };
-		8046D90E1E23333300EC531F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D90D1E23333300EC531F /* CoreVideo.framework */; };
-		8046D9101E23333D00EC531F /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D90F1E23333D00EC531F /* libbz2.tbd */; };
-		8046D9121E23334300EC531F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9111E23334300EC531F /* libz.tbd */; };
-		8046D9141E23334C00EC531F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9131E23334C00EC531F /* MediaPlayer.framework */; };
-		8046D9161E23335300EC531F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9151E23335300EC531F /* MobileCoreServices.framework */; };
-		8046D9181E23335900EC531F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9171E23335900EC531F /* OpenGLES.framework */; };
-		8046D91A1E23336000EC531F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9191E23336000EC531F /* QuartzCore.framework */; };
-		8046D91C1E23336600EC531F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D91B1E23336600EC531F /* UIKit.framework */; };
-		8046D91E1E23336D00EC531F /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D91D1E23336D00EC531F /* VideoToolbox.framework */; };
-		8046D9D61E236B7700EC531F /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8046D9B51E236A8900EC531F /* IJKMediaFramework.framework */; };
-		8046D9DB1E236FF900EC531F /* ScreenRotateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8046D9DA1E236FF900EC531F /* ScreenRotateManager.m */; };
-		8046D9DE1E2373C000EC531F /* PlayerViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8046D9DD1E2373C000EC531F /* PlayerViewControl.m */; };
-		8046D9E41E23755700EC531F /* VideoRoom+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 8046D9E31E23755700EC531F /* VideoRoom+Notification.m */; };
-		8077C88C1E20EAB8007787ED /* LightHouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C8891E20EAB8007787ED /* LightHouse.m */; };
-		8077C88D1E20EAB8007787ED /* LightHouseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C88B1E20EAB8007787ED /* LightHouseManager.m */; };
-		8077C8931E20EADC007787ED /* VideoRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C8901E20EADB007787ED /* VideoRoom.m */; };
-		8077C8941E20EADC007787ED /* VideoRoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C8921E20EADB007787ED /* VideoRoomManager.m */; };
-		8077C8981E20EB06007787ED /* HttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C8971E20EB06007787ED /* HttpProtocol.m */; };
-		8077C89D1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077C89A1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m */; };
+		8001609D1E2C9EDB0085E605 /* HttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 8001609A1E2C9EDB0085E605 /* HttpProtocol.m */; };
+		8001609E1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8001609C1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m */; };
+		800160AA1E2C9F630085E605 /* LightHouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A11E2C9F620085E605 /* LightHouse.m */; };
+		800160AB1E2C9F630085E605 /* LightHouseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A31E2C9F620085E605 /* LightHouseManager.m */; };
+		800160AC1E2C9F630085E605 /* VideoRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A51E2C9F620085E605 /* VideoRoom.m */; };
+		800160AD1E2C9F630085E605 /* VideoRoom+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A71E2C9F620085E605 /* VideoRoom+Notification.m */; };
+		800160AE1E2C9F630085E605 /* VideoRoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A91E2C9F630085E605 /* VideoRoomManager.m */; };
+		800160B31E2C9FA30085E605 /* PlayerViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160B01E2C9FA30085E605 /* PlayerViewControl.m */; };
+		800160B41E2C9FA30085E605 /* ScreenRotateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160B21E2C9FA30085E605 /* ScreenRotateManager.m */; };
+		800160C01E2CA03B0085E605 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160BB1E2C9FF30085E605 /* IJKMediaFramework.framework */; };
+		800160C31E2CA0900085E605 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C21E2CA0900085E605 /* libz.tbd */; };
+		800160C51E2CA0970085E605 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C41E2CA0970085E605 /* libbz2.tbd */; };
+		800160C71E2CA09E0085E605 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C61E2CA09E0085E605 /* AudioToolbox.framework */; };
+		800160C91E2CA0A40085E605 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C81E2CA0A40085E605 /* AVFoundation.framework */; };
+		800160CB1E2CA0AA0085E605 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160CA1E2CA0AA0085E605 /* CoreGraphics.framework */; };
+		800160CD1E2CA0B20085E605 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160CC1E2CA0B20085E605 /* CoreMedia.framework */; };
+		800160CF1E2CA0BA0085E605 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160CE1E2CA0BA0085E605 /* CoreVideo.framework */; };
+		800160D11E2CA0C40085E605 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160D01E2CA0C40085E605 /* MediaPlayer.framework */; };
+		800160D31E2CA0CB0085E605 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160D21E2CA0CB0085E605 /* MobileCoreServices.framework */; };
+		800160D51E2CA0DA0085E605 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160D41E2CA0DA0085E605 /* OpenGLES.framework */; };
+		800160D71E2CA0DF0085E605 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160D61E2CA0DF0085E605 /* QuartzCore.framework */; };
+		800160D91E2CA0E50085E605 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160D81E2CA0E50085E605 /* UIKit.framework */; };
+		800160DB1E2CA0ED0085E605 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160DA1E2CA0ED0085E605 /* VideoToolbox.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,97 +114,6 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
-		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A283A1D9B042B00D4039D;
-			remoteInfo = "RCTImage-tvOS";
-		};
-		3DAD3E871DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A28471D9B043800D4039D;
-			remoteInfo = "RCTLinking-tvOS";
-		};
-		3DAD3E8B1DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A28541D9B044C00D4039D;
-			remoteInfo = "RCTNetwork-tvOS";
-		};
-		3DAD3E8F1DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A28611D9B046600D4039D;
-			remoteInfo = "RCTSettings-tvOS";
-		};
-		3DAD3E931DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A287B1D9B048500D4039D;
-			remoteInfo = "RCTText-tvOS";
-		};
-		3DAD3E981DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A28881D9B049200D4039D;
-			remoteInfo = "RCTWebSocket-tvOS";
-		};
-		3DAD3EA21DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
-			remoteInfo = "React-tvOS";
-		};
-		3DAD3EA41DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3C059A1DE3340900C268FA;
-			remoteInfo = yoga;
-		};
-		3DAD3EA61DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3C06751DE3340C00C268FA;
-			remoteInfo = "yoga-tvOS";
-		};
-		3DAD3EA81DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD9251DE5FBEC00167DC4;
-			remoteInfo = cxxreact;
-		};
-		3DAD3EAA1DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
-			remoteInfo = "cxxreact-tvOS";
-		};
-		3DAD3EAC1DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD90B1DE5FBD600167DC4;
-			remoteInfo = jschelpers;
-		};
-		3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
-			remoteInfo = "jschelpers-tvOS";
-		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -225,26 +135,75 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
-		8046D9B41E236A8900EC531F /* PBXContainerItemProxy */ = {
+		800160791E2C9EA50085E605 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8046D9AF1E236A8900EC531F /* IJKMediaPlayer.xcodeproj */;
+			containerPortal = CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 91C5EFFF1C76ECA90037E727;
+			remoteInfo = RCTHotUpdate;
+		};
+		8001607D1E2C9EA50085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A283A1D9B042B00D4039D;
+			remoteInfo = "RCTImage-tvOS";
+		};
+		800160811E2C9EA50085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28471D9B043800D4039D;
+			remoteInfo = "RCTLinking-tvOS";
+		};
+		800160851E2C9EA50085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28541D9B044C00D4039D;
+			remoteInfo = "RCTNetwork-tvOS";
+		};
+		800160891E2C9EA50085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28611D9B046600D4039D;
+			remoteInfo = "RCTSettings-tvOS";
+		};
+		8001608D1E2C9EA50085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A287B1D9B048500D4039D;
+			remoteInfo = "RCTText-tvOS";
+		};
+		800160921E2C9EA50085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28881D9B049200D4039D;
+			remoteInfo = "RCTWebSocket-tvOS";
+		};
+		800160961E2C9EA50085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
+			remoteInfo = "React-tvOS";
+		};
+		800160BA1E2C9FF30085E605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E654EA8A1B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFramework;
 		};
-		8046D9B61E236A8900EC531F /* PBXContainerItemProxy */ = {
+		800160BC1E2C9FF30085E605 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8046D9AF1E236A8900EC531F /* IJKMediaPlayer.xcodeproj */;
+			containerPortal = 800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E654EA941B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFrameworkTests;
-		};
-		8046D9D71E236B7F00EC531F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8046D9AF1E236A8900EC531F /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E654EA891B6B27E600B0F2D0;
-			remoteInfo = IJKMediaFramework;
 		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -277,41 +236,41 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		8046D9051E23331300EC531F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		8046D9071E23331A00EC531F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		8046D9091E23332400EC531F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8046D90B1E23332B00EC531F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		8046D90D1E23333300EC531F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		8046D90F1E23333D00EC531F /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
-		8046D9111E23334300EC531F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		8046D9131E23334C00EC531F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		8046D9151E23335300EC531F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		8046D9171E23335900EC531F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		8046D9191E23336000EC531F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		8046D91B1E23336600EC531F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8046D91D1E23336D00EC531F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
-		8046D9AF1E236A8900EC531F /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = "../ijkplayer-master/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj"; sourceTree = "<group>"; };
-		8046D9D91E236FF900EC531F /* ScreenRotateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenRotateManager.h; sourceTree = "<group>"; };
-		8046D9DA1E236FF900EC531F /* ScreenRotateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenRotateManager.m; sourceTree = "<group>"; };
-		8046D9DC1E2373C000EC531F /* PlayerViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewControl.h; sourceTree = "<group>"; };
-		8046D9DD1E2373C000EC531F /* PlayerViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewControl.m; sourceTree = "<group>"; };
-		8046D9E21E23755700EC531F /* VideoRoom+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VideoRoom+Notification.h"; sourceTree = "<group>"; };
-		8046D9E31E23755700EC531F /* VideoRoom+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VideoRoom+Notification.m"; sourceTree = "<group>"; };
-		805BDBFF1E26348400D54FF4 /* HYQiHei-EZJ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HYQiHei-EZJ.ttf"; sourceTree = "<group>"; };
-		8077C8881E20EAB8007787ED /* LightHouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouse.h; sourceTree = "<group>"; };
-		8077C8891E20EAB8007787ED /* LightHouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouse.m; sourceTree = "<group>"; };
-		8077C88A1E20EAB8007787ED /* LightHouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouseManager.h; sourceTree = "<group>"; };
-		8077C88B1E20EAB8007787ED /* LightHouseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouseManager.m; sourceTree = "<group>"; };
-		8077C88F1E20EADB007787ED /* VideoRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRoom.h; sourceTree = "<group>"; };
-		8077C8901E20EADB007787ED /* VideoRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoom.m; sourceTree = "<group>"; };
-		8077C8911E20EADB007787ED /* VideoRoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRoomManager.h; sourceTree = "<group>"; };
-		8077C8921E20EADB007787ED /* VideoRoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoomManager.m; sourceTree = "<group>"; };
-		8077C8961E20EB06007787ED /* HttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProtocol.h; sourceTree = "<group>"; };
-		8077C8971E20EB06007787ED /* HttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpProtocol.m; sourceTree = "<group>"; };
-		8077C8991E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+UIInterfaceOrientation.h"; sourceTree = "<group>"; };
-		8077C89A1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+UIInterfaceOrientation.m"; sourceTree = "<group>"; };
-		8085B3A11E287722005401CB /* news.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = news.entitlements; path = news/news.entitlements; sourceTree = "<group>"; };
+		800160991E2C9EDB0085E605 /* HttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProtocol.h; sourceTree = "<group>"; };
+		8001609A1E2C9EDB0085E605 /* HttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpProtocol.m; sourceTree = "<group>"; };
+		8001609B1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+UIInterfaceOrientation.h"; sourceTree = "<group>"; };
+		8001609C1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+UIInterfaceOrientation.m"; sourceTree = "<group>"; };
+		800160A01E2C9F620085E605 /* LightHouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouse.h; sourceTree = "<group>"; };
+		800160A11E2C9F620085E605 /* LightHouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouse.m; sourceTree = "<group>"; };
+		800160A21E2C9F620085E605 /* LightHouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouseManager.h; sourceTree = "<group>"; };
+		800160A31E2C9F620085E605 /* LightHouseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouseManager.m; sourceTree = "<group>"; };
+		800160A41E2C9F620085E605 /* VideoRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRoom.h; sourceTree = "<group>"; };
+		800160A51E2C9F620085E605 /* VideoRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoom.m; sourceTree = "<group>"; };
+		800160A61E2C9F620085E605 /* VideoRoom+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VideoRoom+Notification.h"; sourceTree = "<group>"; };
+		800160A71E2C9F620085E605 /* VideoRoom+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VideoRoom+Notification.m"; sourceTree = "<group>"; };
+		800160A81E2C9F630085E605 /* VideoRoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRoomManager.h; sourceTree = "<group>"; };
+		800160A91E2C9F630085E605 /* VideoRoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoomManager.m; sourceTree = "<group>"; };
+		800160AF1E2C9FA30085E605 /* PlayerViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewControl.h; sourceTree = "<group>"; };
+		800160B01E2C9FA30085E605 /* PlayerViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewControl.m; sourceTree = "<group>"; };
+		800160B11E2C9FA30085E605 /* ScreenRotateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenRotateManager.h; sourceTree = "<group>"; };
+		800160B21E2C9FA30085E605 /* ScreenRotateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenRotateManager.m; sourceTree = "<group>"; };
+		800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = "../ijkplayer-master/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj"; sourceTree = "<group>"; };
+		800160C21E2CA0900085E605 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		800160C41E2CA0970085E605 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		800160C61E2CA09E0085E605 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		800160C81E2CA0A40085E605 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		800160CA1E2CA0AA0085E605 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		800160CC1E2CA0B20085E605 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		800160CE1E2CA0BA0085E605 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		800160D01E2CA0C40085E605 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		800160D21E2CA0CB0085E605 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		800160D41E2CA0DA0085E605 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		800160D61E2CA0DF0085E605 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		800160D81E2CA0E50085E605 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		800160DA1E2CA0ED0085E605 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
+		EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTHotUpdate.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,20 +286,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8046D9D61E236B7700EC531F /* IJKMediaFramework.framework in Frameworks */,
-				8046D91E1E23336D00EC531F /* VideoToolbox.framework in Frameworks */,
-				8046D91C1E23336600EC531F /* UIKit.framework in Frameworks */,
-				8046D91A1E23336000EC531F /* QuartzCore.framework in Frameworks */,
-				8046D9181E23335900EC531F /* OpenGLES.framework in Frameworks */,
-				8046D9161E23335300EC531F /* MobileCoreServices.framework in Frameworks */,
-				8046D9141E23334C00EC531F /* MediaPlayer.framework in Frameworks */,
-				8046D9121E23334300EC531F /* libz.tbd in Frameworks */,
-				8046D9101E23333D00EC531F /* libbz2.tbd in Frameworks */,
-				8046D90E1E23333300EC531F /* CoreVideo.framework in Frameworks */,
-				8046D90C1E23332B00EC531F /* CoreMedia.framework in Frameworks */,
-				8046D90A1E23332400EC531F /* CoreGraphics.framework in Frameworks */,
-				8046D9081E23331A00EC531F /* AVFoundation.framework in Frameworks */,
-				8046D9061E23331300EC531F /* AudioToolbox.framework in Frameworks */,
+				800160DB1E2CA0ED0085E605 /* VideoToolbox.framework in Frameworks */,
+				800160D91E2CA0E50085E605 /* UIKit.framework in Frameworks */,
+				800160D71E2CA0DF0085E605 /* QuartzCore.framework in Frameworks */,
+				800160D51E2CA0DA0085E605 /* OpenGLES.framework in Frameworks */,
+				800160D31E2CA0CB0085E605 /* MobileCoreServices.framework in Frameworks */,
+				800160D11E2CA0C40085E605 /* MediaPlayer.framework in Frameworks */,
+				800160CF1E2CA0BA0085E605 /* CoreVideo.framework in Frameworks */,
+				800160CD1E2CA0B20085E605 /* CoreMedia.framework in Frameworks */,
+				800160CB1E2CA0AA0085E605 /* CoreGraphics.framework in Frameworks */,
+				800160C91E2CA0A40085E605 /* AVFoundation.framework in Frameworks */,
+				800160C71E2CA09E0085E605 /* AudioToolbox.framework in Frameworks */,
+				800160C51E2CA0970085E605 /* libbz2.tbd in Frameworks */,
+				800160C31E2CA0900085E605 /* libz.tbd in Frameworks */,
+				800160C01E2CA03B0085E605 /* IJKMediaFramework.framework in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -352,6 +311,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				00C302C01ABCB91800DB3ED1 /* libRCTImage.a */,
-				3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */,
+				8001607E1E2C9EA50085E605 /* libRCTImage-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -387,7 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */,
-				3DAD3E8C1DF850E9000B6D8A /* libRCTNetwork-tvOS.a */,
+				800160861E2C9EA50085E605 /* libRCTNetwork-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -421,7 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				139105C11AF99BAD00B5F7CC /* libRCTSettings.a */,
-				3DAD3E901DF850E9000B6D8A /* libRCTSettings-tvOS.a */,
+				8001608A1E2C9EA50085E605 /* libRCTSettings-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,7 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				139FDEF41B06529B00C62182 /* libRCTWebSocket.a */,
-				3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */,
+				800160931E2C9EA50085E605 /* libRCTWebSocket-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,8 +398,8 @@
 		13B07FAE1A68108700A75B9A /* news */ = {
 			isa = PBXGroup;
 			children = (
-				8085B3A11E287722005401CB /* news.entitlements */,
-				8077C8871E20EA98007787ED /* Component */,
+				8001609F1E2C9F490085E605 /* Component */,
+				800160981E2C9EC10085E605 /* Function */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -455,13 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				146834041AC3E56700842450 /* libReact.a */,
-				3DAD3EA31DF850E9000B6D8A /* libReact.a */,
-				3DAD3EA51DF850E9000B6D8A /* libyoga.a */,
-				3DAD3EA71DF850E9000B6D8A /* libyoga.a */,
-				3DAD3EA91DF850E9000B6D8A /* libcxxreact.a */,
-				3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */,
-				3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */,
-				3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */,
+				800160971E2C9EA50085E605 /* libReact-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -479,102 +433,84 @@
 			isa = PBXGroup;
 			children = (
 				78C398B91ACF4ADC00677621 /* libRCTLinking.a */,
-				3DAD3E881DF850E9000B6D8A /* libRCTLinking-tvOS.a */,
+				800160821E2C9EA50085E605 /* libRCTLinking-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8046D9041E23331300EC531F /* Frameworks */ = {
+		800160721E2C9EA50085E605 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8046D91D1E23336D00EC531F /* VideoToolbox.framework */,
-				8046D91B1E23336600EC531F /* UIKit.framework */,
-				8046D9191E23336000EC531F /* QuartzCore.framework */,
-				8046D9171E23335900EC531F /* OpenGLES.framework */,
-				8046D9151E23335300EC531F /* MobileCoreServices.framework */,
-				8046D9131E23334C00EC531F /* MediaPlayer.framework */,
-				8046D9111E23334300EC531F /* libz.tbd */,
-				8046D90F1E23333D00EC531F /* libbz2.tbd */,
-				8046D90D1E23333300EC531F /* CoreVideo.framework */,
-				8046D90B1E23332B00EC531F /* CoreMedia.framework */,
-				8046D9091E23332400EC531F /* CoreGraphics.framework */,
-				8046D9071E23331A00EC531F /* AVFoundation.framework */,
-				8046D9051E23331300EC531F /* AudioToolbox.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8046D9B01E236A8900EC531F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8046D9B51E236A8900EC531F /* IJKMediaFramework.framework */,
-				8046D9B71E236A8900EC531F /* IJKMediaFrameworkTests.xctest */,
+				8001607A1E2C9EA50085E605 /* libRCTHotUpdate.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		805BDBE41E26347900D54FF4 /* Assets */ = {
+		800160981E2C9EC10085E605 /* Function */ = {
 			isa = PBXGroup;
 			children = (
-				805BDBFF1E26348400D54FF4 /* HYQiHei-EZJ.ttf */,
+				800160AF1E2C9FA30085E605 /* PlayerViewControl.h */,
+				800160B01E2C9FA30085E605 /* PlayerViewControl.m */,
+				800160B11E2C9FA30085E605 /* ScreenRotateManager.h */,
+				800160B21E2C9FA30085E605 /* ScreenRotateManager.m */,
+				800160991E2C9EDB0085E605 /* HttpProtocol.h */,
+				8001609A1E2C9EDB0085E605 /* HttpProtocol.m */,
+				8001609B1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.h */,
+				8001609C1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m */,
 			);
-			name = Assets;
+			name = Function;
 			sourceTree = "<group>";
 		};
-		8077C86D1E20EA72007787ED /* LightRoom */ = {
+		8001609F1E2C9F490085E605 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				8077C8881E20EAB8007787ED /* LightHouse.h */,
-				8077C8891E20EAB8007787ED /* LightHouse.m */,
-				8077C88A1E20EAB8007787ED /* LightHouseManager.h */,
-				8077C88B1E20EAB8007787ED /* LightHouseManager.m */,
-			);
-			name = LightRoom;
-			sourceTree = "<group>";
-		};
-		8077C8871E20EA98007787ED /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				805BDBE41E26347900D54FF4 /* Assets */,
-				8077C8951E20EAF0007787ED /* Function */,
-				8077C88E1E20EAC3007787ED /* VideoRoom */,
-				8077C86D1E20EA72007787ED /* LightRoom */,
+				800160A01E2C9F620085E605 /* LightHouse.h */,
+				800160A11E2C9F620085E605 /* LightHouse.m */,
+				800160A21E2C9F620085E605 /* LightHouseManager.h */,
+				800160A31E2C9F620085E605 /* LightHouseManager.m */,
+				800160A41E2C9F620085E605 /* VideoRoom.h */,
+				800160A51E2C9F620085E605 /* VideoRoom.m */,
+				800160A61E2C9F620085E605 /* VideoRoom+Notification.h */,
+				800160A71E2C9F620085E605 /* VideoRoom+Notification.m */,
+				800160A81E2C9F630085E605 /* VideoRoomManager.h */,
+				800160A91E2C9F630085E605 /* VideoRoomManager.m */,
 			);
 			name = Component;
 			sourceTree = "<group>";
 		};
-		8077C88E1E20EAC3007787ED /* VideoRoom */ = {
+		800160B61E2C9FF30085E605 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8077C88F1E20EADB007787ED /* VideoRoom.h */,
-				8077C8901E20EADB007787ED /* VideoRoom.m */,
-				8077C8911E20EADB007787ED /* VideoRoomManager.h */,
-				8077C8921E20EADB007787ED /* VideoRoomManager.m */,
-				8046D9DC1E2373C000EC531F /* PlayerViewControl.h */,
-				8046D9DD1E2373C000EC531F /* PlayerViewControl.m */,
-				8046D9E21E23755700EC531F /* VideoRoom+Notification.h */,
-				8046D9E31E23755700EC531F /* VideoRoom+Notification.m */,
+				800160BB1E2C9FF30085E605 /* IJKMediaFramework.framework */,
+				800160BD1E2C9FF30085E605 /* IJKMediaFrameworkTests.xctest */,
 			);
-			name = VideoRoom;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		8077C8951E20EAF0007787ED /* Function */ = {
+		800160C11E2CA08F0085E605 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8077C8991E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.h */,
-				8077C89A1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m */,
-				8046D9D91E236FF900EC531F /* ScreenRotateManager.h */,
-				8046D9DA1E236FF900EC531F /* ScreenRotateManager.m */,
-				8077C8961E20EB06007787ED /* HttpProtocol.h */,
-				8077C8971E20EB06007787ED /* HttpProtocol.m */,
+				800160DA1E2CA0ED0085E605 /* VideoToolbox.framework */,
+				800160D81E2CA0E50085E605 /* UIKit.framework */,
+				800160D61E2CA0DF0085E605 /* QuartzCore.framework */,
+				800160D41E2CA0DA0085E605 /* OpenGLES.framework */,
+				800160D21E2CA0CB0085E605 /* MobileCoreServices.framework */,
+				800160D01E2CA0C40085E605 /* MediaPlayer.framework */,
+				800160CE1E2CA0BA0085E605 /* CoreVideo.framework */,
+				800160CC1E2CA0B20085E605 /* CoreMedia.framework */,
+				800160CA1E2CA0AA0085E605 /* CoreGraphics.framework */,
+				800160C81E2CA0A40085E605 /* AVFoundation.framework */,
+				800160C61E2CA09E0085E605 /* AudioToolbox.framework */,
+				800160C41E2CA0970085E605 /* libbz2.tbd */,
+				800160C21E2CA0900085E605 /* libz.tbd */,
 			);
-			name = Function;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				8046D9AF1E236A8900EC531F /* IJKMediaPlayer.xcodeproj */,
+				800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -586,6 +522,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -594,7 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				832341B51AAA6A8300B99B32 /* libRCTText.a */,
-				3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */,
+				8001608E1E2C9EA50085E605 /* libRCTText-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -606,7 +543,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* newsTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				8046D9041E23331300EC531F /* Frameworks */,
+				800160C11E2CA08F0085E605 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -654,7 +591,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8046D9D81E236B7F00EC531F /* PBXTargetDependency */,
 			);
 			name = news;
 			productName = "Hello World";
@@ -667,7 +603,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -677,14 +613,6 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = FS4G5542ZM;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-							com.apple.Push = {
-								enabled = 1;
-							};
-						};
 					};
 				};
 			};
@@ -701,8 +629,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8046D9B01E236A8900EC531F /* Products */;
-					ProjectRef = 8046D9AF1E236A8900EC531F /* IJKMediaPlayer.xcodeproj */;
+					ProductGroup = 800160B61E2C9FF30085E605 /* Products */;
+					ProjectRef = 800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -715,6 +643,10 @@
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
+				},
+				{
+					ProductGroup = 800160721E2C9EA50085E605 /* Products */;
+					ProjectRef = CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
@@ -814,97 +746,6 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRCTImage-tvOS.a";
-			remoteRef = 3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3E881DF850E9000B6D8A /* libRCTLinking-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRCTLinking-tvOS.a";
-			remoteRef = 3DAD3E871DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3E8C1DF850E9000B6D8A /* libRCTNetwork-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRCTNetwork-tvOS.a";
-			remoteRef = 3DAD3E8B1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3E901DF850E9000B6D8A /* libRCTSettings-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRCTSettings-tvOS.a";
-			remoteRef = 3DAD3E8F1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRCTText-tvOS.a";
-			remoteRef = 3DAD3E931DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRCTWebSocket-tvOS.a";
-			remoteRef = 3DAD3E981DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EA31DF850E9000B6D8A /* libReact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReact.a;
-			remoteRef = 3DAD3EA21DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EA51DF850E9000B6D8A /* libyoga.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libyoga.a;
-			remoteRef = 3DAD3EA41DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EA71DF850E9000B6D8A /* libyoga.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libyoga.a;
-			remoteRef = 3DAD3EA61DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EA91DF850E9000B6D8A /* libcxxreact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libcxxreact.a;
-			remoteRef = 3DAD3EA81DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libcxxreact.a;
-			remoteRef = 3DAD3EAA1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjschelpers.a;
-			remoteRef = 3DAD3EAC1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjschelpers.a;
-			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -926,18 +767,74 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8046D9B51E236A8900EC531F /* IJKMediaFramework.framework */ = {
+		8001607A1E2C9EA50085E605 /* libRCTHotUpdate.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTHotUpdate.a;
+			remoteRef = 800160791E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8001607E1E2C9EA50085E605 /* libRCTImage-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTImage-tvOS.a";
+			remoteRef = 8001607D1E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		800160821E2C9EA50085E605 /* libRCTLinking-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTLinking-tvOS.a";
+			remoteRef = 800160811E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		800160861E2C9EA50085E605 /* libRCTNetwork-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTNetwork-tvOS.a";
+			remoteRef = 800160851E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8001608A1E2C9EA50085E605 /* libRCTSettings-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTSettings-tvOS.a";
+			remoteRef = 800160891E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8001608E1E2C9EA50085E605 /* libRCTText-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTText-tvOS.a";
+			remoteRef = 8001608D1E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		800160931E2C9EA50085E605 /* libRCTWebSocket-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTWebSocket-tvOS.a";
+			remoteRef = 800160921E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		800160971E2C9EA50085E605 /* libReact-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReact-tvOS.a";
+			remoteRef = 800160961E2C9EA50085E605 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		800160BB1E2C9FF30085E605 /* IJKMediaFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = IJKMediaFramework.framework;
-			remoteRef = 8046D9B41E236A8900EC531F /* PBXContainerItemProxy */;
+			remoteRef = 800160BA1E2C9FF30085E605 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8046D9B71E236A8900EC531F /* IJKMediaFrameworkTests.xctest */ = {
+		800160BD1E2C9FF30085E605 /* IJKMediaFrameworkTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = IJKMediaFrameworkTests.xctest;
-			remoteRef = 8046D9B61E236A8900EC531F /* PBXContainerItemProxy */;
+			remoteRef = 800160BC1E2C9FF30085E605 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
@@ -998,17 +895,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8046D9E41E23755700EC531F /* VideoRoom+Notification.m in Sources */,
+				800160B41E2C9FA30085E605 /* ScreenRotateManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				8077C8981E20EB06007787ED /* HttpProtocol.m in Sources */,
-				8077C88D1E20EAB8007787ED /* LightHouseManager.m in Sources */,
+				800160AE1E2C9F630085E605 /* VideoRoomManager.m in Sources */,
+				800160AD1E2C9F630085E605 /* VideoRoom+Notification.m in Sources */,
+				800160AB1E2C9F630085E605 /* LightHouseManager.m in Sources */,
+				800160AC1E2C9F630085E605 /* VideoRoom.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				8077C8931E20EADC007787ED /* VideoRoom.m in Sources */,
-				8046D9DB1E236FF900EC531F /* ScreenRotateManager.m in Sources */,
-				8077C8941E20EADC007787ED /* VideoRoomManager.m in Sources */,
-				8046D9DE1E2373C000EC531F /* PlayerViewControl.m in Sources */,
-				8077C89D1E20EB2A007787ED /* RCTConvert+UIInterfaceOrientation.m in Sources */,
-				8077C88C1E20EAB8007787ED /* LightHouse.m in Sources */,
+				8001609E1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m in Sources */,
+				800160B31E2C9FA30085E605 /* PlayerViewControl.m in Sources */,
+				800160AA1E2C9F630085E605 /* LightHouse.m in Sources */,
+				8001609D1E2C9EDB0085E605 /* HttpProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,11 +916,6 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* news */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
-		};
-		8046D9D81E236B7F00EC531F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IJKMediaFramework;
-			targetProxy = 8046D9D71E236B7F00EC531F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1052,6 +944,11 @@
 				INFOPLIST_FILE = newsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/news.app/news";
 			};
@@ -1066,6 +963,11 @@
 				INFOPLIST_FILE = newsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/news.app/news";
 			};
@@ -1075,14 +977,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = news/news.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				INFOPLIST_FILE = news/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1100,13 +997,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = news/news.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				INFOPLIST_FILE = news/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1133,15 +1025,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1154,6 +1050,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1174,8 +1076,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1183,12 +1087,19 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

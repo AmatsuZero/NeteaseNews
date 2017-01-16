@@ -16,7 +16,6 @@
 @property (strong, nonatomic) UIButton* switchBut;
 @property (strong, nonatomic) UISlider* slider;
 @property (strong, nonatomic) UILabel * timer;
-@property (strong, nonatomic) UIButton* danmakuBut;
 @property (strong, nonatomic) UIButton* fullScreenBut;
 
 @property (strong, nonatomic) UIButton* playBut;

@@ -10,8 +10,10 @@
 #import "AppDelegate.h"
 #import "HttpProtocol.h"
 
-#import <React/RCTBundleURLProvider.h>
-#import <React/RCTRootView.h>
+#import "RCTBundleURLProvider.h"
+#import "RCTRootView.h"
+//RN中文网热更新
+#import "RCTHotUpdate.h"
 
 @implementation AppDelegate
 
@@ -20,8 +22,13 @@
   NSURL *jsCodeLocation;
   [HttpProtocol start];
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
-
+#if DEBUG
+  // 原来的jsCodeLocation
+   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+#else
+   jsCodeLocation=[RCTHotUpdate bundleURL];
+#endif
+ 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"news"
                                                initialProperties:nil

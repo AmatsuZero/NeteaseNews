@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Facebook. All rights reserved.
 //
 
-#import <React/RCTViewManager.h>
+#import "RCTViewManager.h"
 
 @interface LightHouseManager : RCTViewManager
 

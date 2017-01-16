@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <React/RCTBridgeModule.h>
+#import "RCTBridgeModule.h"
 
 @interface ScreenRotateManager : NSObject
 <

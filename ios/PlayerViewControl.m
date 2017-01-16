@@ -9,6 +9,11 @@
 #import "PlayerViewControl.h"
 #import <IJKMediaFramework/IJKMediaFramework.h>
 
+@interface PlayerViewControl ()<UIGestureRecognizerDelegate>
+
+
+@end
+
 @implementation PlayerViewControl {
     BOOL _isMediaSliderDragged;
 }
@@ -40,20 +45,12 @@
         
         _timer = [[UILabel alloc] initWithFrame:CGRectMake(300, 10, 50, 10)];
         _timer.backgroundColor = [UIColor clearColor];
-//        _timer.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        _timer.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _timer.textColor = [UIColor whiteColor];
         _timer.adjustsFontSizeToFitWidth = NO;
         _timer.textAlignment = NSTextAlignmentLeft;
         _timer.text = @"--:--";
         _timer.font = [UIFont systemFontOfSize:9];
-      
-        _danmakuBut = [UIButton buttonWithType:UIButtonTypeCustom];
-        _danmakuBut.frame = CGRectMake(345, 1, 45, 30);
-        _danmakuBut.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        _danmakuBut.backgroundColor = [UIColor clearColor];
-        [_danmakuBut setTitle:@"弹幕" forState:UIControlStateNormal];
-        _danmakuBut.titleLabel.font = [UIFont systemFontOfSize:15];
-        _danmakuBut.showsTouchWhenHighlighted = YES;
       
         _fullScreenBut = [UIButton buttonWithType:UIButtonTypeCustom];
         _fullScreenBut.frame = CGRectMake(380, 1, 45, 30);
@@ -67,7 +64,6 @@
         [_overlay addSubview:_switchBut];
         [_overlay addSubview:_slider];
         [_overlay addSubview:_timer];
-        [_overlay addSubview:_danmakuBut];
         [_overlay addSubview:_fullScreenBut];
       
         [self addSubview:_overlay];
@@ -101,14 +97,19 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hide) object:nil];
 }
 
-- (void)beginDragMediaSlider {}
+- (void)beginDragMediaSlider {
+  _isMediaSliderDragged = YES;
+}
 
-- (void)endDragMediaSlider {}
+- (void)endDragMediaSlider {
+  _isMediaSliderDragged = NO;
+}
 
-- (void)continueDragMediaSlider {}
+- (void)continueDragMediaSlider {
+  [self refreshPlayerContrl];
+}
 
 - (void)refreshPlayerContrl {
-
     NSTimeInterval position = self.delegatePlayer.currentPlaybackTime;
     NSInteger intPositon = position + 0.5;
     if (intPositon > 0) {
