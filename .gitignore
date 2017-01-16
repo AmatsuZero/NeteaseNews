@@ -93,3 +93,6 @@ ios/IJKMediaPodDemo
 ios/tools
 tools/
 version.sh
+
+#忽略热更新的部分
+.update

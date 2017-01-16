@@ -41,7 +41,6 @@ class news extends React.Component {
     }
 
     componentDidMount() {
-
         DeviceEventEmitter.addListener('showTabbar', (flag) => {
             this.setState({
                 isTabbarVisible: flag

@@ -9,21 +9,23 @@ import {
     PixelRatio
 } from 'react-native';
 
+const defaultStyle = {
+    backgroundColor: 'white',
+    padding: 15,
+    borderColor: '#eeeeee',
+    borderWidth:1,
+    borderBottomWidth: 1 / PixelRatio.get(),
+    borderBottomColor: '#aaaaaa',
+    marginRight:20,
+    marginLeft:20,
+    alignSelf: 'center',
+};
+
 export default class Button extends Component {
     render() {
         return(
             <TouchableHighlight
-                style={{
-                    backgroundColor: 'white',
-                    padding: 15,
-                    borderColor: '#eeeeee',
-                    borderWidth:1,
-                    borderBottomWidth: 1 / PixelRatio.get(),
-                    borderBottomColor: '#aaaaaa',
-                    marginRight:20,
-                    marginLeft:20,
-                    alignSelf: 'center',
-                }}
+                style={this.props.style?[this.props.style,defaultStyle]:defaultStyle}
                 underlayColor="#B5B5B5"
                 onPress={() => {
                     this.props.onPress();
