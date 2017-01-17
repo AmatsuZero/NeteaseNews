@@ -62,7 +62,7 @@ export function getVideoList() {
             if (Object.keys(responseData).length === 0) {//返回数据为空
                 throw "视频列表返回数据为空！";
             } else {
-                for (let key in responseData) {
+                for(let key in responseData) {
                     return responseData[key];
                 }
             }
@@ -78,4 +78,46 @@ export function getVideoList() {
         .catch((error) => {
             throw error.toString();
         });
+}
+
+export function fetchPlayURL(vid) {
+    let URL = 'http://3g.163.com/touch/video/detail/jsonp/' + vid + '.html?callback=videoList';
+    return cancellableFetch(fetch(URL, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'text/html;',
+        }
+    }), 30000)
+        .then((response)=>{
+            if (response.ok) {
+                return response.text();
+            } else {
+                return {};
+            }
+        })
+        .then((json)=>{
+            if (Object.keys(json).length === 0) {//返回数据为空
+                throw "视频列表返回数据为空！";
+            } else {
+                let replaceStr = 'videoList' + '(';
+                json = json.replace(replaceStr,'');
+                json = json.replace(/\)/g,'');
+                try {
+                    json = JSON.parse(json);
+                    return json;
+                } catch (e) {
+                    throw e;
+                }
+            }
+        })
+        .then((list)=>{
+            return list;
+        })
+        .catch((error) => {
+            throw error.toString();
+        });
+}
+
+export function fetchRecommendList() {
+
 }

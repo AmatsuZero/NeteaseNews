@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, strong) UISlider               *volumeViewSlider;
 @property (nonatomic, assign) PanDirection           panDirection;
 @property (nonatomic, assign) BOOL                   isVolume;
+@property (nonatomic,strong)  UIImageView* backcover;
 
 //用于锁定设备方向时获取当前设备朝向
 @property (nonatomic, strong) CMMotionManager * motionManager;
@@ -52,9 +53,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor blackColor];
-        
+        _backcover = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"303"]];
+        [self addSubview:_backcover];
         _url = aURL;
-        
         // 注册通知
         [self installUINotificationObservers];
         [self installMovieNotificationObservers];
@@ -115,19 +116,35 @@ typedef NS_ENUM(NSInteger, PanDirection){
   [view addSubview:_superView];
 }
 
+-(void)setPlayURL:(NSString *)playURL {
+  _playURL = playURL;
+  self.url = [NSURL URLWithString:self.playURL];
+  if (!self.player) {
+    [self setUpIJKPlayer];
+  }
+}
+
+-(void)setCoverImg:(NSString *)coverImg {
+  _coverImg = coverImg;
+  __weak typeof(self) weakSelf = self;
+  [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:coverImg] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    if (!error) {
+      UIImage* img = [UIImage imageWithData:data];
+      weakSelf.backcover.image = img;
+    }
+  }] resume];
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    self.backcover.frame = self.frame;
     if (!self.superView) {
       [self setSuperView:self.superview];
     } else {
       if (!self.isFullScreen) {
         self.frame = self.superView.bounds;
       }
-    }
-    self.url = [NSURL URLWithString:self.playURL];
-    if (!self.player) {
-      [self setUpIJKPlayer];
     }
     self.player.view.frame = self.bounds;
     self.mediaControl.frame = self.bounds;

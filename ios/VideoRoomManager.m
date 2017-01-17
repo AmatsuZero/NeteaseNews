@@ -19,6 +19,7 @@
 
 RCT_EXPORT_MODULE()
 RCT_EXPORT_VIEW_PROPERTY(playURL, NSString);
+RCT_EXPORT_VIEW_PROPERTY(coverImg, NSString);
 RCT_EXPORT_METHOD(onDismiss)
 {
   [self.videoroom onDismiss];

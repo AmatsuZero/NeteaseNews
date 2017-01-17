@@ -13,7 +13,7 @@
 @interface IJKPlayerView : UIView
 
 @property(nonatomic,copy)NSString* playURL;
-
+@property(nonatomic,copy)NSString* coverImg;
 @property(atomic, retain) id<IJKMediaPlayback> player;
 @property(nonatomic,strong) IJKPlayerControl *mediaControl;
 

@@ -63,7 +63,7 @@ export default class VideoPage extends React.Component {
     }
 
     //跳转到视频播放页
-    toPlayPage(url){
+    toPlayPage(vid){
         const { navigator } = this.props;
         //这里传递了navigator作为props
         if(navigator) {
@@ -71,7 +71,7 @@ export default class VideoPage extends React.Component {
                 name: '播放',
                 component: PlayPage,
                 params: {
-                    playURL:url
+                    vid:vid
                 }
             })
         }
@@ -81,7 +81,7 @@ export default class VideoPage extends React.Component {
         return(
             <TouchableOpacity
                 onPress={()=>{
-                    this.toPlayPage(video.url);
+                    this.toPlayPage(video.vid);
                 }}
                 style={styles.cellStyle}>
                 <Image
