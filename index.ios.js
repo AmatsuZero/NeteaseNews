@@ -4,7 +4,7 @@
  * @flow
  */
 import React from "react";
-import {AppRegistry, Navigator, StyleSheet, View, Text, DeviceEventEmitter} from "react-native";
+import {AppRegistry, Navigator, StyleSheet, View, Text, DeviceEventEmitter, NativeAppEventEmitter} from "react-native";
 import App from "./App/Views/App";
 import {CustomTabbar} from "./App/Views/CustomTabbar";
 //iOS和安卓通用的ViewPager/Tabbar
@@ -38,6 +38,24 @@ class news extends React.Component {
             tabIconNames: icons,
             isTabbarVisible: true
         }
+
+        //获取通知
+        this.fetchMessage = NativeAppEventEmitter.addListener(
+            'ReceiveNotification',
+            (notification) => console.log(notification)
+        );
+
+        //OpenNotification 事件
+        this.openNotification = NativeAppEventEmitter.addListener(
+            'OpenNotification',
+            (notification) => console.log(notification)
+        );
+
+        //应用内消息，用户可以发送应用内消息给应用，如果手机应用在前台就会收到这个消息，否则存为离线消息。我们可以通过如下代码获取这个应用内消息
+        this.internalMessage = NativeAppEventEmitter.addListener(
+            'networkDidReceiveMessage',
+            (message) => console.log(message)
+        );
     }
 
     componentDidMount() {
@@ -49,6 +67,9 @@ class news extends React.Component {
     }
 
     componentWillUnmount() {
+        this.fetchMessage.remove();
+        this.openNotification.remove();
+        this.internalMessage.remove();
         DeviceEventEmitter.removeAllListeners('showTabbar');
     }
 

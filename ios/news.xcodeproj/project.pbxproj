@@ -48,8 +48,17 @@
 		800160EF1E2CB0A20085E605 /* IJKMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E51E2CB0A20085E605 /* IJKMaterialDesignSpinner.m */; };
 		800160F01E2CB0A20085E605 /* IJKPlayerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E71E2CB0A20085E605 /* IJKPlayerControl.m */; };
 		800160F11E2CB0A20085E605 /* IJKPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E91E2CB0A20085E605 /* IJKPlayerView.m */; };
+		805143331E2DAD12007F8342 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143321E2DAD12007F8342 /* Security.framework */; };
+		8051434B1E2DAD19007F8342 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051434A1E2DAD19007F8342 /* CoreTelephony.framework */; };
+		8051434D1E2DAD21007F8342 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051434C1E2DAD21007F8342 /* CFNetwork.framework */; };
+		8051434F1E2DAD2C007F8342 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051434E1E2DAD2C007F8342 /* CoreFoundation.framework */; };
+		805143511E2DAD38007F8342 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143501E2DAD38007F8342 /* SystemConfiguration.framework */; };
+		805143531E2DAD46007F8342 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143521E2DAD46007F8342 /* libresolv.tbd */; };
+		805143551E2DAD50007F8342 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143541E2DAD50007F8342 /* UserNotifications.framework */; };
+		8051439C1E2DB1CF007F8342 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8051439B1E2DB1CF007F8342 /* PushNotificationManager.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */; };
+		C3C0C27E6A0841B1B7E0B562 /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4005B25A394B4EB6300A40 /* libRCTJPushModule.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +216,13 @@
 			remoteGlobalIDString = E654EA941B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFrameworkTests;
 		};
+		8051438B1E2DB0A8007F8342 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BD260AD8A164D6FB0EA91E8 /* RCTJPushModule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6280980A1CEDC407000D3A81;
+			remoteInfo = RCTJPushModule;
+		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -236,6 +252,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = news/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = news/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		4BD260AD8A164D6FB0EA91E8 /* RCTJPushModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJPushModule.xcodeproj; path = "../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		800160991E2C9EDB0085E605 /* HttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProtocol.h; sourceTree = "<group>"; };
@@ -275,8 +292,18 @@
 		800160E81E2CB0A20085E605 /* IJKPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerView.h; sourceTree = "<group>"; };
 		800160E91E2CB0A20085E605 /* IJKPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKPlayerView.m; sourceTree = "<group>"; };
 		800160ED1E2CB0A20085E605 /* IJKPlayerViewDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerViewDefine.h; sourceTree = "<group>"; };
+		805143321E2DAD12007F8342 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8051434A1E2DAD19007F8342 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8051434C1E2DAD21007F8342 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8051434E1E2DAD2C007F8342 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		805143501E2DAD38007F8342 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		805143521E2DAD46007F8342 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		805143541E2DAD50007F8342 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		8051439A1E2DB1CF007F8342 /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
+		8051439B1E2DB1CF007F8342 /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
+		DC4005B25A394B4EB6300A40 /* libRCTJPushModule.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTJPushModule.a; sourceTree = "<group>"; };
 		EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTHotUpdate.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -293,6 +320,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				805143551E2DAD50007F8342 /* UserNotifications.framework in Frameworks */,
+				805143531E2DAD46007F8342 /* libresolv.tbd in Frameworks */,
+				805143511E2DAD38007F8342 /* SystemConfiguration.framework in Frameworks */,
+				8051434F1E2DAD2C007F8342 /* CoreFoundation.framework in Frameworks */,
+				8051434D1E2DAD21007F8342 /* CFNetwork.framework in Frameworks */,
+				8051434B1E2DAD19007F8342 /* CoreTelephony.framework in Frameworks */,
+				805143331E2DAD12007F8342 /* Security.framework in Frameworks */,
 				800160DB1E2CA0ED0085E605 /* VideoToolbox.framework in Frameworks */,
 				800160D91E2CA0E50085E605 /* UIKit.framework in Frameworks */,
 				800160D71E2CA0DF0085E605 /* QuartzCore.framework in Frameworks */,
@@ -319,6 +353,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */,
+				C3C0C27E6A0841B1B7E0B562 /* libRCTJPushModule.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +498,8 @@
 				8001609A1E2C9EDB0085E605 /* HttpProtocol.m */,
 				8001609B1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.h */,
 				8001609C1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m */,
+				8051439A1E2DB1CF007F8342 /* PushNotificationManager.h */,
+				8051439B1E2DB1CF007F8342 /* PushNotificationManager.m */,
 			);
 			name = Function;
 			sourceTree = "<group>";
@@ -488,6 +525,13 @@
 		800160C11E2CA08F0085E605 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				805143541E2DAD50007F8342 /* UserNotifications.framework */,
+				805143521E2DAD46007F8342 /* libresolv.tbd */,
+				805143501E2DAD38007F8342 /* SystemConfiguration.framework */,
+				8051434E1E2DAD2C007F8342 /* CoreFoundation.framework */,
+				8051434C1E2DAD21007F8342 /* CFNetwork.framework */,
+				8051434A1E2DAD19007F8342 /* CoreTelephony.framework */,
+				805143321E2DAD12007F8342 /* Security.framework */,
 				800160DA1E2CA0ED0085E605 /* VideoToolbox.framework */,
 				800160D81E2CA0E50085E605 /* UIKit.framework */,
 				800160D61E2CA0DF0085E605 /* QuartzCore.framework */,
@@ -543,6 +587,14 @@
 			name = VideoRoom;
 			sourceTree = "<group>";
 		};
+		8051437F1E2DB0A8007F8342 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8051438C1E2DB0A8007F8342 /* libRCTJPushModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +611,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */,
+				4BD260AD8A164D6FB0EA91E8 /* RCTJPushModule.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -639,7 +692,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 820;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -687,6 +740,10 @@
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
 					ProjectRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+				},
+				{
+					ProductGroup = 8051437F1E2DB0A8007F8342 /* Products */;
+					ProjectRef = 4BD260AD8A164D6FB0EA91E8 /* RCTJPushModule.xcodeproj */;
 				},
 				{
 					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
@@ -873,6 +930,13 @@
 			remoteRef = 800160BC1E2C9FF30085E605 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8051438C1E2DB0A8007F8342 /* libRCTJPushModule.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTJPushModule.a;
+			remoteRef = 8051438B1E2DB0A8007F8342 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -944,6 +1008,7 @@
 				800160EF1E2CB0A20085E605 /* IJKMaterialDesignSpinner.m in Sources */,
 				800160AA1E2C9F630085E605 /* LightHouse.m in Sources */,
 				8001609D1E2C9EDB0085E605 /* HttpProtocol.m in Sources */,
+				8051439C1E2DB1CF007F8342 /* PushNotificationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1050,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1003,6 +1069,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1093,6 +1160,8 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
 					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1137,6 +1206,8 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
 					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

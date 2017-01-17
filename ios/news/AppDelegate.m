@@ -15,6 +15,8 @@
 //RN中文网热更新
 #import "RCTHotUpdate.h"
 
+#import "PushNotificationManager.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -41,7 +43,25 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
+  //注册推送
+  [[PushNotificationManager defaultManager] registerJPushWithLaunchOptions:launchOptions];
+  
   return YES;
+}
+
+#pragma mark PushDelegate
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [[PushNotificationManager defaultManager] registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  // 取得 APNs 标准信息内容
+  [[PushNotificationManager defaultManager] didReceiveRemoteNotification:userInfo];
+}
+//iOS 7 Remote Notification
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:  (NSDictionary *)userInfo fetchCompletionHandler:(void (^)   (UIBackgroundFetchResult))completionHandler {
+  [[PushNotificationManager defaultManager] didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
 @end
