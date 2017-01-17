@@ -7,17 +7,26 @@
 //
 
 #import "VideoRoomManager.h"
-#import "VideoRoom.h"
+#import "IJKPlayerView.h"
 
+@interface VideoRoomManager ()
+
+@property(nonatomic,strong)IJKPlayerView* videoroom;
+
+@end
 
 @implementation VideoRoomManager
 
 RCT_EXPORT_MODULE()
 RCT_EXPORT_VIEW_PROPERTY(playURL, NSString);
+RCT_EXPORT_METHOD(onDismiss)
+{
+  [self.videoroom onDismiss];
+}
 
 -(UIView*)view {
-  VideoRoom* videoroom = [[VideoRoom alloc]init];
-  return videoroom;
+  _videoroom = [[IJKPlayerView alloc] init];
+  return _videoroom;
 }
 
 @end

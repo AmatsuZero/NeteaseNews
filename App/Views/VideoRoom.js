@@ -4,12 +4,18 @@
 import React from "react";
 import {
     requireNativeComponent,
-    StyleSheet
+    StyleSheet,
+    NativeModules
 } from "react-native";
 
 let Video = requireNativeComponent('VideoRoom',VideoRoom);
 
 export default class VideoRoom extends React.Component {
+
+    static onDismiss() {
+        let videoRoomMgr = NativeModules.VideoRoomManager;
+        videoRoomMgr.onDismiss();
+    }
 
     render(){
         return <Video style={{flex:1}} {...this.props}/>;

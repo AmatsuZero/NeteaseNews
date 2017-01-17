@@ -31,7 +31,7 @@ export default class PlayPage extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            playURL:"http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"
+            playURL:"http://flv2.bn.netease.com/tvmrepo/2017/1/9/1/EC9RODL91/SD/EC9RODL91-mobile.mp4"
         }
     }
 
@@ -40,6 +40,7 @@ export default class PlayPage extends React.Component {
         const { navigator } = this.props;
         if(navigator) {
             navigator.pop();
+            VideoRoom.onDismiss();
         }
     }
 

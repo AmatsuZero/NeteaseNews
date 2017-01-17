@@ -27,10 +27,7 @@
 		8001609E1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8001609C1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m */; };
 		800160AA1E2C9F630085E605 /* LightHouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A11E2C9F620085E605 /* LightHouse.m */; };
 		800160AB1E2C9F630085E605 /* LightHouseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A31E2C9F620085E605 /* LightHouseManager.m */; };
-		800160AC1E2C9F630085E605 /* VideoRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A51E2C9F620085E605 /* VideoRoom.m */; };
-		800160AD1E2C9F630085E605 /* VideoRoom+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A71E2C9F620085E605 /* VideoRoom+Notification.m */; };
 		800160AE1E2C9F630085E605 /* VideoRoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A91E2C9F630085E605 /* VideoRoomManager.m */; };
-		800160B31E2C9FA30085E605 /* PlayerViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160B01E2C9FA30085E605 /* PlayerViewControl.m */; };
 		800160B41E2C9FA30085E605 /* ScreenRotateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160B21E2C9FA30085E605 /* ScreenRotateManager.m */; };
 		800160C01E2CA03B0085E605 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160BB1E2C9FF30085E605 /* IJKMediaFramework.framework */; };
 		800160C31E2CA0900085E605 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C21E2CA0900085E605 /* libz.tbd */; };
@@ -46,6 +43,11 @@
 		800160D71E2CA0DF0085E605 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160D61E2CA0DF0085E605 /* QuartzCore.framework */; };
 		800160D91E2CA0E50085E605 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160D81E2CA0E50085E605 /* UIKit.framework */; };
 		800160DB1E2CA0ED0085E605 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160DA1E2CA0ED0085E605 /* VideoToolbox.framework */; };
+		800160DF1E2CB02C0085E605 /* IJKPlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 800160DE1E2CB02C0085E605 /* IJKPlayerView.bundle */; };
+		800160EE1E2CB0A20085E605 /* IJKBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E31E2CB0A20085E605 /* IJKBrightnessView.m */; };
+		800160EF1E2CB0A20085E605 /* IJKMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E51E2CB0A20085E605 /* IJKMaterialDesignSpinner.m */; };
+		800160F01E2CB0A20085E605 /* IJKPlayerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E71E2CB0A20085E605 /* IJKPlayerControl.m */; };
+		800160F11E2CB0A20085E605 /* IJKPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E91E2CB0A20085E605 /* IJKPlayerView.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */; };
 /* End PBXBuildFile section */
@@ -244,14 +246,8 @@
 		800160A11E2C9F620085E605 /* LightHouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouse.m; sourceTree = "<group>"; };
 		800160A21E2C9F620085E605 /* LightHouseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightHouseManager.h; sourceTree = "<group>"; };
 		800160A31E2C9F620085E605 /* LightHouseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightHouseManager.m; sourceTree = "<group>"; };
-		800160A41E2C9F620085E605 /* VideoRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRoom.h; sourceTree = "<group>"; };
-		800160A51E2C9F620085E605 /* VideoRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoom.m; sourceTree = "<group>"; };
-		800160A61E2C9F620085E605 /* VideoRoom+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VideoRoom+Notification.h"; sourceTree = "<group>"; };
-		800160A71E2C9F620085E605 /* VideoRoom+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VideoRoom+Notification.m"; sourceTree = "<group>"; };
 		800160A81E2C9F630085E605 /* VideoRoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRoomManager.h; sourceTree = "<group>"; };
 		800160A91E2C9F630085E605 /* VideoRoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoomManager.m; sourceTree = "<group>"; };
-		800160AF1E2C9FA30085E605 /* PlayerViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewControl.h; sourceTree = "<group>"; };
-		800160B01E2C9FA30085E605 /* PlayerViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewControl.m; sourceTree = "<group>"; };
 		800160B11E2C9FA30085E605 /* ScreenRotateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenRotateManager.h; sourceTree = "<group>"; };
 		800160B21E2C9FA30085E605 /* ScreenRotateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenRotateManager.m; sourceTree = "<group>"; };
 		800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = "../ijkplayer-master/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj"; sourceTree = "<group>"; };
@@ -268,6 +264,17 @@
 		800160D61E2CA0DF0085E605 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		800160D81E2CA0E50085E605 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		800160DA1E2CA0ED0085E605 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		800160DD1E2CAFED0085E605 /* HYQiHei-EZJ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HYQiHei-EZJ.ttf"; sourceTree = "<group>"; };
+		800160DE1E2CB02C0085E605 /* IJKPlayerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IJKPlayerView.bundle; sourceTree = "<group>"; };
+		800160E21E2CB0A20085E605 /* IJKBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKBrightnessView.h; sourceTree = "<group>"; };
+		800160E31E2CB0A20085E605 /* IJKBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKBrightnessView.m; sourceTree = "<group>"; };
+		800160E41E2CB0A20085E605 /* IJKMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKMaterialDesignSpinner.h; sourceTree = "<group>"; };
+		800160E51E2CB0A20085E605 /* IJKMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKMaterialDesignSpinner.m; sourceTree = "<group>"; };
+		800160E61E2CB0A20085E605 /* IJKPlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerControl.h; sourceTree = "<group>"; };
+		800160E71E2CB0A20085E605 /* IJKPlayerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKPlayerControl.m; sourceTree = "<group>"; };
+		800160E81E2CB0A20085E605 /* IJKPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerView.h; sourceTree = "<group>"; };
+		800160E91E2CB0A20085E605 /* IJKPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKPlayerView.m; sourceTree = "<group>"; };
+		800160ED1E2CB0A20085E605 /* IJKPlayerViewDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerViewDefine.h; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
 		EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTHotUpdate.a; sourceTree = "<group>"; };
@@ -398,6 +405,7 @@
 		13B07FAE1A68108700A75B9A /* news */ = {
 			isa = PBXGroup;
 			children = (
+				800160DC1E2CAF290085E605 /* Assets */,
 				8001609F1E2C9F490085E605 /* Component */,
 				800160981E2C9EC10085E605 /* Function */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -449,8 +457,6 @@
 		800160981E2C9EC10085E605 /* Function */ = {
 			isa = PBXGroup;
 			children = (
-				800160AF1E2C9FA30085E605 /* PlayerViewControl.h */,
-				800160B01E2C9FA30085E605 /* PlayerViewControl.m */,
 				800160B11E2C9FA30085E605 /* ScreenRotateManager.h */,
 				800160B21E2C9FA30085E605 /* ScreenRotateManager.m */,
 				800160991E2C9EDB0085E605 /* HttpProtocol.h */,
@@ -464,16 +470,8 @@
 		8001609F1E2C9F490085E605 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				800160A01E2C9F620085E605 /* LightHouse.h */,
-				800160A11E2C9F620085E605 /* LightHouse.m */,
-				800160A21E2C9F620085E605 /* LightHouseManager.h */,
-				800160A31E2C9F620085E605 /* LightHouseManager.m */,
-				800160A41E2C9F620085E605 /* VideoRoom.h */,
-				800160A51E2C9F620085E605 /* VideoRoom.m */,
-				800160A61E2C9F620085E605 /* VideoRoom+Notification.h */,
-				800160A71E2C9F620085E605 /* VideoRoom+Notification.m */,
-				800160A81E2C9F630085E605 /* VideoRoomManager.h */,
-				800160A91E2C9F630085E605 /* VideoRoomManager.m */,
+				800160E11E2CB05A0085E605 /* VideoRoom */,
+				800160E01E2CB04A0085E605 /* LightHouse */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -505,6 +503,44 @@
 				800160C21E2CA0900085E605 /* libz.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		800160DC1E2CAF290085E605 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				800160DD1E2CAFED0085E605 /* HYQiHei-EZJ.ttf */,
+				800160DE1E2CB02C0085E605 /* IJKPlayerView.bundle */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		800160E01E2CB04A0085E605 /* LightHouse */ = {
+			isa = PBXGroup;
+			children = (
+				800160A01E2C9F620085E605 /* LightHouse.h */,
+				800160A11E2C9F620085E605 /* LightHouse.m */,
+				800160A21E2C9F620085E605 /* LightHouseManager.h */,
+				800160A31E2C9F620085E605 /* LightHouseManager.m */,
+			);
+			name = LightHouse;
+			sourceTree = "<group>";
+		};
+		800160E11E2CB05A0085E605 /* VideoRoom */ = {
+			isa = PBXGroup;
+			children = (
+				800160A81E2C9F630085E605 /* VideoRoomManager.h */,
+				800160A91E2C9F630085E605 /* VideoRoomManager.m */,
+				800160E21E2CB0A20085E605 /* IJKBrightnessView.h */,
+				800160E31E2CB0A20085E605 /* IJKBrightnessView.m */,
+				800160E41E2CB0A20085E605 /* IJKMaterialDesignSpinner.h */,
+				800160E51E2CB0A20085E605 /* IJKMaterialDesignSpinner.m */,
+				800160E61E2CB0A20085E605 /* IJKPlayerControl.h */,
+				800160E71E2CB0A20085E605 /* IJKPlayerControl.m */,
+				800160E81E2CB0A20085E605 /* IJKPlayerView.h */,
+				800160E91E2CB0A20085E605 /* IJKPlayerView.m */,
+				800160ED1E2CB0A20085E605 /* IJKPlayerViewDefine.h */,
+			);
+			name = VideoRoom;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -858,6 +894,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				800160DF1E2CB02C0085E605 /* IJKPlayerView.bundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
@@ -898,12 +935,13 @@
 				800160B41E2C9FA30085E605 /* ScreenRotateManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				800160AE1E2C9F630085E605 /* VideoRoomManager.m in Sources */,
-				800160AD1E2C9F630085E605 /* VideoRoom+Notification.m in Sources */,
+				800160EE1E2CB0A20085E605 /* IJKBrightnessView.m in Sources */,
 				800160AB1E2C9F630085E605 /* LightHouseManager.m in Sources */,
-				800160AC1E2C9F630085E605 /* VideoRoom.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				8001609E1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m in Sources */,
-				800160B31E2C9FA30085E605 /* PlayerViewControl.m in Sources */,
+				800160F11E2CB0A20085E605 /* IJKPlayerView.m in Sources */,
+				800160F01E2CB0A20085E605 /* IJKPlayerControl.m in Sources */,
+				800160EF1E2CB0A20085E605 /* IJKMaterialDesignSpinner.m in Sources */,
 				800160AA1E2C9F630085E605 /* LightHouse.m in Sources */,
 				8001609D1E2C9EDB0085E605 /* HttpProtocol.m in Sources */,
 			);

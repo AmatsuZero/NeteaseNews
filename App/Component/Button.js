@@ -11,7 +11,7 @@ import {
 
 const defaultStyle = {
     backgroundColor: 'white',
-    padding: 15,
+    padding: 10,
     borderColor: '#eeeeee',
     borderWidth:1,
     borderBottomWidth: 1 / PixelRatio.get(),
