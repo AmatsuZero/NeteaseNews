@@ -122,7 +122,7 @@ export default class PlayPage extends React.Component {
                             tabBarBackgroundColor="#fcfcfc"
                             tabBarActiveTextColor="red"
                             tabBarInactiveTextColor="#aaaaaa"
-                            tabBarUnderlineStyle={{backgroundColor:'red',height:2}}
+                            tabBarUnderlineStyle={{backgroundColor:'red',height:2, marginHorizontal:60, width:60}}
                             renderTabBar={()=> <DefaultTabBar/> }
                         >
                             <View tabLabel='推荐' style={{flex:1}}>
