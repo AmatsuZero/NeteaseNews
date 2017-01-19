@@ -96,3 +96,6 @@ version.sh
 
 #忽略热更新的部分
 .update
+
+#忽略临时文件夹
+.tmp

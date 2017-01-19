@@ -1,0 +1,23 @@
+language: objective-c
+osx_image: xcode8.2
+xcode_project: ios/news.xcodeproj
+xcode_scheme: news
+env:
+  matrix:
+    - SPEC=spec1
+
+before_install:
+    - ./scripts/decrypt_key.sh
+    - ./scripts/add_key.sh
+    - brew update
+
+install:
+    - brew reinstall node flow watchman xctool
+    - npm install -g react-native-cli
+
+branches:
+  only:
+    - master
+
+script:
+    - ./scripts/release.sh
