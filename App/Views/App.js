@@ -550,9 +550,10 @@ class App extends React.Component {
             Button = (
                 <Animated.Image
                     style={[{
-                            bottom:0,
-                            resizeMode:'center',
+                            width:20,
+                            height:20
                            }, animatedStyle]}
+                    resizeMode={'cover'}
                     source={require('../Img/panel/223.png')}
                 />
             );
