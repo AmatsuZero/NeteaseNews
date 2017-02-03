@@ -61,7 +61,7 @@ COPYING.LGPLv3
 MODULE_LICENSE_APACHE2
 NEWS.md
 NOTICE
-README.md
+
 android/
 compile-android-j4a.sh
 config/
