@@ -73202,6 +73202,8 @@ var count=0;
 if(this.state.typeList[label.title]){
 count=this.state.typeList[label.title].length-this.state.typeList[label.title].length%10;
 }
+console.log('>>>>>>>>>'+count);
+
 var isEmpty=!this.state.typeList[label.title]||this.state.typeList[label.title].length===0;
 (0,_LabelModel.getList)(label,count).
 then(function(responseData){
@@ -73625,9 +73627,10 @@ if(this.state.modalVisible){
 Button=
 _react3.default.createElement(_reactNative.Animated.Image,{
 style:[{
-bottom:0,
-resizeMode:'center'},
+width:20,
+height:20},
 animatedStyle],
+resizeMode:'cover',
 source:require(611 /* ../Img/panel/223.png */)});
 
 
@@ -75648,7 +75651,7 @@ throw e;
 });
 }
 
-var DetailCSS=".title {\n\n    text-align:left;\n    font-size:25px;\n    font-weight:bold;\n    color:black;\n    margin-left:10px;\n\n}\n\n.time {\n    text-align:left;\n    font-size:15px;\n    color:gray;\n    margin-top:7px;\n    margin-bottom:7px;\n    margin-left:10px;\n    \n}\n\n.img-parent {\n    text-align:center;\n    margin-bottom:10px;\n\n}";
+var DetailCSS="\n\n.title {\n\n    text-align:left;\n    font-size:25px;\n    font-weight:bold;\n    color:black;\n    margin-left:10px;\n\n}\n\n.time {\n    text-align:left;\n    font-size:15px;\n    color:gray;\n    margin-top:7px;\n    margin-bottom:7px;\n    margin-left:10px;\n    \n}\n\n.img-parent {\n    text-align:center;\n    margin-bottom:10px;\n\n}";
 }, 571, null, "news/App/Model/DetailModel.js");
 __d(/* news/App/Util/ToastUtil.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.toastLong=exports.toastShort=undefined;
 
@@ -76381,7 +76384,7 @@ alignItems:'center'}},
 
 _react3.default.createElement(_reactNative.Text,{style:{
 fontSize:101,
-fontFamily:'Avenir Next',
+fontFamily:'HYQiHei-EZJ',
 color:'#DE2537'}},
 
 weatherModel.rt_temperature),
@@ -79205,7 +79208,7 @@ tabBarPosition:'top',
 tabBarBackgroundColor:"#fcfcfc",
 tabBarActiveTextColor:"red",
 tabBarInactiveTextColor:"#aaaaaa",
-tabBarUnderlineStyle:{backgroundColor:'red',height:2},
+tabBarUnderlineStyle:{backgroundColor:'red',height:2,marginHorizontal:60,width:60},
 renderTabBar:function renderTabBar(){return _react3.default.createElement(_reactNativeScrollableTabView.DefaultTabBar,null);}},
 
 _react3.default.createElement(_reactNative.View,{tabLabel:"\u63A8\u8350",style:{flex:1}},

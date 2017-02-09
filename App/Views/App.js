@@ -49,7 +49,7 @@ let hotwords;
 
 const propTypes = {
     drawerControl:React.PropTypes.func
-}
+};
 
 class App extends React.Component {
 
@@ -127,6 +127,8 @@ class App extends React.Component {
         if (this.state.typeList[label.title]) {
             count = this.state.typeList[label.title].length - this.state.typeList[label.title].length % 10;
         }
+
+
         let isEmpty = !this.state.typeList[label.title] || this.state.typeList[label.title].length === 0;
         getList(label,count)
             .then((responseData)=>{

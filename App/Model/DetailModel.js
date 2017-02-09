@@ -170,7 +170,9 @@ export function getDetail(docid, boardid, postid) {
     })
 }
 
-const DetailCSS = `.title {
+const DetailCSS = `
+
+.title {
 
     text-align:left;
     font-size:25px;

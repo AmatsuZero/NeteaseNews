@@ -184,7 +184,7 @@ export default class Weather extends React.Component {
                     }}>
                             <Text style={{
                             fontSize:101,
-                            fontFamily:'Avenir Next',
+                            fontFamily:'HYQiHei-EZJ',
                             color:'#DE2537'
                         }}>
                                 {weatherModel.rt_temperature}
