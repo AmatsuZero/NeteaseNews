@@ -10,10 +10,15 @@
 P.S. 推荐使用最新版WebStorm打开RN项目，2016.3.x版本支持RN项目，能用IDE，为什么不用……
 ##安装
 
+####使用前，请先确保已经安装Carthage了：[Carthage](https://github.com/Carthage/Carthage)
+
 ```bash
-#请先确保你安装了RN需要的一些东西
+# 请先确保你安装了RN需要的一些东西
 $ npm install
 $ react-native start
+# 安装iOS需要的一些依赖
+$ carthage update
+# 运行iOS版本
 $ react-native run-ios
 ```
 
@@ -21,8 +26,8 @@ $ react-native run-ios
 ```bash
 $ react-native upgrade
 
-#保险起见，下面你可以全部选no，然后按照再酌情配置工程。
-#如果工程配置全部恢复初始值了，你需要重新链接一下原来的库……
+# 保险起见，下面你可以全部选no，然后按照再酌情配置工程。
+# 如果工程配置全部恢复初始值了，你需要重新链接一下原来的库……
 #react-native link
 
 ```

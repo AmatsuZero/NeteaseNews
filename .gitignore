@@ -62,40 +62,11 @@ MODULE_LICENSE_APACHE2
 NEWS.md
 NOTICE
 
-android/
-compile-android-j4a.sh
-config/
-doc/
-ijkmedia/
-ijkprof/
-init-android-exo.sh
-init-android-j4a.sh
-init-android-libsoxr.sh
-init-android-libyuv.sh
-init-android-openssl.sh
-init-android-prof.sh
-init-android.sh
-init-config.sh
-init-ios-openssl.sh
-init-ios.sh
-Would skip repository ios/ffmpeg-arm64
-Would skip repository ios/ffmpeg-armv7
-Would skip repository ios/ffmpeg-i386
-Would skip repository ios/ffmpeg-x86_64
-ios/.DS_Store
-ios/.gitignore
-ios/build
-ios/compile-ffmpeg.sh
-ios/compile-openssl.sh
-ios/IJKMediaDemo
-ios/IJKMediaPlayer
-ios/IJKMediaPodDemo
-ios/tools
-tools/
-version.sh
-
 #忽略热更新的部分
 .update
 
 #忽略临时文件夹
 .tmp
+
+#忽略Carthage
+ios/Carthage

@@ -29,7 +29,6 @@
 		800160AB1E2C9F630085E605 /* LightHouseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A31E2C9F620085E605 /* LightHouseManager.m */; };
 		800160AE1E2C9F630085E605 /* VideoRoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160A91E2C9F630085E605 /* VideoRoomManager.m */; };
 		800160B41E2C9FA30085E605 /* ScreenRotateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160B21E2C9FA30085E605 /* ScreenRotateManager.m */; };
-		800160C01E2CA03B0085E605 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160BB1E2C9FF30085E605 /* IJKMediaFramework.framework */; };
 		800160C31E2CA0900085E605 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C21E2CA0900085E605 /* libz.tbd */; };
 		800160C51E2CA0970085E605 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C41E2CA0970085E605 /* libbz2.tbd */; };
 		800160C71E2CA09E0085E605 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800160C61E2CA09E0085E605 /* AudioToolbox.framework */; };
@@ -48,6 +47,7 @@
 		800160EF1E2CB0A20085E605 /* IJKMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E51E2CB0A20085E605 /* IJKMaterialDesignSpinner.m */; };
 		800160F01E2CB0A20085E605 /* IJKPlayerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E71E2CB0A20085E605 /* IJKPlayerControl.m */; };
 		800160F11E2CB0A20085E605 /* IJKPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 800160E91E2CB0A20085E605 /* IJKPlayerView.m */; };
+		803724AE1E4DC28F0030C76E /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803724AB1E4DC1F60030C76E /* IJKMediaFramework.framework */; };
 		805143331E2DAD12007F8342 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143321E2DAD12007F8342 /* Security.framework */; };
 		8051434B1E2DAD19007F8342 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051434A1E2DAD19007F8342 /* CoreTelephony.framework */; };
 		8051434D1E2DAD21007F8342 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8051434C1E2DAD21007F8342 /* CFNetwork.framework */; };
@@ -56,11 +56,11 @@
 		805143531E2DAD46007F8342 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143521E2DAD46007F8342 /* libresolv.tbd */; };
 		805143551E2DAD50007F8342 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143541E2DAD50007F8342 /* UserNotifications.framework */; };
 		8051439C1E2DB1CF007F8342 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8051439B1E2DB1CF007F8342 /* PushNotificationManager.m */; };
+		808D46521E4DAA2E00E5891E /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808D46511E4DAA2E00E5891E /* GPUImage.framework */; };
+		808D46541E4DAA3200E5891E /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808D46531E4DAA3200E5891E /* SDWebImage.framework */; };
 		80C3AFED1E4994CC0038DCEA /* HYQiHei-EZJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 800160DD1E2CAFED0085E605 /* HYQiHei-EZJ.ttf */; };
 		80C83C5E1E4C0B0F00BEB1D5 /* LiveRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C83C5D1E4C0B0F00BEB1D5 /* LiveRoom.m */; };
 		80C83C611E4C0B5200BEB1D5 /* LiveRoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C83C601E4C0B5200BEB1D5 /* LiveRoomManager.m */; };
-		80C83D021E4C6F4A00BEB1D5 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */; };
-		80C83D041E4C70F000BEB1D5 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */; };
 		BDE643D53E264EA8A1041237 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E665F70B1E4AD391345DBE /* libRCTOrientation.a */; };
@@ -208,16 +208,16 @@
 			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
 			remoteInfo = "React-tvOS";
 		};
-		800160BA1E2C9FF30085E605 /* PBXContainerItemProxy */ = {
+		803724AA1E4DC1F60030C76E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */;
+			containerPortal = 803724A51E4DC1F60030C76E /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E654EA8A1B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFramework;
 		};
-		800160BC1E2C9FF30085E605 /* PBXContainerItemProxy */ = {
+		803724AC1E4DC1F60030C76E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */;
+			containerPortal = 803724A51E4DC1F60030C76E /* IJKMediaPlayer.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E654EA941B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFrameworkTests;
@@ -236,27 +236,6 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTOrientation;
 		};
-		80C83CFC1E4C6F2000BEB1D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
-			remoteInfo = GPUImage;
-		};
-		80C83CFE1E4C6F2000BEB1D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCE209E51943F20C002FEED8;
-			remoteInfo = GPUImageFramework;
-		};
-		80C83D001E4C6F4000BEB1D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
-			remoteInfo = GPUImage;
-		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -265,19 +244,6 @@
 			remoteInfo = RCTText;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		80C83D031E4C706B00BEB1D5 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				80C83D041E4C70F000BEB1D5 /* GPUImage.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -315,7 +281,6 @@
 		800160A91E2C9F630085E605 /* VideoRoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoomManager.m; sourceTree = "<group>"; };
 		800160B11E2C9FA30085E605 /* ScreenRotateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenRotateManager.h; sourceTree = "<group>"; };
 		800160B21E2C9FA30085E605 /* ScreenRotateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenRotateManager.m; sourceTree = "<group>"; };
-		800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = "../ijkplayer-master/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj"; sourceTree = "<group>"; };
 		800160C21E2CA0900085E605 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		800160C41E2CA0970085E605 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		800160C61E2CA09E0085E605 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -340,6 +305,7 @@
 		800160E81E2CB0A20085E605 /* IJKPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerView.h; sourceTree = "<group>"; };
 		800160E91E2CB0A20085E605 /* IJKPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKPlayerView.m; sourceTree = "<group>"; };
 		800160ED1E2CB0A20085E605 /* IJKPlayerViewDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerViewDefine.h; sourceTree = "<group>"; };
+		803724A51E4DC1F60030C76E /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = "../../Downloads/ijkplayer-master/ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj"; sourceTree = "<group>"; };
 		805143321E2DAD12007F8342 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8051434A1E2DAD19007F8342 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8051434C1E2DAD21007F8342 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -349,11 +315,12 @@
 		805143541E2DAD50007F8342 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8051439A1E2DB1CF007F8342 /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
 		8051439B1E2DB1CF007F8342 /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
+		808D46511E4DAA2E00E5891E /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = Carthage/Build/iOS/GPUImage.framework; sourceTree = "<group>"; };
+		808D46531E4DAA3200E5891E /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		80C83C5C1E4C0B0F00BEB1D5 /* LiveRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveRoom.h; sourceTree = "<group>"; };
 		80C83C5D1E4C0B0F00BEB1D5 /* LiveRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveRoom.m; sourceTree = "<group>"; };
 		80C83C5F1E4C0B5200BEB1D5 /* LiveRoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveRoomManager.h; sourceTree = "<group>"; };
 		80C83C601E4C0B5200BEB1D5 /* LiveRoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveRoomManager.m; sourceTree = "<group>"; };
-		80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
 		80C83D2F1E4C758900BEB1D5 /* news.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = news.entitlements; path = news/news.entitlements; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
@@ -375,7 +342,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C83D021E4C6F4A00BEB1D5 /* GPUImage.framework in Frameworks */,
+				803724AE1E4DC28F0030C76E /* IJKMediaFramework.framework in Frameworks */,
 				805143551E2DAD50007F8342 /* UserNotifications.framework in Frameworks */,
 				805143531E2DAD46007F8342 /* libresolv.tbd in Frameworks */,
 				805143511E2DAD38007F8342 /* SystemConfiguration.framework in Frameworks */,
@@ -396,7 +363,6 @@
 				800160C71E2CA09E0085E605 /* AudioToolbox.framework in Frameworks */,
 				800160C51E2CA0970085E605 /* libbz2.tbd in Frameworks */,
 				800160C31E2CA0900085E605 /* libz.tbd in Frameworks */,
-				800160C01E2CA03B0085E605 /* IJKMediaFramework.framework in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -411,6 +377,8 @@
 				8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */,
 				C3C0C27E6A0841B1B7E0B562 /* libRCTJPushModule.a in Frameworks */,
 				BDE643D53E264EA8A1041237 /* libRCTOrientation.a in Frameworks */,
+				808D46521E4DAA2E00E5891E /* GPUImage.framework in Frameworks */,
+				808D46541E4DAA3200E5891E /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,18 +540,11 @@
 			name = Component;
 			sourceTree = "<group>";
 		};
-		800160B61E2C9FF30085E605 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				800160BB1E2C9FF30085E605 /* IJKMediaFramework.framework */,
-				800160BD1E2C9FF30085E605 /* IJKMediaFrameworkTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		800160C11E2CA08F0085E605 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				808D46531E4DAA3200E5891E /* SDWebImage.framework */,
+				808D46511E4DAA2E00E5891E /* GPUImage.framework */,
 				805143541E2DAD50007F8342 /* UserNotifications.framework */,
 				805143521E2DAD46007F8342 /* libresolv.tbd */,
 				805143501E2DAD38007F8342 /* SystemConfiguration.framework */,
@@ -646,6 +607,15 @@
 			name = VideoRoom;
 			sourceTree = "<group>";
 		};
+		803724A61E4DC1F60030C76E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				803724AB1E4DC1F60030C76E /* IJKMediaFramework.framework */,
+				803724AD1E4DC1F60030C76E /* IJKMediaFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8051437F1E2DB0A8007F8342 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,20 +643,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		80C83CF71E4C6F2000BEB1D5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				80C83CFD1E4C6F2000BEB1D5 /* libGPUImage.a */,
-				80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */,
-				800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */,
+				803724A51E4DC1F60030C76E /* IJKMediaPlayer.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -765,12 +725,10 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				80C83D031E4C706B00BEB1D5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				80C83D011E4C6F4000BEB1D5 /* PBXTargetDependency */,
 			);
 			name = news;
 			productName = "Hello World";
@@ -814,12 +772,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 80C83CF71E4C6F2000BEB1D5 /* Products */;
-					ProjectRef = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
-				},
-				{
-					ProductGroup = 800160B61E2C9FF30085E605 /* Products */;
-					ProjectRef = 800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */;
+					ProductGroup = 803724A61E4DC1F60030C76E /* Products */;
+					ProjectRef = 803724A51E4DC1F60030C76E /* IJKMediaPlayer.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1020,18 +974,18 @@
 			remoteRef = 800160961E2C9EA50085E605 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		800160BB1E2C9FF30085E605 /* IJKMediaFramework.framework */ = {
+		803724AB1E4DC1F60030C76E /* IJKMediaFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = IJKMediaFramework.framework;
-			remoteRef = 800160BA1E2C9FF30085E605 /* PBXContainerItemProxy */;
+			remoteRef = 803724AA1E4DC1F60030C76E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		800160BD1E2C9FF30085E605 /* IJKMediaFrameworkTests.xctest */ = {
+		803724AD1E4DC1F60030C76E /* IJKMediaFrameworkTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = IJKMediaFrameworkTests.xctest;
-			remoteRef = 800160BC1E2C9FF30085E605 /* PBXContainerItemProxy */;
+			remoteRef = 803724AC1E4DC1F60030C76E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8051438C1E2DB0A8007F8342 /* libRCTJPushModule.a */ = {
@@ -1046,20 +1000,6 @@
 			fileType = archive.ar;
 			path = libRCTOrientation.a;
 			remoteRef = 80C83C8E1E4C4D7500BEB1D5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80C83CFD1E4C6F2000BEB1D5 /* libGPUImage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGPUImage.a;
-			remoteRef = 80C83CFC1E4C6F2000BEB1D5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = 80C83CFE1E4C6F2000BEB1D5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
@@ -1148,11 +1088,6 @@
 			target = 13B07F861A680F5B00A75B9A /* news */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
-		80C83D011E4C6F4000BEB1D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GPUImage;
-			targetProxy = 80C83D001E4C6F4000BEB1D5 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1221,6 +1156,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
@@ -1253,6 +1192,10 @@
 				CODE_SIGN_ENTITLEMENTS = news/news.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native/React/**",

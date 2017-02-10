@@ -1,0 +1,3 @@
+#在执行run-ios之前，需要先安装
+github "rs/SDWebImage"
+github "BradLarson/GPUImage"
