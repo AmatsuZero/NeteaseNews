@@ -57,8 +57,13 @@
 		805143551E2DAD50007F8342 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805143541E2DAD50007F8342 /* UserNotifications.framework */; };
 		8051439C1E2DB1CF007F8342 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8051439B1E2DB1CF007F8342 /* PushNotificationManager.m */; };
 		80C3AFED1E4994CC0038DCEA /* HYQiHei-EZJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 800160DD1E2CAFED0085E605 /* HYQiHei-EZJ.ttf */; };
+		80C83C5E1E4C0B0F00BEB1D5 /* LiveRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C83C5D1E4C0B0F00BEB1D5 /* LiveRoom.m */; };
+		80C83C611E4C0B5200BEB1D5 /* LiveRoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C83C601E4C0B5200BEB1D5 /* LiveRoomManager.m */; };
+		80C83D021E4C6F4A00BEB1D5 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */; };
+		80C83D041E4C70F000BEB1D5 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */; };
+		BDE643D53E264EA8A1041237 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E665F70B1E4AD391345DBE /* libRCTOrientation.a */; };
 		C3C0C27E6A0841B1B7E0B562 /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4005B25A394B4EB6300A40 /* libRCTJPushModule.a */; };
 /* End PBXBuildFile section */
 
@@ -224,6 +229,34 @@
 			remoteGlobalIDString = 6280980A1CEDC407000D3A81;
 			remoteInfo = RCTJPushModule;
 		};
+		80C83C8E1E4C4D7500BEB1D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 789A8F8C23DE412A9ACABC6B /* RCTOrientation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTOrientation;
+		};
+		80C83CFC1E4C6F2000BEB1D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		80C83CFE1E4C6F2000BEB1D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE209E51943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
+		80C83D001E4C6F4000BEB1D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -232,6 +265,19 @@
 			remoteInfo = RCTText;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		80C83D031E4C706B00BEB1D5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80C83D041E4C70F000BEB1D5 /* GPUImage.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -255,6 +301,7 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		4BD260AD8A164D6FB0EA91E8 /* RCTJPushModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJPushModule.xcodeproj; path = "../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		789A8F8C23DE412A9ACABC6B /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		800160991E2C9EDB0085E605 /* HttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProtocol.h; sourceTree = "<group>"; };
 		8001609A1E2C9EDB0085E605 /* HttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpProtocol.m; sourceTree = "<group>"; };
@@ -302,8 +349,15 @@
 		805143541E2DAD50007F8342 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8051439A1E2DB1CF007F8342 /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
 		8051439B1E2DB1CF007F8342 /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
+		80C83C5C1E4C0B0F00BEB1D5 /* LiveRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveRoom.h; sourceTree = "<group>"; };
+		80C83C5D1E4C0B0F00BEB1D5 /* LiveRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveRoom.m; sourceTree = "<group>"; };
+		80C83C5F1E4C0B5200BEB1D5 /* LiveRoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveRoomManager.h; sourceTree = "<group>"; };
+		80C83C601E4C0B5200BEB1D5 /* LiveRoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveRoomManager.m; sourceTree = "<group>"; };
+		80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
+		80C83D2F1E4C758900BEB1D5 /* news.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = news.entitlements; path = news/news.entitlements; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
+		D1E665F70B1E4AD391345DBE /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
 		DC4005B25A394B4EB6300A40 /* libRCTJPushModule.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTJPushModule.a; sourceTree = "<group>"; };
 		EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTHotUpdate.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -321,6 +375,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C83D021E4C6F4A00BEB1D5 /* GPUImage.framework in Frameworks */,
 				805143551E2DAD50007F8342 /* UserNotifications.framework in Frameworks */,
 				805143531E2DAD46007F8342 /* libresolv.tbd in Frameworks */,
 				805143511E2DAD38007F8342 /* SystemConfiguration.framework in Frameworks */,
@@ -355,6 +410,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */,
 				C3C0C27E6A0841B1B7E0B562 /* libRCTJPushModule.a in Frameworks */,
+				BDE643D53E264EA8A1041237 /* libRCTOrientation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +497,7 @@
 		13B07FAE1A68108700A75B9A /* news */ = {
 			isa = PBXGroup;
 			children = (
+				80C83D2F1E4C758900BEB1D5 /* news.entitlements */,
 				800160DC1E2CAF290085E605 /* Assets */,
 				8001609F1E2C9F490085E605 /* Component */,
 				800160981E2C9EC10085E605 /* Function */,
@@ -508,6 +565,7 @@
 		8001609F1E2C9F490085E605 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				80C83C411E4C075700BEB1D5 /* LiveRoom */,
 				800160E11E2CB05A0085E605 /* VideoRoom */,
 				800160E01E2CB04A0085E605 /* LightHouse */,
 			);
@@ -596,9 +654,38 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		80C83C411E4C075700BEB1D5 /* LiveRoom */ = {
+			isa = PBXGroup;
+			children = (
+				80C83C5F1E4C0B5200BEB1D5 /* LiveRoomManager.h */,
+				80C83C601E4C0B5200BEB1D5 /* LiveRoomManager.m */,
+				80C83C5C1E4C0B0F00BEB1D5 /* LiveRoom.h */,
+				80C83C5D1E4C0B0F00BEB1D5 /* LiveRoom.m */,
+			);
+			name = LiveRoom;
+			sourceTree = "<group>";
+		};
+		80C83C7D1E4C4D7500BEB1D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80C83C8F1E4C4D7500BEB1D5 /* libRCTOrientation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80C83CF71E4C6F2000BEB1D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80C83CFD1E4C6F2000BEB1D5 /* libGPUImage.a */,
+				80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */,
 				800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -613,6 +700,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */,
 				4BD260AD8A164D6FB0EA91E8 /* RCTJPushModule.xcodeproj */,
+				789A8F8C23DE412A9ACABC6B /* RCTOrientation.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -677,10 +765,12 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				80C83D031E4C706B00BEB1D5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				80C83D011E4C6F4000BEB1D5 /* PBXTargetDependency */,
 			);
 			name = news;
 			productName = "Hello World";
@@ -703,6 +793,11 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = FS4G5542ZM;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -718,6 +813,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 80C83CF71E4C6F2000BEB1D5 /* Products */;
+					ProjectRef = 80C83CF61E4C6F2000BEB1D5 /* GPUImage.xcodeproj */;
+				},
 				{
 					ProductGroup = 800160B61E2C9FF30085E605 /* Products */;
 					ProjectRef = 800160B51E2C9FF30085E605 /* IJKMediaPlayer.xcodeproj */;
@@ -753,6 +852,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = 80C83C7D1E4C4D7500BEB1D5 /* Products */;
+					ProjectRef = 789A8F8C23DE412A9ACABC6B /* RCTOrientation.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -938,6 +1041,27 @@
 			remoteRef = 8051438B1E2DB0A8007F8342 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		80C83C8F1E4C4D7500BEB1D5 /* libRCTOrientation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTOrientation.a;
+			remoteRef = 80C83C8E1E4C4D7500BEB1D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80C83CFD1E4C6F2000BEB1D5 /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 80C83CFC1E4C6F2000BEB1D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80C83CFF1E4C6F2000BEB1D5 /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = 80C83CFE1E4C6F2000BEB1D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1006,9 +1130,11 @@
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				8001609E1E2C9EDB0085E605 /* RCTConvert+UIInterfaceOrientation.m in Sources */,
 				800160F11E2CB0A20085E605 /* IJKPlayerView.m in Sources */,
+				80C83C5E1E4C0B0F00BEB1D5 /* LiveRoom.m in Sources */,
 				800160F01E2CB0A20085E605 /* IJKPlayerControl.m in Sources */,
 				800160EF1E2CB0A20085E605 /* IJKMaterialDesignSpinner.m in Sources */,
 				800160AA1E2C9F630085E605 /* LightHouse.m in Sources */,
+				80C83C611E4C0B5200BEB1D5 /* LiveRoomManager.m in Sources */,
 				8001609D1E2C9EDB0085E605 /* HttpProtocol.m in Sources */,
 				8051439C1E2DB1CF007F8342 /* PushNotificationManager.m in Sources */,
 			);
@@ -1021,6 +1147,11 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* news */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		80C83D011E4C6F4000BEB1D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage;
+			targetProxy = 80C83D001E4C6F4000BEB1D5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1053,6 +1184,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1073,6 +1205,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1084,11 +1217,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = news/news.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+				);
 				INFOPLIST_FILE = news/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1104,10 +1250,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = news/news.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS4G5542ZM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/ReactCommon/**",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+				);
 				INFOPLIST_FILE = news/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1164,6 +1323,7 @@
 					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1210,6 +1370,7 @@
 					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

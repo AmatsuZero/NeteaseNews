@@ -10,6 +10,8 @@ import {CustomTabbar} from "./App/Views/CustomTabbar";
 //iOS和安卓通用的ViewPager/Tabbar
 import ScrollableTabView, {DefaultTabBar} from "react-native-scrollable-tab-view";
 
+import LivePage from './App/Views/LivePage';
+
 const icons = [
     [require('./App/Img/tabbar_icon_news_normal@2x.png'),
         require('./App/Img/tabbar_icon_news_highlight@2x.png')],
@@ -26,6 +28,7 @@ const icons = [
 import ControlPanel from './App/Views/DrawerContent'
 import Drawer from 'react-native-drawer'
 import VideoPage from './App/Views/VideoPage'
+import Orientation from 'react-native-orientation';
 
 class news extends React.Component {
 
@@ -135,6 +138,13 @@ class news extends React.Component {
                     locked={true}//禁止tabbar滚动
                     scrollWithoutAnimation={true}
                     tabBarPosition={'bottom'}
+                    onChangeTab={(lb)=>{
+                        if (lb.i === 0) {//除了首页，全部锁屏
+                            Orientation.unlockAllOrientations();
+                        } else {
+                            Orientation.lockToPortrait();
+                        }
+                    }}
                     renderTabBar={() =>
                         <CustomTabbar visible={this.state.isTabbarVisible} tabNames={this.state.tabNames} tabIconNames={this.state.tabIconNames}/>
                     }>
@@ -143,8 +153,8 @@ class news extends React.Component {
                         <Text>#2</Text>
                     </View>
                     {this.renderVideoPage()}
-                    <View style={styles.content} tabLabel='key4'>
-                        <Text>#4</Text>
+                    <View  tabLabel='key4'>
+                        <LivePage/>
                     </View>
                     <View style={styles.content} tabLabel='key5'>
                         <Text>#5</Text>

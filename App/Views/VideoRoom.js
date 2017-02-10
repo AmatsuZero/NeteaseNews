@@ -25,4 +25,4 @@ export default class VideoRoom extends React.Component {
 VideoRoom.propTypes = {
     playURL:React.PropTypes.string,
     coverImg:React.PropTypes.string
-}
+};

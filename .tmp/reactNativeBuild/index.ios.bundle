@@ -1602,6 +1602,7 @@ var _CustomTabbar=require(614 /* ./App/Views/CustomTabbar */);
 
 var _reactNativeScrollableTabView=require(556 /* react-native-scrollable-tab-view */);var _reactNativeScrollableTabView2=_interopRequireDefault(_reactNativeScrollableTabView);
 
+var _LivePage=require(615 /* ./App/Views/LivePage */);var _LivePage2=_interopRequireDefault(_LivePage);
 
 
 
@@ -1615,9 +1616,11 @@ var _reactNativeScrollableTabView=require(556 /* react-native-scrollable-tab-vie
 
 
 
-var _DrawerContent=require(615 /* ./App/Views/DrawerContent */);var _DrawerContent2=_interopRequireDefault(_DrawerContent);
-var _reactNativeDrawer=require(619 /* react-native-drawer */);var _reactNativeDrawer2=_interopRequireDefault(_reactNativeDrawer);
-var _VideoPage=require(622 /* ./App/Views/VideoPage */);var _VideoPage2=_interopRequireDefault(_VideoPage);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={news:{displayName:"news"}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:"/Users/jiangzhenhua/NeteaseNews/index.ios.js",components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var icons=[[require(628 /* ./App/Img/tabbar_icon_news_normal@2x.png */),require(629 /* ./App/Img/tabbar_icon_news_highlight@2x.png */)],[require(630 /* ./App/Img/tabbar_icon_reader_normal@2x.png */),require(631 /* ./App/Img/tabbar_icon_reader_highlight@2x.png */)],[require(632 /* ./App/Img/tabbar_icon_media_normal@2x.png */),require(633 /* ./App/Img/tabbar_icon_media_highlight@2x.png */)],[require(634 /* ./App/Img/tabbar_icon_found_normal@2x.png */),require(635 /* ./App/Img/tabbar_icon_found_highlight@2x.png */)],[require(636 /* ./App/Img/tabbar_icon_me_normal@2x.png */),require(637 /* ./App/Img/tabbar_icon_me_highlight@2x.png */)]];var news=_wrapComponent("news")(function(_React$Component){_inherits(news,_React$Component);
+
+var _DrawerContent=require(617 /* ./App/Views/DrawerContent */);var _DrawerContent2=_interopRequireDefault(_DrawerContent);
+var _reactNativeDrawer=require(621 /* react-native-drawer */);var _reactNativeDrawer2=_interopRequireDefault(_reactNativeDrawer);
+var _VideoPage=require(624 /* ./App/Views/VideoPage */);var _VideoPage2=_interopRequireDefault(_VideoPage);
+var _reactNativeOrientation=require(630 /* react-native-orientation */);var _reactNativeOrientation2=_interopRequireDefault(_reactNativeOrientation);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={news:{displayName:"news"}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:"/Users/jiangzhenhua/NeteaseNews/index.ios.js",components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var icons=[[require(631 /* ./App/Img/tabbar_icon_news_normal@2x.png */),require(632 /* ./App/Img/tabbar_icon_news_highlight@2x.png */)],[require(633 /* ./App/Img/tabbar_icon_reader_normal@2x.png */),require(634 /* ./App/Img/tabbar_icon_reader_highlight@2x.png */)],[require(635 /* ./App/Img/tabbar_icon_media_normal@2x.png */),require(636 /* ./App/Img/tabbar_icon_media_highlight@2x.png */)],[require(637 /* ./App/Img/tabbar_icon_found_normal@2x.png */),require(638 /* ./App/Img/tabbar_icon_found_highlight@2x.png */)],[require(639 /* ./App/Img/tabbar_icon_me_normal@2x.png */),require(640 /* ./App/Img/tabbar_icon_me_highlight@2x.png */)]];var news=_wrapComponent("news")(function(_React$Component){_inherits(news,_React$Component);
 
 
 
@@ -1727,6 +1730,13 @@ _react3.default.createElement(_reactNativeScrollableTabView2.default,{
 locked:true,
 scrollWithoutAnimation:true,
 tabBarPosition:'bottom',
+onChangeTab:function onChangeTab(lb){
+if(lb.i===0){
+_reactNativeOrientation2.default.unlockAllOrientations();
+}else{
+_reactNativeOrientation2.default.lockToPortrait();
+}
+},
 renderTabBar:function renderTabBar(){return(
 _react3.default.createElement(_CustomTabbar.CustomTabbar,{visible:_this5.state.isTabbarVisible,tabNames:_this5.state.tabNames,tabIconNames:_this5.state.tabIconNames}));}},
 
@@ -1735,8 +1745,8 @@ _react3.default.createElement(_reactNative.View,{style:styles.content,tabLabel:"
 _react3.default.createElement(_reactNative.Text,null,"#2")),
 
 this.renderVideoPage(),
-_react3.default.createElement(_reactNative.View,{style:styles.content,tabLabel:"key4"},
-_react3.default.createElement(_reactNative.Text,null,"#4")),
+_react3.default.createElement(_reactNative.View,{tabLabel:"key4"},
+_react3.default.createElement(_LivePage2.default,null)),
 
 _react3.default.createElement(_reactNative.View,{style:styles.content,tabLabel:"key5"},
 _react3.default.createElement(_reactNative.Text,null,"#5"))))));
@@ -1855,8 +1865,15 @@ __spread:__spread};
 
 module.exports=React;
 }, 13, null, "react/lib/React.js");
-__d(/* object-assign/index.js */function(global, require, module, exports) {'use strict';var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};
+__d(/* object-assign/index.js */function(global, require, module, exports) {/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
 
+'use strict';var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};
+
+var getOwnPropertySymbols=Object.getOwnPropertySymbols;
 var hasOwnProperty=Object.prototype.hasOwnProperty;
 var propIsEnumerable=Object.prototype.propertyIsEnumerable;
 
@@ -1906,7 +1923,7 @@ return false;
 }
 
 return true;
-}catch(e){
+}catch(err){
 
 return false;
 }
@@ -1926,8 +1943,8 @@ to[key]=from[key];
 }
 }
 
-if(Object.getOwnPropertySymbols){
-symbols=Object.getOwnPropertySymbols(from);
+if(getOwnPropertySymbols){
+symbols=getOwnPropertySymbols(from);
 for(var i=0;i<symbols.length;i++){
 if(propIsEnumerable.call(from,symbols[i])){
 to[symbols[i]]=from[symbols[i]];
@@ -73202,7 +73219,7 @@ var count=0;
 if(this.state.typeList[label.title]){
 count=this.state.typeList[label.title].length-this.state.typeList[label.title].length%10;
 }
-console.log('>>>>>>>>>'+count);
+
 
 var isEmpty=!this.state.typeList[label.title]||this.state.typeList[label.title].length===0;
 (0,_LabelModel.getList)(label,count).
@@ -73930,12 +73947,15 @@ sceneKeys:this.newSceneKeys({currentPage:this.props.initialPage})};
 },
 
 componentDidMount:function componentDidMount(){var _this=this;
-InteractionManager.runAfterInteractions(function(){
+var scrollFn=function scrollFn(){
 if(_this.scrollView&&Platform.OS==='android'){
 var x=_this.props.initialPage*_this.state.containerWidth;
 _this.scrollView.scrollTo({x:x,animated:false});
 }
-});
+};
+this.setTimeout(function(){
+InteractionManager.runAfterInteractions(scrollFn);
+},0);
 },
 
 componentWillReceiveProps:function componentWillReceiveProps(props){
@@ -77505,6 +77525,125 @@ tabItem:{
 flexDirection:'column',
 alignItems:'center'}});
 }, 614, null, "news/App/Views/CustomTabbar.js");
+__d(/* news/App/Views/LivePage.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+
+
+var _reactNative=require(196 /* react-native */);
+
+
+
+
+
+
+
+
+
+
+
+
+var _LiveRoom=require(616 /* ./LiveRoom */);var _LiveRoom2=_interopRequireDefault(_LiveRoom);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={LivePage:{displayName:"LivePage"}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:"/Users/jiangzhenhua/NeteaseNews/App/Views/LivePage.js",components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var screenWidth=_reactNative.Dimensions.get('window').width;var screenHeight=_reactNative.Dimensions.get('window').height;var LivePage=_wrapComponent("LivePage")(function(_React$Component){_inherits(LivePage,_React$Component);
+
+
+
+function LivePage(props){_classCallCheck(this,LivePage);var _this=_possibleConstructorReturn(this,(LivePage.__proto__||Object.getPrototypeOf(LivePage)).call(this,
+props));
+_this.state={
+bilateralValue:0,
+brightnessValue:0};return _this;
+
+}_createClass(LivePage,[{key:"render",value:function render()
+
+
+{var _this2=this;
+return(
+_react3.default.createElement(_reactNative.View,{style:styles.camera},
+_react3.default.createElement(_LiveRoom2.default,{ref:"live",
+brightnessValue:this.state.brightnessValue,
+bilateralValue:this.state.bilateralValue}),
+
+_react3.default.createElement(_reactNative.Text,{
+style:styles.switchButton,
+onPress:function onPress(){return _LiveRoom2.default.toggleCapture();}},"\u5207\u6362\u6444\u50CF\u5934"),
+
+
+
+_react3.default.createElement(_reactNative.Text,{style:{
+position:'absolute',
+top:screenHeight-64-100,
+left:10}},"\u78E8\u76AE"),
+
+
+
+_react3.default.createElement(_reactNative.Slider,{
+style:styles.slider,
+value:5,
+minimumValue:5,
+maximumValue:10,
+onValueChange:function onValueChange(value){
+_this2.setState({
+bilateralValue:value});
+
+}})));
+
+
+
+}}]);return LivePage;}(_react3.default.Component));exports.default=LivePage;
+
+
+var styles=_reactNative.StyleSheet.create({
+
+camera:{},
+
+
+
+switchButton:{
+position:'absolute',
+top:64,
+right:10,
+width:75,
+height:30,
+color:'blue',
+lineHeight:30,
+textAlign:'center'},
+
+
+slider:{
+position:'absolute',
+top:screenHeight-64-100,
+width:screenWidth-20*2,
+left:40}});
+}, 615, null, "news/App/Views/LivePage.js");
+__d(/* news/App/Views/LiveRoom.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+
+
+var _reactNative=require(196 /* react-native */);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={LiveRoom:{displayName:"LiveRoom"}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:"/Users/jiangzhenhua/NeteaseNews/App/Views/LiveRoom.js",components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}
+
+
+
+
+
+var Live=(0,_reactNative.requireNativeComponent)('LiveRoom',LiveRoom);var LiveRoom=_wrapComponent("LiveRoom")(function(_React$Component){_inherits(LiveRoom,_React$Component);function LiveRoom(){_classCallCheck(this,LiveRoom);return _possibleConstructorReturn(this,(LiveRoom.__proto__||Object.getPrototypeOf(LiveRoom)).apply(this,arguments));}_createClass(LiveRoom,[{key:"render",value:function render()
+
+
+
+
+
+
+
+
+{
+return(
+_react3.default.createElement(Live,this.props));
+
+}}],[{key:"toggleCapture",value:function toggleCapture(){var liveRoomMgr=_reactNative.NativeModules.LiveRoomManager;liveRoomMgr.toggleCapture();}}]);return LiveRoom;}(_react3.default.Component));exports.default=LiveRoom;
+
+
+LiveRoom.propTypes={
+brightnessValue:_react3.default.PropTypes.number,
+bilateralValue:_react3.default.PropTypes.number};
+}, 616, null, "news/App/Views/LiveRoom.js");
 __d(/* news/App/Views/DrawerContent.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 
@@ -77521,7 +77660,7 @@ var _reactNative=require(196 /* react-native */);
 
 
 
-var _reactNativeUpdate=require(616 /* react-native-update */);
+var _reactNativeUpdate=require(618 /* react-native-update */);
 
 
 
@@ -77532,10 +77671,10 @@ var _reactNativeUpdate=require(616 /* react-native-update */);
 
 
 
-var _update=require(617 /* ../../update.json */);var _update2=_interopRequireDefault(_update);
+var _update=require(619 /* ../../update.json */);var _update2=_interopRequireDefault(_update);
 
 
-var _Button=require(618 /* ../Component/Button */);var _Button2=_interopRequireDefault(_Button);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={ControlPanel:{displayName:'ControlPanel'}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:'/Users/jiangzhenhua/NeteaseNews/App/Views/DrawerContent.js',components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var appKey=_update2.default[_reactNative.Platform.OS].appKey;var ControlPanel=_wrapComponent('ControlPanel')(function(_Component){_inherits(ControlPanel,_Component);function ControlPanel(){_classCallCheck(this,ControlPanel);return _possibleConstructorReturn(this,(ControlPanel.__proto__||Object.getPrototypeOf(ControlPanel)).apply(this,arguments));}_createClass(ControlPanel,[{key:'componentWillMount',value:function componentWillMount()
+var _Button=require(620 /* ../Component/Button */);var _Button2=_interopRequireDefault(_Button);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={ControlPanel:{displayName:'ControlPanel'}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:'/Users/jiangzhenhua/NeteaseNews/App/Views/DrawerContent.js',components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var appKey=_update2.default[_reactNative.Platform.OS].appKey;var ControlPanel=_wrapComponent('ControlPanel')(function(_Component){_inherits(ControlPanel,_Component);function ControlPanel(){_classCallCheck(this,ControlPanel);return _possibleConstructorReturn(this,(ControlPanel.__proto__||Object.getPrototypeOf(ControlPanel)).apply(this,arguments));}_createClass(ControlPanel,[{key:'componentWillMount',value:function componentWillMount()
 
 
 
@@ -77708,7 +77847,7 @@ instructions:{
 textAlign:'center',
 color:'#333333',
 marginBottom:5}});
-}, 615, null, "news/App/Views/DrawerContent.js");
+}, 617, null, "news/App/Views/DrawerContent.js");
 __d(/* react-native-update/lib/index.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.isRolledBack=exports.isFirstTime=exports.currentVersion=exports.packageVersion=exports.downloadRootDir=undefined;exports.
 
 
@@ -77812,12 +77951,12 @@ _reactNative.NativeAppEventEmitter.addListener('RCTHotUpdateDownloadProgress',fu
 _reactNative.NativeAppEventEmitter.addListener('RCTHotUpdateUnzipProgress',function(params){
 
 });
-}, 616, null, "react-native-update/lib/index.js");
+}, 618, null, "react-native-update/lib/index.js");
 __d(/* news/update.json */function(global, require, module, exports) {module.exports = {
 "ios":{
 "appId":6112,
 "appKey":"R2HkTu10_aMnAWEheHyjU1Ux_VhCxm_b"}};
-}, 617, null, "news/update.json");
+}, 619, null, "news/update.json");
 __d(/* news/App/Component/Button.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 
@@ -77856,11 +77995,11 @@ this.props.text)));
 
 
 }}]);return Button;}(_react2.Component));exports.default=Button;
-}, 618, null, "news/App/Component/Button.js");
+}, 620, null, "news/App/Component/Button.js");
 __d(/* react-native-drawer/index.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _class,_temp2;
 var _reactNative=require(196 /* react-native */);
 
-var _tweener=require(620 /* ./tweener */);var _tweener2=_interopRequireDefault(_tweener);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={Drawer:{displayName:'Drawer'}};var _reactTransformHmrLibIndexJs2=(0,_index2.default)({filename:'/Users/jiangzhenhua/NeteaseNews/node_modules/react-native-drawer/index.js',components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _reactTransformHmrLibIndexJs2(Component,id);};}
+var _tweener=require(622 /* ./tweener */);var _tweener2=_interopRequireDefault(_tweener);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={Drawer:{displayName:'Drawer'}};var _reactTransformHmrLibIndexJs2=(0,_index2.default)({filename:'/Users/jiangzhenhua/NeteaseNews/node_modules/react-native-drawer/index.js',components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _reactTransformHmrLibIndexJs2(Component,id);};}
 
 var deviceScreen=_reactNative.Dimensions.get('window');
 var DOUBLE_TAP_INTERVAL=500;
@@ -78420,8 +78559,8 @@ top:0,
 bottom:0,
 position:'absolute',
 backgroundColor:'transparent'}});
-}, 619, null, "react-native-drawer/index.js");
-__d(/* react-native-drawer/tweener.js */function(global, require, module, exports) {var easingTypes=require(621 /* tween-functions */);
+}, 621, null, "react-native-drawer/index.js");
+__d(/* react-native-drawer/tweener.js */function(global, require, module, exports) {var easingTypes=require(623 /* tween-functions */);
 
 module.exports=function(config){
 return new Tween(config);
@@ -78458,7 +78597,7 @@ requestAnimationFrame(this._rafLoop);
 Tween.prototype.terminate=function(){
 this._break=true;
 };
-}, 620, null, "react-native-drawer/tweener.js");
+}, 622, null, "react-native-drawer/tweener.js");
 __d(/* tween-functions/index.js */function(global, require, module, exports) {'use strict';
 
 
@@ -78708,7 +78847,7 @@ return v*0.5+c*0.5+b;
 
 
 module.exports=tweenFunctions;
-}, 621, null, "tween-functions/index.js");
+}, 623, null, "tween-functions/index.js");
 __d(/* news/App/Views/VideoPage.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 
@@ -78735,9 +78874,10 @@ var _reactNative=require(196 /* react-native */);
 
 
 
-var _VideoModel=require(623 /* ../Model/VideoModel */);
-var _PlayPage=require(624 /* ./PlayPage */);var _PlayPage2=_interopRequireDefault(_PlayPage);
+var _VideoModel=require(625 /* ../Model/VideoModel */);
+var _PlayPage=require(626 /* ./PlayPage */);var _PlayPage2=_interopRequireDefault(_PlayPage);
 var _Constants=require(563 /* ../Model/Constants */);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={VideoPage:{displayName:"VideoPage"}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:"/Users/jiangzhenhua/NeteaseNews/App/Views/VideoPage.js",components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var screenWidth=_reactNative.Dimensions.get('window').width;var VideoPage=_wrapComponent("VideoPage")(function(_React$Component){_inherits(VideoPage,_React$Component);
+
 
 
 
@@ -78767,6 +78907,7 @@ console.log(e);
 });
 });
 }},{key:"onRefresh",value:function onRefresh(
+
 
 
 label){
@@ -78802,7 +78943,7 @@ resizeMode:'stretch'},
 
 _react3.default.createElement(_reactNative.Image,{
 resizeMode:'center',
-source:require(627 /* ../Img/play_btn.png */)}),
+source:require(629 /* ../Img/play_btn.png */)}),
 
 _react3.default.createElement(_reactNative.Text,{style:styles.cellText},
 video.title),
@@ -78959,7 +79100,7 @@ flexDirection:'row',
 justifyContent:'center',
 alignItems:'center',
 paddingTop:_reactNative.Platform.OS==='ios'?10:0}});
-}, 622, null, "news/App/Views/VideoPage.js");
+}, 624, null, "news/App/Views/VideoPage.js");
 __d(/* news/App/Model/VideoModel.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.VideoModel=exports.VideoVoteModel=exports.VideoCommentModel=undefined;exports.
 
 
@@ -79083,7 +79224,7 @@ fetchPlayURL=fetchPlayURL;exports.
 fetchRecommendList=fetchRecommendList;var _NetworkUtil=require(565 /* ../Util/NetworkUtil */);function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}var URL="http://v.163.com/special/video_tuijian/?callback=callback_video";var VideoCommentModel=exports.VideoCommentModel=function VideoCommentModel(obj){_classCallCheck(this,VideoCommentModel);this.against=obj.against;this.boardId=obj.boardId;this.channelId=obj.channelId;this.cmtAgainst=obj.cmtAgainst;this.cmtVote=obj.cmtVote;this.createTime=obj.createTime;this.docId=obj.docId;this.isAudit=obj.isAudit;this.modifyTime=obj.modifyTime;this.rcount=obj.rcount;this.tcount=obj.tcount;this.title=obj.title;this.url=obj.url;this.vote=obj.vote;};var VideoVoteModel=exports.VideoVoteModel=function VideoVoteModel(obj){_classCallCheck(this,VideoVoteModel);this.hits=obj.hits;this.id=obj.id;this.opposecount=obj.opposecount;this.vid=obj.vid;};var VideoModel=exports.VideoModel=function VideoModel(obj){_classCallCheck(this,VideoModel);this.comment=new VideoCommentModel(obj.comment);this.img=obj.img;this.sname=obj.sname;this.title=obj.title;this.url=obj.url;this.vid=obj.vid;};function getVideoList(){return(0,_NetworkUtil.cancellableFetch)(fetch(URL,{method:'GET',headers:{'Content-Type':'text/html;'}}),30000).then(function(response){if(response.ok){return(0,_NetworkUtil.parseJSON)(response);}else{return{};}}).then(function(responseData){if(Object.keys(responseData).length===0){throw"视频列表返回数据为空！";}else{for(var key in responseData){return responseData[key];}}}).then(function(list){var tmpArr=[];for(var _iterator=list,_isArray=Array.isArray(_iterator),_i=0,_iterator=_isArray?_iterator:_iterator[typeof Symbol==="function"?Symbol.iterator:"@@iterator"]();;){var _ref;if(_isArray){if(_i>=_iterator.length)break;_ref=_iterator[_i++];}else{_i=_iterator.next();if(_i.done)break;_ref=_i.value;}var dic=_ref;var model=new VideoModel(dic);tmpArr.push(model);}return tmpArr;}).catch(function(error){throw error.toString();});}function fetchPlayURL(vid){var URL='http://3g.163.com/touch/video/detail/jsonp/'+vid+'.html?callback=videoList';return(0,_NetworkUtil.cancellableFetch)(fetch(URL,{method:'GET',headers:{'Content-Type':'text/html;'}}),30000).then(function(response){if(response.ok){return response.text();}else{return{};}}).then(function(json){if(Object.keys(json).length===0){throw"视频列表返回数据为空！";}else{var replaceStr='videoList'+'(';json=json.replace(replaceStr,'');json=json.replace(/\)/g,'');try{json=JSON.parse(json);return json;}catch(e){throw e;}}}).then(function(list){return list;}).catch(function(error){throw error.toString();});}function fetchRecommendList(){
 
 }
-}, 623, null, "news/App/Model/VideoModel.js");
+}, 625, null, "news/App/Model/VideoModel.js");
 __d(/* news/App/Views/PlayPage.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 
@@ -79108,13 +79249,14 @@ var _reactNative=require(196 /* react-native */);
 
 
 
-var _VideoRoom=require(625 /* ./VideoRoom */);var _VideoRoom2=_interopRequireDefault(_VideoRoom);
+var _VideoRoom=require(627 /* ./VideoRoom */);var _VideoRoom2=_interopRequireDefault(_VideoRoom);
 var _Constants=require(563 /* ../Model/Constants */);
 
 var _LoadingView=require(562 /* ../Component/LoadingView */);var _LoadingView2=_interopRequireDefault(_LoadingView);
-var _VideoModel=require(623 /* ../Model/VideoModel */);
+var _VideoModel=require(625 /* ../Model/VideoModel */);
 
 var _reactNativeScrollableTabView=require(556 /* react-native-scrollable-tab-view */);var _reactNativeScrollableTabView2=_interopRequireDefault(_reactNativeScrollableTabView);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={PlayPage:{displayName:"PlayPage"}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:"/Users/jiangzhenhua/NeteaseNews/App/Views/PlayPage.js",components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var screenWidth=_reactNative.Dimensions.get('window').width;var PlayPage=_wrapComponent("PlayPage")(function(_React$Component){_inherits(PlayPage,_React$Component);
+
 
 
 
@@ -79196,7 +79338,7 @@ _react3.default.createElement(_reactNative.View,{style:{marginTop:5,flexDirectio
 _react3.default.createElement(_reactNative.Image,{
 style:{width:12,height:12},
 resizeMode:'cover',
-source:require(626 /* ../Img/Video/clock.png */)}),
+source:require(628 /* ../Img/Video/clock.png */)}),
 _react3.default.createElement(_reactNative.Text,{style:{color:'gray',fontSize:12,marginLeft:4}},this.state.playInfo['length'])))),
 
 
@@ -79259,7 +79401,7 @@ backgroundColor:'red'},
 
 listView:{
 backgroundColor:'#eeeeec'}});
-}, 624, null, "news/App/Views/PlayPage.js");
+}, 626, null, "news/App/Views/PlayPage.js");
 __d(/* news/App/Views/VideoRoom.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(42 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 
@@ -79287,31 +79429,94 @@ return _react3.default.createElement(Video,_extends({style:{flex:1}},this.props)
 VideoRoom.propTypes={
 playURL:_react3.default.PropTypes.string,
 coverImg:_react3.default.PropTypes.string};
-}, 625, null, "news/App/Views/VideoRoom.js");
+}, 627, null, "news/App/Views/VideoRoom.js");
 __d(/* news/App/Img/Video/clock.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img/Video","width":36,"height":36,"scales":[1],"hash":"cae2a1b41d6aec4830ce636fb89d5e06","name":"clock","type":"png"});
-}, 626, null, "news/App/Img/Video/clock.png");
+}, 628, null, "news/App/Img/Video/clock.png");
 __d(/* news/App/Img/play_btn.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":70,"height":40,"scales":[1],"hash":"c4eb33df7e92e87b489c6690788ec809","name":"play_btn","type":"png"});
-}, 627, null, "news/App/Img/play_btn.png");
+}, 629, null, "news/App/Img/play_btn.png");
+__d(/* react-native-orientation/index.js */function(global, require, module, exports) {var Orientation=require(196 /* react-native */).NativeModules.Orientation;
+var DeviceEventEmitter=require(196 /* react-native */).DeviceEventEmitter;
+
+var listeners={};
+var orientationDidChangeEvent="orientationDidChange";
+var specificOrientationDidChangeEvent="specificOrientationDidChange";
+
+module.exports={
+getOrientation:function getOrientation(cb){
+Orientation.getOrientation(function(error,orientation){
+cb(error,orientation);
+});
+},
+getSpecificOrientation:function getSpecificOrientation(cb){
+Orientation.getSpecificOrientation(function(error,orientation){
+cb(error,orientation);
+});
+},
+lockToPortrait:function lockToPortrait(){
+Orientation.lockToPortrait();
+},
+lockToLandscape:function lockToLandscape(){
+Orientation.lockToLandscape();
+},
+lockToLandscapeRight:function lockToLandscapeRight(){
+Orientation.lockToLandscapeRight();
+},
+lockToLandscapeLeft:function lockToLandscapeLeft(){
+Orientation.lockToLandscapeLeft();
+},
+unlockAllOrientations:function unlockAllOrientations(){
+Orientation.unlockAllOrientations();
+},
+addOrientationListener:function addOrientationListener(cb){
+listeners[cb]=DeviceEventEmitter.addListener(orientationDidChangeEvent,
+function(body){
+cb(body.orientation);
+});
+},
+removeOrientationListener:function removeOrientationListener(cb){
+if(!listeners[cb]){
+return;
+}
+listeners[cb].remove();
+listeners[cb]=null;
+},
+addSpecificOrientationListener:function addSpecificOrientationListener(cb){
+listeners[cb]=DeviceEventEmitter.addListener(specificOrientationDidChangeEvent,
+function(body){
+cb(body.specificOrientation);
+});
+},
+removeSpecificOrientationListener:function removeSpecificOrientationListener(cb){
+if(!listeners[cb]){
+return;
+}
+listeners[cb].remove();
+listeners[cb]=null;
+},
+getInitialOrientation:function getInitialOrientation(){
+return Orientation.initialOrientation;
+}};
+}, 630, null, "react-native-orientation/index.js");
 __d(/* news/App/Img/tabbar_icon_news_normal.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":21,"height":16,"scales":[2],"hash":"d7656bc2e80be3cfe764625a83e7c727","name":"tabbar_icon_news_normal","type":"png"});
-}, 628, null, "news/App/Img/tabbar_icon_news_normal.png");
+}, 631, null, "news/App/Img/tabbar_icon_news_normal.png");
 __d(/* news/App/Img/tabbar_icon_news_highlight.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":21,"height":16,"scales":[2],"hash":"5934974717f914cb79967458c41ce0ba","name":"tabbar_icon_news_highlight","type":"png"});
-}, 629, null, "news/App/Img/tabbar_icon_news_highlight.png");
+}, 632, null, "news/App/Img/tabbar_icon_news_highlight.png");
 __d(/* news/App/Img/tabbar_icon_reader_normal.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":20,"height":18,"scales":[2],"hash":"491f26af3063588f68aaff7b5d594073","name":"tabbar_icon_reader_normal","type":"png"});
-}, 630, null, "news/App/Img/tabbar_icon_reader_normal.png");
+}, 633, null, "news/App/Img/tabbar_icon_reader_normal.png");
 __d(/* news/App/Img/tabbar_icon_reader_highlight.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":20,"height":17,"scales":[2],"hash":"45b097e1ab0be39ccde7f3b9958a99dc","name":"tabbar_icon_reader_highlight","type":"png"});
-}, 631, null, "news/App/Img/tabbar_icon_reader_highlight.png");
+}, 634, null, "news/App/Img/tabbar_icon_reader_highlight.png");
 __d(/* news/App/Img/tabbar_icon_media_normal.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":19,"height":19,"scales":[2],"hash":"dcf8e5b4174bf784d5764068144ef65e","name":"tabbar_icon_media_normal","type":"png"});
-}, 632, null, "news/App/Img/tabbar_icon_media_normal.png");
+}, 635, null, "news/App/Img/tabbar_icon_media_normal.png");
 __d(/* news/App/Img/tabbar_icon_media_highlight.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":19,"height":19,"scales":[2],"hash":"650bb415fb925508f109494e4b75747c","name":"tabbar_icon_media_highlight","type":"png"});
-}, 633, null, "news/App/Img/tabbar_icon_media_highlight.png");
+}, 636, null, "news/App/Img/tabbar_icon_media_highlight.png");
 __d(/* news/App/Img/tabbar_icon_found_normal.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":16,"height":21,"scales":[2],"hash":"7e1e0e0cfc4c7c66b2b89c99ea5642ff","name":"tabbar_icon_found_normal","type":"png"});
-}, 634, null, "news/App/Img/tabbar_icon_found_normal.png");
+}, 637, null, "news/App/Img/tabbar_icon_found_normal.png");
 __d(/* news/App/Img/tabbar_icon_found_highlight.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":16,"height":21,"scales":[2],"hash":"825f81fd259e8d1891ebfe9e623237d2","name":"tabbar_icon_found_highlight","type":"png"});
-}, 635, null, "news/App/Img/tabbar_icon_found_highlight.png");
+}, 638, null, "news/App/Img/tabbar_icon_found_highlight.png");
 __d(/* news/App/Img/tabbar_icon_me_normal.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":19,"height":19,"scales":[2],"hash":"e78b2a47819b1e90b70f83010bec66fa","name":"tabbar_icon_me_normal","type":"png"});
-}, 636, null, "news/App/Img/tabbar_icon_me_normal.png");
+}, 639, null, "news/App/Img/tabbar_icon_me_normal.png");
 __d(/* news/App/Img/tabbar_icon_me_highlight.png */function(global, require, module, exports) {module.exports = require(325 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/App/Img","width":19,"height":19,"scales":[2],"hash":"8b64365d676d781449370aba1e6935e0","name":"tabbar_icon_me_highlight","type":"png"});
-}, 637, null, "news/App/Img/tabbar_icon_me_highlight.png");
+}, 640, null, "news/App/Img/tabbar_icon_me_highlight.png");
 ;require(368);
 ;require(0);
 //# sourceMappingURL=index.ios.map

@@ -28,6 +28,7 @@ import {VideoModel, getVideoList} from '../Model/VideoModel'
 import PlayPage from './PlayPage'
 import {Navibarheight} from "../Model/Constants";
 
+
 export default class VideoPage extends React.Component {
 
     constructor(props){
@@ -56,6 +57,7 @@ export default class VideoPage extends React.Component {
                 })
         })
     }
+
 
     //下拉刷新
     onRefresh(label) {

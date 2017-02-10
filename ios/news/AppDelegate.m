@@ -14,6 +14,8 @@
 #import "RCTRootView.h"
 //RN中文网热更新
 #import "RCTHotUpdate.h"
+//屏幕旋转控制
+#import "Orientation.h"
 
 #import "PushNotificationManager.h"
 
@@ -47,6 +49,11 @@
   [[PushNotificationManager defaultManager] registerJPushWithLaunchOptions:launchOptions];
   
   return YES;
+}
+
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+  return [Orientation getOrientation];
 }
 
 #pragma mark PushDelegate

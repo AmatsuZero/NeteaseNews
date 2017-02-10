@@ -30,6 +30,7 @@ import {fetchPlayURL} from '../Model/VideoModel'
 
 import ScrollableTabView, {DefaultTabBar} from "react-native-scrollable-tab-view";
 
+
 export default class PlayPage extends React.Component {
 
     constructor(props){
@@ -55,7 +56,7 @@ export default class PlayPage extends React.Component {
                 .catch((e)=>{
                     console.log(e);
                 })
-        })
+        });
     }
 
     //返回
