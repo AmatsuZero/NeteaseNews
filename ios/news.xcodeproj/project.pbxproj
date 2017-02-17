@@ -60,6 +60,8 @@
 		80C3AFED1E4994CC0038DCEA /* HYQiHei-EZJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 800160DD1E2CAFED0085E605 /* HYQiHei-EZJ.ttf */; };
 		80C83C5E1E4C0B0F00BEB1D5 /* LiveRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C83C5D1E4C0B0F00BEB1D5 /* LiveRoom.m */; };
 		80C83C611E4C0B5200BEB1D5 /* LiveRoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C83C601E4C0B5200BEB1D5 /* LiveRoomManager.m */; };
+		80C8F65E1E5707680016510A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C8F65D1E5707680016510A /* AssetsLibrary.framework */; };
+		80C8F6611E57080D0016510A /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C8F6601E57080D0016510A /* opencv2.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8D314DC1B62F4337871FE912 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB35A2598819407FA28B9031 /* libRCTHotUpdate.a */; };
 		BDE643D53E264EA8A1041237 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E665F70B1E4AD391345DBE /* libRCTOrientation.a */; };
@@ -320,6 +322,8 @@
 		80C83C5F1E4C0B5200BEB1D5 /* LiveRoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveRoomManager.h; sourceTree = "<group>"; };
 		80C83C601E4C0B5200BEB1D5 /* LiveRoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveRoomManager.m; sourceTree = "<group>"; };
 		80C83D2F1E4C758900BEB1D5 /* news.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = news.entitlements; path = news/news.entitlements; sourceTree = "<group>"; };
+		80C8F65D1E5707680016510A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		80C8F6601E57080D0016510A /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		CEA24FA0B9904D39BE9DE8A2 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
 		D1E665F70B1E4AD391345DBE /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C8F65E1E5707680016510A /* AssetsLibrary.framework in Frameworks */,
 				803724AE1E4DC28F0030C76E /* IJKMediaFramework.framework in Frameworks */,
 				805143551E2DAD50007F8342 /* UserNotifications.framework in Frameworks */,
 				805143531E2DAD46007F8342 /* libresolv.tbd in Frameworks */,
@@ -357,6 +362,7 @@
 				800160CF1E2CA0BA0085E605 /* CoreVideo.framework in Frameworks */,
 				800160CD1E2CA0B20085E605 /* CoreMedia.framework in Frameworks */,
 				800160CB1E2CA0AA0085E605 /* CoreGraphics.framework in Frameworks */,
+				80C8F6611E57080D0016510A /* opencv2.framework in Frameworks */,
 				800160C91E2CA0A40085E605 /* AVFoundation.framework in Frameworks */,
 				800160C71E2CA09E0085E605 /* AudioToolbox.framework in Frameworks */,
 				800160C51E2CA0970085E605 /* libbz2.tbd in Frameworks */,
@@ -540,6 +546,7 @@
 		800160C11E2CA08F0085E605 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80C8F65D1E5707680016510A /* AssetsLibrary.framework */,
 				808D46531E4DAA3200E5891E /* SDWebImage.framework */,
 				808D46511E4DAA2E00E5891E /* GPUImage.framework */,
 				805143541E2DAD50007F8342 /* UserNotifications.framework */,
@@ -569,6 +576,7 @@
 		800160DC1E2CAF290085E605 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				80C8F6601E57080D0016510A /* opencv2.framework */,
 				800160DD1E2CAFED0085E605 /* HYQiHei-EZJ.ttf */,
 				800160DE1E2CB02C0085E605 /* IJKPlayerView.bundle */,
 			);
@@ -1162,6 +1170,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1203,6 +1212,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
