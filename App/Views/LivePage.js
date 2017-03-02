@@ -89,7 +89,8 @@ export default class LivePage extends React.Component {
 const styles = StyleSheet.create({
 
     camera: {
-
+        width: screenWidth,
+        height: screenHeight
     },
 
     switchButton: {

@@ -12,7 +12,7 @@
 //导入GPUImage模块
 @import GPUImage;
 
-@interface LiveRoom ()
+@interface LiveRoom ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) AVCaptureDeviceInput *currentVideoDeviceInput;
@@ -47,7 +47,9 @@
   return self;
 }
 
+
 -(void)layoutSubviews {
+  [super layoutSubviews];
   [self setupCaputureVideo];
 }
 
@@ -127,8 +129,11 @@
   
   // 记录当前摄像头输入设备
   _currentVideoDeviceInput = toggleDeviceInput;
-  
-  
+}
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+  NSLog(@"%@", NSStringFromCGPoint(point));
+  return nil;
 }
 
 @end

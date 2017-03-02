@@ -12,6 +12,8 @@
 #import "IJKBrightnessView.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
+//Swift混编头文件
+#import "news-Swift.h"
 
 // 枚举值，包含水平移动方向和垂直移动方向
 typedef NS_ENUM(NSInteger, PanDirection){
@@ -19,7 +21,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
     PanDirectionVerticalMoved    // 纵向移动
 };
 
-@interface IJKPlayerView ()<UIGestureRecognizerDelegate>
+@interface IJKPlayerView ()
+<
+UIGestureRecognizerDelegate,
+DJDecodeToolDelegate
+>
 
 @property (nonatomic, strong) UIView *superView;
 @property (nonatomic, assign) BOOL isFullScreen;
@@ -34,9 +40,20 @@ typedef NS_ENUM(NSInteger, PanDirection){
 //用于锁定设备方向时获取当前设备朝向
 @property (nonatomic, strong) CMMotionManager * motionManager;
 
+//M3U8解码器
+@property(strong,nonatomic)DJDecodeTool* decodeTool;
+
 @end
 
 @implementation IJKPlayerView
+
+-(DJDecodeTool *)decodeTool {
+  if (!_decodeTool) {
+    _decodeTool = [DJDecodeTool new];
+    _decodeTool.decodeDelegate = self;
+  }
+  return _decodeTool;
+}
 
 -(void)onDismiss {
 
@@ -45,7 +62,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 - (instancetype)init
 {
-    return [self initWithURL:nil];
+  return [self initWithURL:nil];
 }
 
 - (instancetype)initWithURL:(NSURL *)aURL
@@ -56,6 +73,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         _backcover = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"303"]];
         [self addSubview:_backcover];
         _url = aURL;
+      
         // 注册通知
         [self installUINotificationObservers];
         [self installMovieNotificationObservers];
@@ -74,7 +92,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #endif
         
         [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
-        // [IJKFFMoviePlayerController checkIfPlayerVersionMatch:YES major:1 minor:0 micro:0];
     }
     return self;
 }
@@ -84,6 +101,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
   _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:_url withOptions:options];
   _player.scalingMode = IJKMPMovieScalingModeAspectFit;
   _player.shouldAutoplay = NO;
+  [_player addObserver:self forKeyPath:@"monitor" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld  context:nil];
   [_player prepareToPlay];
   [self.materialDesignSpinner startAnimating];
   [self addSubview:_player.view];
@@ -119,6 +137,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
 -(void)setPlayURL:(NSString *)playURL {
   _playURL = playURL;
   self.url = [NSURL URLWithString:self.playURL];
+  //解析m3u8
+  if ([self.url.pathExtension isEqualToString:@"m3u8"]) {
+    [self.decodeTool handleM3U8Url:_url.absoluteString];
+  }
   if (!self.player) {
     [self setUpIJKPlayer];
   }
@@ -148,6 +170,12 @@ typedef NS_ENUM(NSInteger, PanDirection){
     }
     self.player.view.frame = self.bounds;
     self.mediaControl.frame = self.bounds;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+  if ([keyPath isEqualToString:@"monitor"]) {
+    NSLog(@"🐱🐶%@",object);
+  }
 }
 
 #pragma mark - Movie Notifications
@@ -712,6 +740,74 @@ typedef NS_ENUM(NSInteger, PanDirection){
         _motionManager.accelerometerUpdateInterval = .5f;
     }
     return _motionManager;
+}
+
+//CVPixelBufferRef转UIImage
+- (UIImage *)CVImageToUIImage:(CVPixelBufferRef)imageBuffer{
+  CVPixelBufferLockBaseAddress(imageBuffer, 0);
+  void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+  size_t width = CVPixelBufferGetWidth(imageBuffer);
+  size_t height = CVPixelBufferGetHeight(imageBuffer);
+  size_t bufferSize = CVPixelBufferGetDataSize(imageBuffer);
+  size_t bytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(imageBuffer, 0);
+  
+  CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+  CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, baseAddress, bufferSize, NULL);
+  
+  CGImageRef cgImage = CGImageCreate(width, height, 8, 32, bytesPerRow, rgbColorSpace, kCGImageAlphaNoneSkipFirst|kCGBitmapByteOrder32Little, provider, NULL, true, kCGRenderingIntentDefault);
+  
+  
+  UIImage *image = [UIImage imageWithCGImage:cgImage];
+  
+  CGImageRelease(cgImage);
+  CGDataProviderRelease(provider);
+  CGColorSpaceRelease(rgbColorSpace);
+  
+  NSData* imageData = UIImageJPEGRepresentation(image, 1.0);
+  image = [UIImage imageWithData:imageData];
+  CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+  return image;
+}
+
+#pragma mark - ZYLDecodeToolDelegate
+-(void)decodeSuccess {
+  NSLog(@"解码成功");
+  //显示一共下载了多少文件
+  NSString *pathPrefix = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES) objectAtIndex:0];
+  NSString *saveTo = [pathPrefix stringByAppendingPathComponent:@"Downloads"];
+  NSError* error = nil;
+  NSFileManager *fm = [NSFileManager defaultManager];
+  NSArray* contents =  [fm contentsOfDirectoryAtPath:saveTo error:&error];
+  for (NSString* path in contents) {
+    if ([path hasPrefix:@"movie1"]) {
+      NSArray* subFiles = [fm subpathsAtPath:[saveTo stringByAppendingPathComponent:path]];
+      NSMutableArray* tsArray = [NSMutableArray array];
+      [subFiles enumerateObjectsUsingBlock:^(NSString* subPath, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([subPath hasSuffix:@"ts"]) {
+          [tsArray addObject:subPath];
+        }
+      }];
+    }
+  }
+  
+  //路径不存在就创建一个
+  BOOL isD = [fm fileExistsAtPath:saveTo];
+  if (isD) {
+    //存在
+    //清空当前的M3U8文件
+    NSArray *subFileArray = [fm subpathsAtPath:saveTo];
+    NSMutableArray *tsArray = [[NSMutableArray alloc] init];
+    [subFileArray enumerateObjectsUsingBlock:^(NSString* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+      if ([obj.pathExtension isEqualToString:@"ts"]) {
+        [tsArray addObject:obj];
+      }
+    }];
+    NSLog(@"%@",[NSString stringWithFormat:@"一共下载了%ld个文件", (long)tsArray.count])
+  }
+}
+
+-(void)decodeFail {
+  NSLog(@"解码失败");
 }
 
 @end
